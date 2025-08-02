@@ -6,6 +6,7 @@ import {
   Puzzle, 
   Shield 
 } from "lucide-react";
+import GlowingEffect from "@/components/ui/glowing-effect";
 
 const FeaturesSection = () => {
   const features = [
