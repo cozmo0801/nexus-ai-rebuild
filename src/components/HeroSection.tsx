@@ -9,15 +9,9 @@ const HeroSection = () => {
     <section id="home" className="relative pt-24 pb-16 min-h-screen overflow-hidden">
       <BackgroundPaths />
       
-      {/* Fluid blob background effects */}
-      <div className="absolute top-20 left-10 opacity-30">
-        <FluidBlob size="xl" color="gradient" animation="slow" />
-      </div>
-      <div className="absolute bottom-20 right-10 opacity-20">
-        <FluidBlob size="lg" color="teal" animation="medium" />
-      </div>
-      <div className="absolute top-1/2 left-1/3 opacity-15">
-        <FluidBlob size="md" color="blue" animation="fast" />
+      {/* Fluid blob background effect */}
+      <div className="absolute inset-0 opacity-10 mix-blend-screen">
+        <FluidBlob className="w-full h-full" />
       </div>
       
       <div className="relative z-10 container mx-auto px-4 flex items-center min-h-[calc(100vh-6rem)]">

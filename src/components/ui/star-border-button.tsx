@@ -14,22 +14,18 @@ export const StarBorderButton = React.forwardRef<HTMLButtonElement, StarBorderBu
         {/* Animated star border background */}
         <div className="absolute -inset-0.5 bg-gradient-to-r from-accent-teal via-accent-purple to-accent-pink rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
         
-        {/* Star corners decoration */}
-        <div className="absolute -top-1 -left-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="w-full h-full bg-gradient-to-br from-accent-teal to-accent-purple rounded-full animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
+        {/* Star corners decoration - simplified */}
+        <div className="absolute -top-1 -left-1 w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="w-full h-full bg-accent-teal rounded-sm rotate-45"></div>
         </div>
-        <div className="absolute -top-1 -right-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-          <div className="w-full h-full bg-gradient-to-bl from-accent-purple to-accent-pink rounded-full animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
+        <div className="absolute -top-1 -right-1 w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+          <div className="w-full h-full bg-accent-purple rounded-sm rotate-45"></div>
         </div>
-        <div className="absolute -bottom-1 -left-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-          <div className="w-full h-full bg-gradient-to-tr from-accent-pink to-accent-orange rounded-full animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
+        <div className="absolute -bottom-1 -left-1 w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
+          <div className="w-full h-full bg-accent-pink rounded-sm rotate-45"></div>
         </div>
-        <div className="absolute -bottom-1 -right-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
-          <div className="w-full h-full bg-gradient-to-tl from-accent-orange to-accent-teal rounded-full animate-pulse"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
+        <div className="absolute -bottom-1 -right-1 w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
+          <div className="w-full h-full bg-accent-orange rounded-sm rotate-45"></div>
         </div>
 
         {/* Main button */}

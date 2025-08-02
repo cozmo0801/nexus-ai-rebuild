@@ -1,159 +1,176 @@
-import React from 'react';
-import { cn } from '@/lib/utils';
+import React, { useRef, useMemo } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import * as THREE from 'three';
 
-interface FluidBlobProps {
-  className?: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl';
-  color?: 'cyan' | 'blue' | 'teal' | 'gradient';
-  animation?: 'slow' | 'medium' | 'fast';
-  blur?: boolean;
+const vertexShader = `
+varying vec2 vUv;
+uniform float time;
+uniform vec4 resolution;
+
+void main() {
+    vUv = uv;
+    gl_Position = vec4(position, 1.0);
+}
+`;
+
+const fragmentShader = `
+precision highp float;
+varying vec2 vUv;
+uniform float time;
+uniform vec4 resolution;
+
+float PI = 3.141592653589793238;
+
+mat4 rotationMatrix(vec3 axis, float angle) {
+    axis = normalize(axis);
+    float s = sin(angle);
+    float c = cos(angle);
+    float oc = 1.0 - c;
+    return mat4(oc * axis.x * axis.x + c,           oc * axis.x * axis.y - axis.z * s,  oc * axis.z * axis.x + axis.y * s,  0.0,
+                oc * axis.x * axis.y + axis.z * s,  oc * axis.y * axis.y + c,           oc * axis.y * axis.z - axis.x * s,  0.0,
+                oc * axis.z * axis.x - axis.y * s,  oc * axis.y * axis.z + axis.x * s,  oc * axis.z * axis.z + c,           0.0,
+                0.0,                                0.0,                                0.0,                                1.0);
 }
 
-export const FluidBlob: React.FC<FluidBlobProps> = ({ 
-  className, 
-  size = 'lg', 
-  color = 'gradient',
-  animation = 'medium',
-  blur = true
-}) => {
-  const sizeClasses = {
-    sm: 'w-32 h-32',
-    md: 'w-48 h-48',
-    lg: 'w-72 h-72',
-    xl: 'w-96 h-96'
-  };
+vec3 rotate(vec3 v, vec3 axis, float angle) {
+    mat4 m = rotationMatrix(axis, angle);
+    return (m * vec4(v, 1.0)).xyz;
+}
 
-  const colorClasses = {
-    cyan: 'from-cyan-400 to-cyan-600',
-    blue: 'from-blue-400 to-blue-600',
-    teal: 'from-teal-400 to-teal-600',
-    gradient: 'from-cyan-400 via-blue-500 to-teal-600'
-  };
+float smin( float a, float b, float k ) {
+    k *= 6.0;
+    float h = max( k-abs(a-b), 0.0 )/k;
+    return min(a,b) - h*h*h*k*(1.0/6.0);
+}
 
-  const animationClasses = {
-    slow: 'animate-blob-slow',
-    medium: 'animate-blob',
-    fast: 'animate-blob-fast'
-  };
+float sphereSDF(vec3 p, float r) {
+    return length(p) - r;
+}
+
+float sdf(vec3 p) {
+    vec3 p1 = rotate(p, vec3(0.0, 0.0, 1.0), time/5.0);
+    vec3 p2 = rotate(p, vec3(1.), -time/5.0);
+    vec3 p3 = rotate(p, vec3(1., 1., 0.), -time/4.5);
+    vec3 p4 = rotate(p, vec3(0., 1., 0.), -time/4.0);
+    
+    float final = sphereSDF(p1 - vec3(-0.5, 0.0, 0.0), 0.35);
+    float nextSphere = sphereSDF(p2 - vec3(0.55, 0.0, 0.0), 0.3);
+    final = smin(final, nextSphere, 0.1);
+    nextSphere = sphereSDF(p2 - vec3(-0.8, 0.0, 0.0), 0.2);
+    final = smin(final, nextSphere, 0.1);
+    nextSphere = sphereSDF(p3 - vec3(1.0, 0.0, 0.0), 0.15);
+    final = smin(final, nextSphere, 0.1);
+    nextSphere = sphereSDF(p4 - vec3(0.45, -0.45, 0.0), 0.15);
+    final = smin(final, nextSphere, 0.1);
+    
+    return final;
+}
+
+vec3 getNormal(vec3 p) {
+    float d = 0.001;
+    return normalize(vec3(
+        sdf(p + vec3(d, 0.0, 0.0)) - sdf(p - vec3(d, 0.0, 0.0)),
+        sdf(p + vec3(0.0, d, 0.0)) - sdf(p - vec3(0.0, d, 0.0)),
+        sdf(p + vec3(0.0, 0.0, d)) - sdf(p - vec3(0.0, 0.0, d))
+    ));
+}
+
+float rayMarch(vec3 rayOrigin, vec3 ray) {
+    float t = 0.0;
+    for (int i = 0; i < 100; i++) {
+        vec3 p = rayOrigin + ray * t;
+        float d = sdf(p);
+        if (d < 0.001) return t;
+        t += d;
+        if (t > 100.0) break;
+    }
+    return -1.0;
+}
+
+void main() {
+    vec2 newUV = (vUv - vec2(0.5)) * resolution.zw + vec2(0.5);
+    vec3 cameraPos = vec3(0.0, 0.0, 5.0);
+    vec3 ray = normalize(vec3((vUv - vec2(0.5)) * resolution.zw, -1));
+    vec3 color = vec3(1.0);
+    
+    float t = rayMarch(cameraPos, ray);
+    if (t > 0.0) {
+        vec3 p = cameraPos + ray * t;
+        vec3 normal = getNormal(p);
+        float fresnel = pow(1.0 + dot(ray, normal), 3.0);
+        color = vec3(fresnel);
+        gl_FragColor = vec4(color, 1.0);
+    } else {
+        gl_FragColor = vec4(1.0);
+    }
+}
+`;
+
+function LavaLampShader() {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const { size } = useThree();
+  
+  const uniforms = useMemo(() => ({
+    time: { value: 0 },
+    resolution: { value: new THREE.Vector4() }
+  }), []);
+
+  // Update resolution when size changes
+  React.useEffect(() => {
+    const { width, height } = size;
+    const imageAspect = 1;
+    let a1, a2;
+    
+    if (height / width > imageAspect) {
+      a1 = (width / height) * imageAspect;
+      a2 = 1;
+    } else {
+      a1 = 1;
+      a2 = (height / width) / imageAspect;
+    }
+    
+    uniforms.resolution.value.set(width, height, a1, a2);
+  }, [size, uniforms]);
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      uniforms.time.value = state.clock.elapsedTime;
+    }
+  });
 
   return (
-    <div className={cn('relative', className)}>
-      {/* Main blob */}
-      <div 
-        className={cn(
-          'absolute rounded-full mix-blend-multiply',
-          'bg-gradient-to-br',
-          sizeClasses[size],
-          colorClasses[color],
-          animationClasses[animation],
-          blur && 'blur-xl',
-          'opacity-70'
-        )}
-        style={{
-          clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)'
-        }}
+    <mesh ref={meshRef}>
+      <planeGeometry args={[5, 5]} />
+      <shaderMaterial
+        uniforms={uniforms}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
       />
-      
-      {/* Secondary blob for morphing effect */}
-      <div 
-        className={cn(
-          'absolute rounded-full mix-blend-multiply',
-          'bg-gradient-to-bl from-blue-400 to-indigo-600',
-          sizeClasses[size],
-          'animate-blob-reverse',
-          blur && 'blur-xl',
-          'opacity-70'
-        )}
-        style={{
-          clipPath: 'polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%)',
-          animationDelay: '2s',
-          transform: 'translate(20px, 20px)'
-        }}
-      />
-      
-      {/* Third blob for complexity */}
-      <div 
-        className={cn(
-          'absolute rounded-full mix-blend-multiply',
-          'bg-gradient-to-tr from-teal-400 to-cyan-600',
-          sizeClasses[size],
-          'animate-blob-alt',
-          blur && 'blur-xl',
-          'opacity-70'
-        )}
-        style={{
-          clipPath: 'polygon(40% 0%, 60% 0%, 100% 40%, 100% 60%, 60% 100%, 40% 100%, 0% 60%, 0% 40%)',
-          animationDelay: '4s',
-          transform: 'translate(-20px, -20px)'
-        }}
-      />
-
-      {/* Center highlight */}
-      <div 
-        className={cn(
-          'absolute rounded-full',
-          'bg-gradient-to-r from-white/20 to-white/10',
-          'w-16 h-16',
-          'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',
-          'animate-pulse',
-          blur && 'blur-sm'
-        )}
-      />
-    </div>
+    </mesh>
   );
-};
+}
 
-// SVG version for more complex shapes
-export const FluidBlobSVG: React.FC<FluidBlobProps> = ({ 
-  className, 
-  size = 'lg',
-  color = 'gradient'
-}) => {
-  const sizeMap = {
-    sm: 128,
-    md: 192,
-    lg: 288,
-    xl: 384
-  };
-
-  const dimension = sizeMap[size];
-
+export const FluidBlob = ({ className = "" }: { className?: string }) => {
   return (
-    <div className={cn('relative', className)}>
-      <svg 
-        width={dimension} 
-        height={dimension} 
-        viewBox="0 0 200 200" 
-        className="absolute top-0 left-0"
+    <div className={`w-full h-full absolute ${className}`} style={{ background: 'transparent' }}>
+      <Canvas
+        camera={{
+          left: -0.5,
+          right: 0.5,
+          top: 0.5,
+          bottom: -0.5,
+          near: -1000,
+          far: 1000,
+          position: [0, 0, 2]
+        }}
+        orthographic
+        gl={{ antialias: true, alpha: true }}
       >
-        <defs>
-          <linearGradient id={`gradient-${color}`} x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#06b6d4" stopOpacity="0.8" />
-            <stop offset="50%" stopColor="#3b82f6" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#14b8a6" stopOpacity="0.8" />
-          </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-            <feMerge> 
-              <feMergeNode in="coloredBlur"/>
-              <feMergeNode in="SourceGraphic"/>
-            </feMerge>
-          </filter>
-        </defs>
-        
-        <path 
-          d="M50,100 C50,60 70,20 100,20 C130,20 150,60 150,100 C150,140 130,180 100,180 C70,180 50,140 50,100 Z"
-          fill={`url(#gradient-${color})`}
-          filter="url(#glow)"
-          className="animate-blob-morph"
-        />
-        
-        <path 
-          d="M60,100 C60,70 75,40 100,40 C125,40 140,70 140,100 C140,130 125,160 100,160 C75,160 60,130 60,100 Z"
-          fill="rgba(255,255,255,0.1)"
-          className="animate-blob-morph-reverse"
-        />
-      </svg>
+        <LavaLampShader />
+      </Canvas>
     </div>
   );
 };
+
+// Keep the old interface for backward compatibility
+export const FluidBlobSVG = FluidBlob;
