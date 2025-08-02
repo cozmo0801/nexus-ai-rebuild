@@ -26,15 +26,15 @@
     --muted: 248 25% 20%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 180 100% 50%;
+    --accent: 172 100% 42%;
     --accent-foreground: 248 39% 11%;
 
-    /* Vibrant accent colors */
-    --accent-teal: 180 100% 50%;
-    --accent-purple: 273 75% 66%;
-    --accent-orange: 25 95% 53%;
-    --accent-green: 142 76% 36%;
-    --accent-pink: 330 81% 60%;
+    /* Updated accent colors */
+    --accent-teal: 172 100% 42%;
+    --accent-purple: 261 37% 56%;
+    --accent-orange: 15 100% 60%;
+    --accent-green: 177 52% 68%;
+    --accent-pink: 330 100% 71%;
 
     /* Interactive states */
     --destructive: 0 84.2% 60.2%;
@@ -47,19 +47,19 @@
     --radius: 0.75rem;
 
     /* Custom glassmorphism gradients and effects */
-    --gradient-primary: linear-gradient(135deg, hsl(273 75% 66%), hsl(248 39% 11%));
+    --gradient-primary: linear-gradient(135deg, hsl(261 37% 56%), hsl(248 39% 11%));
     --gradient-hero: linear-gradient(180deg, hsl(248 39% 8%), hsl(248 50% 4%));
-    --gradient-accent: linear-gradient(135deg, hsl(180 100% 50%), hsl(273 75% 66%));
+    --gradient-accent: linear-gradient(135deg, hsl(172 100% 42%), hsl(261 37% 56%));
     --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    --gradient-button: linear-gradient(145deg, hsl(273 75% 66%), hsl(330 81% 60%), hsl(25 95% 53%));
+    --gradient-button: linear-gradient(145deg, hsl(261 37% 56%), hsl(330 100% 71%), hsl(15 100% 60%));
     --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
 
     /* Glassmorphism shadows and effects */
-    --shadow-glow: 0 0 40px hsl(273 75% 66% / 0.3);
+    --shadow-glow: 0 0 40px hsl(261 37% 56% / 0.3);
     --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
     --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     --shadow-inner: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-    --border-glass: rgba(255, 255, 255, 0.18);
+    --border-glass: rgba(255, 255, 255, 0.2);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -133,7 +133,7 @@
   .glass-card {
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: var(--shadow-glass);
   }
 

@@ -25,9 +25,9 @@ const BackgroundPaths = () => {
       >
         <defs>
           <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(180, 58, 183, 0.1)" />
-            <stop offset="50%" stopColor="rgba(253, 29, 29, 0.1)" />
-            <stop offset="100%" stopColor="rgba(252, 176, 64, 0.1)" />
+            <stop offset="0%" stopColor="rgba(139, 95, 191, 0.1)" />
+            <stop offset="50%" stopColor="rgba(255, 107, 53, 0.1)" />
+            <stop offset="100%" stopColor="rgba(0, 212, 170, 0.1)" />
           </linearGradient>
         </defs>
         
@@ -68,7 +68,7 @@ const BackgroundPaths = () => {
         <path
           className="path-line"
           d="M0,0 L1200,800"
-          stroke="rgba(180, 58, 183, 0.05)"
+          stroke="rgba(139, 95, 191, 0.05)"
           strokeWidth="0.5"
           fill="none"
         />
@@ -76,7 +76,7 @@ const BackgroundPaths = () => {
         <path
           className="path-line"
           d="M0,800 L1200,0"
-          stroke="rgba(252, 176, 64, 0.05)"
+          stroke="rgba(0, 212, 170, 0.05)"
           strokeWidth="0.5"
           fill="none"
         />
@@ -85,7 +85,7 @@ const BackgroundPaths = () => {
         <path
           className="path-line"
           d="M-100,200 Q500,100 800,300 Q1000,400 1300,250"
-          stroke="rgba(253, 29, 29, 0.08)"
+          stroke="rgba(255, 107, 53, 0.08)"
           strokeWidth="1"
           fill="none"
         />
@@ -93,7 +93,7 @@ const BackgroundPaths = () => {
         <path
           className="path-line"
           d="M-50,600 Q450,500 750,700 Q950,800 1250,650"
-          stroke="rgba(180, 58, 183, 0.08)"
+          stroke="rgba(139, 95, 191, 0.08)"
           strokeWidth="1"
           fill="none"
         />
@@ -104,7 +104,7 @@ const BackgroundPaths = () => {
         {[...Array(12)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-accent-purple/20 rounded-full animate-float"
+            className="absolute w-1 h-1 bg-accent-teal/20 rounded-full animate-float"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
