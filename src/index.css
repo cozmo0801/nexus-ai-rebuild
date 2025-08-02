@@ -7,60 +7,60 @@
 @layer base {
   :root {
     /* Core dark theme colors */
-    /* Core colors - Black, Teal, Blues, Whites */
-    --background: 0 0% 3%;        /* Deep black */
-    --foreground: 0 0% 98%;       /* Pure white */
+    /* Core dark theme colors - Original design */
+    --background: 233 18% 12%;  /* #1A1A2E approximation */
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 5%;             /* Dark gray-black */
-    --card-foreground: 0 0% 98%;
+    --card: 233 18% 12%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 7%;          /* Slightly lighter black */
-    --popover-foreground: 0 0% 98%;
+    --popover: 233 18% 12%;
+    --popover-foreground: 0 0% 100%;
 
-    /* Brand colors - Teal and Blue focus */
-    --primary: 188 100% 50%;      /* Bright Teal #00BCD4 */
-    --primary-foreground: 0 0% 3%;
+    /* Brand colors - Original */
+    --primary: 188 100% 42%;  /* Teal primary */
+    --primary-foreground: 233 18% 12%;
 
-    --secondary: 210 40% 15%;     /* Dark blue-gray */
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 233 25% 20%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 20% 20%;         /* Muted blue-gray */
-    --muted-foreground: 0 0% 80%;
+    --muted: 233 15% 25%;
+    --muted-foreground: 0 0% 75%;
 
-    --accent: 200 100% 50%;       /* Cyan accent */
-    --accent-foreground: 0 0% 3%;
+    --accent: 188 100% 42%;  /* Teal accent */
+    --accent-foreground: 233 18% 12%;
 
-    /* New color palette - Black, Teal, Blues, Whites */
-    --accent-teal: 188 100% 50%;      /* #00BCD4 - Primary Teal */
-    --accent-cyan: 200 100% 50%;      /* #00E5FF - Bright Cyan */
-    --accent-blue: 210 100% 50%;      /* #1E90FF - Dodger Blue */
-    --accent-navy: 220 80% 30%;       /* #1E3A8A - Navy Blue */
-    --accent-slate: 215 25% 40%;      /* #475569 - Slate Blue */
+    /* Original accent colors */
+    --accent-teal: 188 100% 42%;     /* #00BCD4 */
+    --accent-purple: 271 89% 54%;    /* #8A2BE2 */
+    --accent-orange: 39 100% 50%;    /* #FFA500 */
+    --accent-green: 123 100% 50%;    /* #32CD32 */
+    --accent-pink: 330 100% 71%;     /* #FF69B4 */
 
     /* Interactive states */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 210 20% 20%;
-    --input: 210 20% 20%;
-    --ring: 188 100% 50%;
+    --border: 233 15% 25%;
+    --input: 233 15% 25%;
+    --ring: 188 100% 42%;
 
     --radius: 0.75rem;
 
-    /* Custom gradients - Black, Teal, Blues, Whites */
-    --gradient-primary: linear-gradient(135deg, hsl(188 100% 50%), hsl(0 0% 3%));
-    --gradient-hero: linear-gradient(180deg, hsl(0 0% 3%), hsl(210 40% 8%));
-    --gradient-accent: linear-gradient(135deg, hsl(188 100% 50%), hsl(200 100% 50%));
+    /* Custom glassmorphism gradients and effects - Original */
+    --gradient-primary: linear-gradient(135deg, hsl(271 89% 54%), hsl(233 18% 12%));
+    --gradient-hero: linear-gradient(180deg, hsl(233 18% 8%), hsl(233 25% 4%));
+    --gradient-accent: linear-gradient(135deg, hsl(188 100% 42%), hsl(271 89% 54%));
     --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    --gradient-button: linear-gradient(145deg, hsl(188 100% 50%), hsl(200 100% 50%), hsl(210 100% 50%));
+    --gradient-button: linear-gradient(145deg, hsl(271 89% 54%), hsl(330 100% 71%), hsl(39 100% 50%));
     --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
 
-    /* Updated shadows and effects */
-    --shadow-glow: 0 0 40px hsl(188 100% 50% / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.7);
-    --shadow-glass: 0 8px 32px 0 rgba(0, 188, 212, 0.2);
+    /* Glassmorphism shadows and effects - Original */
+    --shadow-glow: 0 0 40px hsl(271 89% 54% / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     --shadow-inner: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-    --border-glass: rgba(255, 255, 255, 0.15);
+    --border-glass: rgba(255, 255, 255, 0.2);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -126,7 +126,7 @@
 
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, #000000 0%, #0A1420 25%, #001429 50%, #000814 75%, #000000 100%);
+    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F0F23 100%);
     min-height: 100vh;
   }
 

@@ -12,23 +12,23 @@ export const StarBorderButton = React.forwardRef<HTMLButtonElement, StarBorderBu
     return (
       <div className="relative group">
         {/* Animated star border background */}
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-400 via-blue-500 to-teal-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
+        <div className="absolute -inset-0.5 bg-gradient-to-r from-accent-teal via-accent-purple to-accent-pink rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
         
         {/* Star corners decoration */}
         <div className="absolute -top-1 -left-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="w-full h-full bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full animate-pulse"></div>
+          <div className="w-full h-full bg-gradient-to-br from-accent-teal to-accent-purple rounded-full animate-pulse"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
         </div>
         <div className="absolute -top-1 -right-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-          <div className="w-full h-full bg-gradient-to-bl from-blue-500 to-teal-600 rounded-full animate-pulse"></div>
+          <div className="w-full h-full bg-gradient-to-bl from-accent-purple to-accent-pink rounded-full animate-pulse"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
         </div>
         <div className="absolute -bottom-1 -left-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-          <div className="w-full h-full bg-gradient-to-tr from-teal-600 to-cyan-400 rounded-full animate-pulse"></div>
+          <div className="w-full h-full bg-gradient-to-tr from-accent-pink to-accent-orange rounded-full animate-pulse"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
         </div>
         <div className="absolute -bottom-1 -right-1 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
-          <div className="w-full h-full bg-gradient-to-tl from-blue-500 to-cyan-400 rounded-full animate-pulse"></div>
+          <div className="w-full h-full bg-gradient-to-tl from-accent-orange to-accent-teal rounded-full animate-pulse"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1 h-1 bg-white rounded-full"></div>
         </div>
 
@@ -36,9 +36,9 @@ export const StarBorderButton = React.forwardRef<HTMLButtonElement, StarBorderBu
         <button
           className={cn(
             'relative flex items-center justify-center font-medium transition-all duration-200 group-hover:scale-105',
-            'bg-gradient-to-r from-gray-900 via-black to-gray-900 text-white',
-            'border border-gray-700 group-hover:border-transparent',
-            'shadow-lg group-hover:shadow-cyan-500/25',
+            'bg-gradient-to-r from-background via-card to-background text-white',
+            'border border-accent-teal/30 group-hover:border-transparent',
+            'shadow-lg group-hover:shadow-accent-purple/25',
             {
               'px-4 py-2 text-sm rounded-lg': size === 'sm',
               'px-6 py-3 text-base rounded-xl': size === 'md',
@@ -55,7 +55,7 @@ export const StarBorderButton = React.forwardRef<HTMLButtonElement, StarBorderBu
           {...props}
         >
           {/* Inner glow */}
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400/10 via-blue-500/10 to-teal-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-teal/10 via-accent-purple/10 to-accent-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           
           {/* Content */}
           <span className="relative z-10 flex items-center gap-2">
