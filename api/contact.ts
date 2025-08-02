@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+const handler = async (req: VercelRequest, res: VercelResponse) => {
   console.log('=== Contact API Called ===');
   console.log('Method:', req.method);
   console.log('Headers:', req.headers);
@@ -136,4 +136,6 @@ Submitted: ${new Date().toLocaleString()}
       debug: process.env.NODE_ENV === 'development' ? error : undefined
     });
   }
-}
+};
+
+export default handler;

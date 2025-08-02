@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+const handler = async (req: VercelRequest, res: VercelResponse) => {
   // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -177,4 +177,6 @@ ${specificNeeds}
       message: 'Failed to complete onboarding. Please try again or contact us directly.' 
     });
   }
-}
+};
+
+export default handler;
