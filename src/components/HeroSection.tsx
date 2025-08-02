@@ -53,10 +53,20 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button variant="hero" size="lg" className="w-full sm:w-auto group">
+            <Button 
+              variant="hero" 
+              size="lg" 
+              className="w-full sm:w-auto group"
+              onClick={() => window.location.href = '/get-started'}
+            >
               <span className="relative z-10">Get Started Free</span>
             </Button>
-            <Button variant="heroSecondary" size="lg" className="w-full sm:w-auto group">
+            <Button 
+              variant="heroSecondary" 
+              size="lg" 
+              className="w-full sm:w-auto group"
+              onClick={() => window.location.href = '/contact'}
+            >
               <Play className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
               <span>Watch Demo</span>
             </Button>

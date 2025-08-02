@@ -13,7 +13,12 @@ const ReadySection = () => {
           <p className="text-xl text-white/80 mb-8 leading-relaxed">
             Let's discuss how AI can transform your business operations and boost your sales
           </p>
-          <Button variant="cta" size="lg" className="animate-pulse-glow group">
+          <Button 
+            variant="cta" 
+            size="lg" 
+            className="animate-pulse-glow group"
+            onClick={() => window.location.href = '/get-started'}
+          >
             <span className="relative z-10">Get Started Now</span>
             <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>

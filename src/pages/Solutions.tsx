@@ -228,11 +228,21 @@ const Solutions = () => {
               and start your journey towards intelligent automation.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button variant="hero" size="lg" className="w-full sm:w-auto group">
+              <Button 
+                variant="hero" 
+                size="lg" 
+                className="w-full sm:w-auto group"
+                onClick={() => window.location.href = '/get-started'}
+              >
                 <span className="relative z-10">Get Started Free</span>
                 <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="heroSecondary" size="lg" className="w-full sm:w-auto">
+              <Button 
+                variant="heroSecondary" 
+                size="lg" 
+                className="w-full sm:w-auto"
+                onClick={() => window.location.href = '/contact'}
+              >
                 Schedule Consultation
               </Button>
             </div>

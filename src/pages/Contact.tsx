@@ -44,6 +44,8 @@ const Contact = () => {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
+    console.log('Submitting form with data:', formData);
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -53,7 +55,17 @@ const Contact = () => {
         body: JSON.stringify(formData),
       });
 
-      const data = await response.json();
+      console.log('Response status:', response.status);
+      console.log('Response headers:', response.headers);
+
+      let data;
+      try {
+        data = await response.json();
+        console.log('Response data:', data);
+      } catch (jsonError) {
+        console.error('Failed to parse JSON response:', jsonError);
+        throw new Error('Invalid response from server');
+      }
 
       if (response.ok) {
         setSubmitStatus('success');
@@ -70,11 +82,12 @@ const Contact = () => {
         });
       } else {
         setSubmitStatus('error');
-        setStatusMessage(data.message || 'Something went wrong. Please try again.');
+        setStatusMessage(data.message || `Server error (${response.status}). Please try again.`);
       }
     } catch (error) {
+      console.error('Contact form error:', error);
       setSubmitStatus('error');
-      setStatusMessage('Network error. Please check your connection and try again.');
+      setStatusMessage(error instanceof Error ? error.message : 'Network error. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
