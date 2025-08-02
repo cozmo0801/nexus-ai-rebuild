@@ -9,6 +9,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Content-Type', 'application/json');
 
   // Handle preflight
   if (req.method === 'OPTIONS') {
@@ -20,6 +21,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
+    if (!req.body) {
+      console.log('No request body received');
+      return res.status(400).json({ message: 'No data received' });
+    }
+
     const { firstName, lastName, email, company, phone, subject, message } = req.body;
 
     console.log('Form data received:', { firstName, lastName, email, company, phone, subject, message });
@@ -101,14 +107,14 @@ Submitted: ${new Date().toLocaleString()}
 
     console.log('Resend response status:', resendResponse.status);
     
-    const resendData = await resendResponse.text();
-    console.log('Resend response data:', resendData);
-
     if (!resendResponse.ok) {
-      throw new Error(`Resend API error: ${resendResponse.status} - ${resendData}`);
+      const errorText = await resendResponse.text();
+      console.log('Resend error response:', errorText);
+      throw new Error(`Resend API error: ${resendResponse.status} - ${errorText}`);
     }
 
-    const responseData = JSON.parse(resendData);
+    const responseData = await resendResponse.json();
+    console.log('Resend response data:', responseData);
     console.log('Email sent successfully! ID:', responseData.id);
 
     return res.status(200).json({

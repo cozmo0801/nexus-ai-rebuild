@@ -59,12 +59,21 @@ const Contact = () => {
       console.log('Response headers:', response.headers);
 
       let data;
-      try {
-        data = await response.json();
-        console.log('Response data:', data);
-      } catch (jsonError) {
-        console.error('Failed to parse JSON response:', jsonError);
-        throw new Error('Invalid response from server');
+      const contentType = response.headers.get('content-type');
+      console.log('Content-Type:', contentType);
+      
+      if (contentType && contentType.includes('application/json')) {
+        try {
+          data = await response.json();
+          console.log('Response data:', data);
+        } catch (jsonError) {
+          console.error('Failed to parse JSON response:', jsonError);
+          throw new Error('Invalid JSON response from server');
+        }
+      } else {
+        const responseText = await response.text();
+        console.error('Non-JSON response:', responseText);
+        data = { message: responseText };
       }
 
       if (response.ok) {
