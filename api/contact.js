@@ -1,6 +1,4 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-
-const handler = async (req: VercelRequest, res: VercelResponse) => {
+module.exports = async (req, res) => {
   console.log('=== Contact API Called ===');
   console.log('Method:', req.method);
 
@@ -94,7 +92,7 @@ Submitted on: ${new Date().toLocaleString()}
     };
 
     console.log('Email payload prepared');
-
+    
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -134,6 +132,3 @@ Submitted on: ${new Date().toLocaleString()}
     });
   }
 };
-
-export default handler;
-export { handler };
