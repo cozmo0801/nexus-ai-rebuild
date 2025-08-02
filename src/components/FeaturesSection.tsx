@@ -63,20 +63,20 @@ const FeaturesSection = () => {
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <div 
-                key={index}
-                className="bg-card border border-border rounded-2xl p-6 hover:shadow-glow transition-all duration-300 hover:-translate-y-2 group"
-              >
-                <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-secondary mb-4 ${feature.color} group-hover:scale-110 transition-transform`}>
-                  <IconComponent className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-bold text-foreground mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {feature.description}
-                </p>
+            <div 
+              key={index}
+              className="glass-card rounded-3xl p-6 hover:shadow-glow transition-all duration-500 hover:-translate-y-3 hover:scale-105 group border border-glass backdrop-blur-glass"
+            >
+              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-glass mb-4 ${feature.color} group-hover:scale-110 transition-transform shadow-inner`}>
+                <IconComponent className="h-6 w-6" />
               </div>
+              <h3 className="text-xl font-bold text-white mb-3 group-hover:text-accent-teal transition-colors">
+                {feature.title}
+              </h3>
+              <p className="text-white/70 text-sm leading-relaxed group-hover:text-white/90 transition-colors">
+                {feature.description}
+              </p>
+            </div>
             );
           })}
         </div>

@@ -11,7 +11,7 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -20,27 +20,29 @@ const Navigation = () => {
             <span className="text-xl font-bold text-foreground">NexusCore AI</span>
           </div>
 
-          {/* Navigation Links */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#home" className="text-foreground hover:text-accent-teal transition-colors">
-              Home
+            <a href="#home" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
+              <span>Home</span>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300"></div>
             </a>
-            <a href="#solutions" className="text-foreground hover:text-accent-teal transition-colors">
-              Solutions
+            <a href="#solutions" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
+              <span>Solutions</span>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300"></div>
             </a>
-            <a href="#contact" className="text-foreground hover:text-accent-teal transition-colors">
-              Contact
+            <a href="#contact" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
+              <span>Contact</span>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300"></div>
             </a>
-            <a href="#faq" className="text-foreground hover:text-accent-teal transition-colors">
-              FAQ
+            <a href="#faq" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
+              <span>FAQ</span>
+              <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300"></div>
             </a>
           </div>
 
-          {/* Theme Toggle & CTA */}
           <div className="flex items-center gap-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-muted transition-colors"
+              className="p-2 rounded-lg glass-card hover:bg-white/20 transition-all duration-300 border-glass"
               aria-label="Toggle theme"
             >
               {isDark ? (

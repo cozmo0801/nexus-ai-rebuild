@@ -46,14 +46,20 @@
 
     --radius: 0.75rem;
 
-    /* Custom gradients */
+    /* Custom glassmorphism gradients and effects */
     --gradient-primary: linear-gradient(135deg, hsl(273 75% 66%), hsl(248 39% 11%));
-    --gradient-hero: linear-gradient(180deg, hsl(248 39% 11%), hsl(248 50% 8%));
+    --gradient-hero: linear-gradient(180deg, hsl(248 39% 8%), hsl(248 50% 4%));
     --gradient-accent: linear-gradient(135deg, hsl(180 100% 50%), hsl(273 75% 66%));
+    --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    --gradient-button: linear-gradient(145deg, hsl(273 75% 66%), hsl(330 81% 60%), hsl(25 95% 53%));
+    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
 
-    /* Shadows and effects */
+    /* Glassmorphism shadows and effects */
     --shadow-glow: 0 0 40px hsl(273 75% 66% / 0.3);
     --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    --shadow-inner: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    --border-glass: rgba(255, 255, 255, 0.18);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -119,5 +125,73 @@
 
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(135deg, #0f0c29 0%, #24243e 50%, #402562 100%);
+    min-height: 100vh;
+  }
+
+  /* Glassmorphism utilities */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .glass-button {
+    background: var(--gradient-button);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s;
+  }
+
+  .glass-button:hover::before {
+    left: 100%;
+  }
+
+  .glass-nav {
+    background: rgba(15, 12, 41, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Background paths animation */
+  .background-paths {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .path-line {
+    stroke: rgba(255, 255, 255, 0.03);
+    stroke-width: 1;
+    fill: none;
+    opacity: 0;
+    animation: pathDraw 8s ease-in-out infinite;
+  }
+
+  @keyframes pathDraw {
+    0%, 100% { 
+      opacity: 0;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+    50% { 
+      opacity: 1;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 0;
+    }
   }
 }

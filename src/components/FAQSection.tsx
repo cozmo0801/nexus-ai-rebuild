@@ -62,19 +62,19 @@ const FAQSection = () => {
                 <AccordionItem 
                   key={faq.id} 
                   value={faq.id}
-                  className={`${faq.bgColor} border rounded-2xl px-6 hover:shadow-glow transition-all duration-300`}
+                  className={`glass-card border border-glass rounded-3xl px-6 hover:shadow-glow transition-all duration-500 hover:scale-105 backdrop-blur-glass ${faq.bgColor}`}
                 >
-                  <AccordionTrigger className="text-left py-6 hover:no-underline">
+                  <AccordionTrigger className="text-left py-6 hover:no-underline group">
                     <div className="flex items-center gap-4">
-                      <div className={`flex items-center justify-center w-10 h-10 rounded-xl bg-secondary ${faq.iconColor}`}>
+                      <div className={`flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-glass ${faq.iconColor} shadow-inner group-hover:scale-110 transition-transform`}>
                         <IconComponent className="h-5 w-5" />
                       </div>
-                      <span className="text-lg font-semibold text-foreground">
+                      <span className="text-lg font-semibold text-white group-hover:text-accent-teal transition-colors">
                         {faq.question}
                       </span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground pb-6 pl-14">
+                  <AccordionContent className="text-white/70 pb-6 pl-14 leading-relaxed">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>

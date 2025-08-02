@@ -39,20 +39,20 @@ const TransformSection = () => {
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon;
             return (
-              <div 
-                key={index}
-                className="bg-card border border-border rounded-2xl p-8 text-center hover:shadow-glow transition-all duration-300 hover:-translate-y-2"
-              >
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-secondary mb-6 ${benefit.color}`}>
-                  <IconComponent className="h-8 w-8" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  {benefit.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {benefit.description}
-                </p>
+            <div 
+              key={index}
+              className="glass-card rounded-3xl p-8 text-center hover:shadow-glow transition-all duration-500 hover:-translate-y-3 hover:scale-105 group border border-glass backdrop-blur-glass"
+            >
+              <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-glass mb-6 ${benefit.color} group-hover:scale-110 transition-transform shadow-inner`}>
+                <IconComponent className="h-8 w-8" />
               </div>
+              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-accent-teal transition-colors">
+                {benefit.title}
+              </h3>
+              <p className="text-white/70 group-hover:text-white/90 transition-colors">
+                {benefit.description}
+              </p>
+            </div>
             );
           })}
         </div>
