@@ -1,71 +1,64 @@
-import React from 'react';
-import { cn } from '@/lib/utils';
+import { cn } from "@/lib/utils"
+import { ElementType, ComponentPropsWithoutRef } from "react"
 
-interface StarBorderButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  variant?: 'default' | 'hero' | 'secondary';
-  size?: 'sm' | 'md' | 'lg';
+interface StarBorderProps<T extends ElementType> {
+  as?: T
+  color?: string
+  speed?: string
+  className?: string
+  children: React.ReactNode
 }
 
-export const StarBorderButton = React.forwardRef<HTMLButtonElement, StarBorderButtonProps>(
-  ({ className, children, variant = 'default', size = 'md', ...props }, ref) => {
-    return (
-      <div className="relative group">
-        {/* Animated star border background */}
-        <div className="absolute -inset-0.5 bg-gradient-to-r from-accent-teal via-accent-purple to-accent-pink rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-tilt"></div>
-        
-        {/* Star corners decoration - simplified */}
-        <div className="absolute -top-1 -left-1 w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="w-full h-full bg-accent-teal rounded-sm rotate-45"></div>
-        </div>
-        <div className="absolute -top-1 -right-1 w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-          <div className="w-full h-full bg-accent-purple rounded-sm rotate-45"></div>
-        </div>
-        <div className="absolute -bottom-1 -left-1 w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-200">
-          <div className="w-full h-full bg-accent-pink rounded-sm rotate-45"></div>
-        </div>
-        <div className="absolute -bottom-1 -right-1 w-2 h-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-300">
-          <div className="w-full h-full bg-accent-orange rounded-sm rotate-45"></div>
-        </div>
+export function StarBorderButton<T extends ElementType = "button">({
+  as,
+  className,
+  color,
+  speed = "6s",
+  children,
+  ...props
+}: StarBorderProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof StarBorderProps<T>>) {
+  const Component = as || "button"
+  const defaultColor = color || "hsl(var(--accent-teal))"
 
-        {/* Main button */}
-        <button
-          className={cn(
-            'relative flex items-center justify-center font-medium transition-all duration-200 group-hover:scale-105',
-            'bg-gradient-to-r from-background via-card to-background text-white',
-            'border border-accent-teal/30 group-hover:border-transparent',
-            'shadow-lg group-hover:shadow-accent-purple/25',
-            {
-              'px-4 py-2 text-sm rounded-lg': size === 'sm',
-              'px-6 py-3 text-base rounded-xl': size === 'md',
-              'px-8 py-4 text-lg rounded-xl': size === 'lg',
-            },
-            {
-              'hover:from-gray-800 hover:to-gray-900': variant === 'default',
-              'hover:from-cyan-900/50 hover:to-blue-900/50': variant === 'hero',
-              'hover:from-teal-900/50 hover:to-cyan-900/50': variant === 'secondary',
-            },
-            className
-          )}
-          ref={ref}
-          {...props}
-        >
-          {/* Inner glow */}
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-accent-teal/10 via-accent-purple/10 to-accent-pink/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          
-          {/* Content */}
-          <span className="relative z-10 flex items-center gap-2">
-            {children}
-          </span>
-
-          {/* Shimmer effect */}
-          <div className="absolute inset-0 rounded-xl overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
-          </div>
-        </button>
+  return (
+    <Component 
+      className={cn(
+        "relative inline-block py-[1px] overflow-hidden rounded-[20px]",
+        className
+      )} 
+      {...props}
+    >
+      <div
+        className={cn(
+          "absolute w-[300%] h-[50%] bottom-[-11px] right-[-250%] rounded-full animate-star-movement-bottom z-0",
+          "opacity-20 dark:opacity-70" 
+        )}
+        style={{
+          background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
+          animationDuration: speed,
+        }}
+      />
+      <div
+        className={cn(
+          "absolute w-[300%] h-[50%] top-[-10px] left-[-250%] rounded-full animate-star-movement-top z-0",
+          "opacity-20 dark:opacity-70"
+        )}
+        style={{
+          background: `radial-gradient(circle, ${defaultColor}, transparent 10%)`,
+          animationDuration: speed,
+        }}
+      />
+      <div className={cn(
+        "relative z-1 border text-foreground text-center text-base py-4 px-6 rounded-[20px]",
+        "bg-gradient-to-b from-background/90 to-muted/90 border-border/40",
+        "dark:from-background dark:to-muted dark:border-border",
+        "transition-all duration-200 hover:scale-105"
+      )}>
+        {children}
       </div>
-    );
-  }
-);
+    </Component>
+  )
+}
 
-StarBorderButton.displayName = 'StarBorderButton';
+// Also export as StarBorder for compatibility
+export const StarBorder = StarBorderButton;

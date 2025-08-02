@@ -15,9 +15,9 @@ const ReadySection = () => {
             Let's discuss how AI can transform your business operations and boost your sales
           </p>
           <StarBorderButton 
-            variant="hero" 
-            size="lg" 
-            className="animate-pulse-glow"
+            color="hsl(var(--accent-teal))"
+            speed="3s"
+            className="font-medium"
             onClick={() => window.location.href = '/get-started'}
           >
             Get Started Now

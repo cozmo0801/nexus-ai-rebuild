@@ -291,6 +291,33 @@
     animation: tilt 10s infinite linear;
   }
 
+  /* Star border movement animations */
+  @keyframes star-movement-bottom {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes star-movement-top {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(50%);
+    }
+  }
+
+  .animate-star-movement-bottom {
+    animation: star-movement-bottom 6s linear infinite;
+  }
+
+  .animate-star-movement-top {
+    animation: star-movement-top 6s linear infinite;
+  }
+
   .glass-button {
     background: var(--gradient-button);
     backdrop-filter: blur(20px);

@@ -62,17 +62,17 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <StarBorderButton 
-              variant="hero" 
-              size="lg" 
-              className="w-full sm:w-auto"
+              color="hsl(var(--accent-teal))"
+              speed="4s"
+              className="w-full sm:w-auto font-medium"
               onClick={() => window.location.href = '/get-started'}
             >
               Get Started Free
             </StarBorderButton>
             <StarBorderButton 
-              variant="secondary" 
-              size="lg" 
-              className="w-full sm:w-auto"
+              color="hsl(var(--accent-purple))"
+              speed="5s"
+              className="w-full sm:w-auto font-medium"
               onClick={() => window.location.href = '/contact'}
             >
               <Play className="h-5 w-5 mr-2" />
