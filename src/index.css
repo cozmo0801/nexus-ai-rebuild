@@ -137,6 +137,27 @@
     box-shadow: var(--shadow-glass);
   }
 
+  /* Custom slider styles for onboarding */
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, hsl(188 100% 42%), hsl(271 89% 54%));
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 188, 212, 0.3);
+  }
+
+  .slider::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, hsl(188 100% 42%), hsl(271 89% 54%));
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 188, 212, 0.3);
+  }
+
   .glass-button {
     background: var(--gradient-button);
     backdrop-filter: blur(20px);

@@ -51,7 +51,11 @@ const Navigation = () => {
                 <Moon className="h-4 w-4 text-foreground" />
               )}
             </button>
-            <Button variant="hero" size="default">
+            <Button 
+              variant="hero" 
+              size="default"
+              onClick={() => window.location.href = '/get-started'}
+            >
               Get Started
             </Button>
           </div>
