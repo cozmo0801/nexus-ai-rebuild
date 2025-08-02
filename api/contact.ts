@@ -1,4 +1,7 @@
+import { Resend } from 'resend';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
+
+const resend = new Resend('re_DWv1JTQb_F6RZhMdjbdgMCKrMPddNK1Xn');
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Only allow POST requests
@@ -20,18 +23,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   try {
-    // Using Resend API for email sending (reliable and free tier available)
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: 'NexusCore AI Contact <noreply@yourdomain.com>', // Replace with your domain
-        to: [process.env.CONTACT_EMAIL || 'your-email@example.com'], // Your email
-        subject: `New Contact Form: ${subject}`,
-        html: `
+    // Send email using Resend SDK
+    const data = await resend.emails.send({
+      from: 'NexusCore AI Contact <onboarding@resend.dev>',
+      to: ['cozmo0801@gmail.com'],
+      subject: `New Contact Form: ${subject}`,
+      html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
             <h2 style="color: #00BCD4; border-bottom: 2px solid #00BCD4; padding-bottom: 10px;">
               New Contact Form Submission - NexusCore AI
@@ -76,18 +73,15 @@ ${message}
 
 Submitted on: ${new Date().toLocaleString()}
         `
-      }),
-    });
+      });
 
-    if (!response.ok) {
-      throw new Error('Failed to send email');
+    if (data.error) {
+      throw new Error(data.error.message || 'Failed to send email');
     }
-
-    const data = await response.json();
     
     return res.status(200).json({ 
-      message: 'Email sent successfully',
-      id: data.id 
+      message: 'Email sent successfully! We\'ll get back to you within 24 hours.',
+      id: data.data?.id 
     });
 
   } catch (error) {
