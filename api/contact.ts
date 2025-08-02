@@ -139,3 +139,4 @@ Submitted: ${new Date().toLocaleString()}
 };
 
 export default handler;
+export { handler };

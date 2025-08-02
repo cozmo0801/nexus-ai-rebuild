@@ -180,3 +180,4 @@ ${specificNeeds}
 };
 
 export default handler;
+export { handler };
