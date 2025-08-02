@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { StarBorderButton } from "@/components/ui/star-border-button";
 
 const ReadySection = () => {
   return (
@@ -13,15 +14,15 @@ const ReadySection = () => {
           <p className="text-xl text-white/80 mb-8 leading-relaxed">
             Let's discuss how AI can transform your business operations and boost your sales
           </p>
-          <Button 
-            variant="cta" 
+          <StarBorderButton 
+            variant="hero" 
             size="lg" 
-            className="animate-pulse-glow group"
+            className="animate-pulse-glow"
             onClick={() => window.location.href = '/get-started'}
           >
-            <span className="relative z-10">Get Started Now</span>
-            <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
+            Get Started Now
+            <ArrowRight className="h-5 w-5 ml-2" />
+          </StarBorderButton>
         </div>
       </div>
     </section>

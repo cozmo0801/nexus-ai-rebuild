@@ -7,59 +7,60 @@
 @layer base {
   :root {
     /* Core dark theme colors */
-    --background: 248 39% 11%;
-    --foreground: 0 0% 98%;
+    /* Core colors - Black, Teal, Blues, Whites */
+    --background: 0 0% 3%;        /* Deep black */
+    --foreground: 0 0% 98%;       /* Pure white */
 
-    --card: 248 39% 11%;
+    --card: 0 0% 5%;             /* Dark gray-black */
     --card-foreground: 0 0% 98%;
 
-    --popover: 248 39% 11%;
+    --popover: 0 0% 7%;          /* Slightly lighter black */
     --popover-foreground: 0 0% 98%;
 
-    /* Brand colors */
-    --primary: 273 75% 66%;
-    --primary-foreground: 0 0% 98%;
+    /* Brand colors - Teal and Blue focus */
+    --primary: 188 100% 50%;      /* Bright Teal #00BCD4 */
+    --primary-foreground: 0 0% 3%;
 
-    --secondary: 248 50% 15%;
+    --secondary: 210 40% 15%;     /* Dark blue-gray */
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 248 25% 20%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 210 20% 20%;         /* Muted blue-gray */
+    --muted-foreground: 0 0% 80%;
 
-    --accent: 172 100% 42%;
-    --accent-foreground: 248 39% 11%;
+    --accent: 200 100% 50%;       /* Cyan accent */
+    --accent-foreground: 0 0% 3%;
 
-    /* Updated accent colors */
-    --accent-teal: 172 100% 42%;
-    --accent-purple: 261 37% 56%;
-    --accent-orange: 15 100% 60%;
-    --accent-green: 177 52% 68%;
-    --accent-pink: 330 100% 71%;
+    /* New color palette - Black, Teal, Blues, Whites */
+    --accent-teal: 188 100% 50%;      /* #00BCD4 - Primary Teal */
+    --accent-cyan: 200 100% 50%;      /* #00E5FF - Bright Cyan */
+    --accent-blue: 210 100% 50%;      /* #1E90FF - Dodger Blue */
+    --accent-navy: 220 80% 30%;       /* #1E3A8A - Navy Blue */
+    --accent-slate: 215 25% 40%;      /* #475569 - Slate Blue */
 
     /* Interactive states */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 248 25% 20%;
-    --input: 248 25% 20%;
-    --ring: 273 75% 66%;
+    --border: 210 20% 20%;
+    --input: 210 20% 20%;
+    --ring: 188 100% 50%;
 
     --radius: 0.75rem;
 
-    /* Custom glassmorphism gradients and effects */
-    --gradient-primary: linear-gradient(135deg, hsl(261 37% 56%), hsl(248 39% 11%));
-    --gradient-hero: linear-gradient(180deg, hsl(248 39% 8%), hsl(248 50% 4%));
-    --gradient-accent: linear-gradient(135deg, hsl(172 100% 42%), hsl(261 37% 56%));
+    /* Custom gradients - Black, Teal, Blues, Whites */
+    --gradient-primary: linear-gradient(135deg, hsl(188 100% 50%), hsl(0 0% 3%));
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 3%), hsl(210 40% 8%));
+    --gradient-accent: linear-gradient(135deg, hsl(188 100% 50%), hsl(200 100% 50%));
     --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    --gradient-button: linear-gradient(145deg, hsl(261 37% 56%), hsl(330 100% 71%), hsl(15 100% 60%));
+    --gradient-button: linear-gradient(145deg, hsl(188 100% 50%), hsl(200 100% 50%), hsl(210 100% 50%));
     --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
 
-    /* Glassmorphism shadows and effects */
-    --shadow-glow: 0 0 40px hsl(261 37% 56% / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
-    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    /* Updated shadows and effects */
+    --shadow-glow: 0 0 40px hsl(188 100% 50% / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.7);
+    --shadow-glass: 0 8px 32px 0 rgba(0, 188, 212, 0.2);
     --shadow-inner: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-    --border-glass: rgba(255, 255, 255, 0.2);
+    --border-glass: rgba(255, 255, 255, 0.15);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -125,7 +126,7 @@
 
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, #0f0c29 0%, #24243e 50%, #402562 100%);
+    background: linear-gradient(135deg, #000000 0%, #0A1420 25%, #001429 50%, #000814 75%, #000000 100%);
     min-height: 100vh;
   }
 
