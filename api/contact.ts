@@ -3,7 +3,6 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 const handler = async (req: VercelRequest, res: VercelResponse) => {
   console.log('=== Contact API Called ===');
   console.log('Method:', req.method);
-  console.log('Headers:', req.headers);
 
   // Add CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -48,37 +47,37 @@ const handler = async (req: VercelRequest, res: VercelResponse) => {
       to: ['cozmo0801@gmail.com'],
       subject: `New Contact Form: ${subject}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background: #1A1A2E; color: white; border-radius: 12px;">
-          <div style="text-align: center; margin-bottom: 30px;">
-            <h1 style="color: #00BCD4; margin-bottom: 10px;">💬 New Contact Form Submission</h1>
-            <div style="width: 60px; height: 3px; background: linear-gradient(to right, #00BCD4, #8A2BE2); margin: 0 auto;"></div>
-          </div>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h2 style="color: #00BCD4; border-bottom: 2px solid #00BCD4; padding-bottom: 10px;">
+            New Contact Form Submission - NexusCore AI
+          </h2>
           
-          <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-            <h2 style="color: #00BCD4; margin-top: 0;">👤 Contact Information</h2>
+          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h3 style="margin-top: 0; color: #333;">Contact Information</h3>
             <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}" style="color: #FFA500;">${email}</a></p>
+            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
             ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
-            ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}" style="color: #FFA500;">${phone}</a></p>` : ''}
+            ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}
           </div>
 
-          <div style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin-bottom: 20px;">
-            <h3 style="color: #8A2BE2; margin-top: 0;">📝 Subject</h3>
-            <p style="font-size: 18px; color: #00BCD4; font-weight: bold;">${subject}</p>
+          <div style="background: #ffffff; padding: 20px; border: 1px solid #e9ecef; border-radius: 8px;">
+            <h3 style="margin-top: 0; color: #333;">Subject</h3>
+            <p style="font-weight: bold; color: #00BCD4;">${subject}</p>
             
-            <h3 style="color: #8A2BE2;">💬 Message</h3>
+            <h3 style="color: #333;">Message</h3>
             <p style="line-height: 1.6; white-space: pre-wrap;">${message}</p>
           </div>
 
-          <div style="text-align: center; padding: 15px; background: rgba(0,188,212,0.1); border-radius: 8px;">
-            <p style="margin: 0; font-size: 14px; color: #00BCD4;">
-              📅 Submitted: ${new Date().toLocaleString()}
+          <div style="margin-top: 30px; padding: 15px; background: #e3f2fd; border-radius: 8px;">
+            <p style="margin: 0; font-size: 14px; color: #666;">
+              This email was sent from the NexusCore AI website contact form.
+              <br>Submitted on: ${new Date().toLocaleString()}
             </p>
           </div>
         </div>
       `,
       text: `
-New Contact Form Submission
+New Contact Form Submission - NexusCore AI
 
 Name: ${firstName} ${lastName}
 Email: ${email}
@@ -90,11 +89,11 @@ Subject: ${subject}
 Message:
 ${message}
 
-Submitted: ${new Date().toLocaleString()}
+Submitted on: ${new Date().toLocaleString()}
       `
     };
 
-    console.log('Email payload:', emailPayload);
+    console.log('Email payload prepared');
 
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -127,13 +126,11 @@ Submitted: ${new Date().toLocaleString()}
     console.error('=== ERROR ===');
     console.error('Error details:', error);
     console.error('Error message:', error instanceof Error ? error.message : 'Unknown error');
-    console.error('Error stack:', error instanceof Error ? error.stack : 'No stack');
 
     return res.status(500).json({
       message: 'Failed to send email. Please try again or contact us directly.',
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-      debug: process.env.NODE_ENV === 'development' ? error : undefined
+      error: error instanceof Error ? error.message : 'Unknown error'
     });
   }
 };
