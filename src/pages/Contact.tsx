@@ -11,10 +11,74 @@ import {
   Send,
   MessageSquare,
   Clock,
-  Users
+  Users,
+  CheckCircle,
+  AlertCircle
 } from "lucide-react";
+import { useState } from "react";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [statusMessage, setStatusMessage] = useState('');
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setStatusMessage('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.');
+        // Reset form
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          company: '',
+          phone: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+        setStatusMessage(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      setStatusMessage('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const contactMethods = [
     {
       icon: Mail,
@@ -100,7 +164,7 @@ const Contact = () => {
                 </p>
               </div>
               
-              <form className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-white">
@@ -108,6 +172,9 @@ const Contact = () => {
                     </label>
                     <Input 
                       type="text" 
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       placeholder="John"
                       className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
                       required
@@ -119,6 +186,9 @@ const Contact = () => {
                     </label>
                     <Input 
                       type="text" 
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                       placeholder="Doe"
                       className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
                       required
@@ -132,6 +202,9 @@ const Contact = () => {
                   </label>
                   <Input 
                     type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="john@company.com"
                     className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
                     required
@@ -144,6 +217,9 @@ const Contact = () => {
                   </label>
                   <Input 
                     type="text" 
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
                     placeholder="Your Company"
                     className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
                   />
@@ -155,6 +231,9 @@ const Contact = () => {
                   </label>
                   <Input 
                     type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
                     placeholder="+1 (555) 123-4567"
                     className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
                   />
@@ -166,6 +245,9 @@ const Contact = () => {
                   </label>
                   <Input 
                     type="text" 
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
                     placeholder="How can we help you?"
                     className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
                     required
@@ -177,15 +259,55 @@ const Contact = () => {
                     Message *
                   </label>
                   <Textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder="Tell us about your business needs and how AI automation could help..."
                     className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground min-h-[120px]"
                     required
                   />
                 </div>
                 
-                <Button type="submit" variant="hero" size="lg" className="w-full group">
-                  <Send className="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform" />
-                  <span className="relative z-10">Send Message</span>
+                {/* Status Message */}
+                {submitStatus !== 'idle' && (
+                  <div className={`glass-card rounded-2xl p-4 border ${
+                    submitStatus === 'success' 
+                      ? 'border-accent-green bg-accent-green/10' 
+                      : 'border-red-500 bg-red-500/10'
+                  } backdrop-blur-glass`}>
+                    <div className="flex items-center gap-3">
+                      {submitStatus === 'success' ? (
+                        <CheckCircle className="h-5 w-5 text-accent-green flex-shrink-0" />
+                      ) : (
+                        <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
+                      )}
+                      <p className={`text-sm ${
+                        submitStatus === 'success' ? 'text-accent-green' : 'text-red-500'
+                      }`}>
+                        {statusMessage}
+                      </p>
+                    </div>
+                  </div>
+                )}
+                
+                <Button 
+                  type="submit" 
+                  variant="hero" 
+                  size="lg" 
+                  className="w-full group"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      <span className="relative z-10">Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-5 w-5 mr-2 group-hover:translate-x-1 transition-transform" />
+                      <span className="relative z-10">Send Message</span>
+                    </>
+                  )}
                 </Button>
               </form>
             </div>
