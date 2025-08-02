@@ -1,7 +1,4 @@
-import { Resend } from 'resend';
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-
-const resend = new Resend('re_DWv1JTQb_F6RZhMdjbdgMCKrMPddNK1Xn');
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Only allow POST requests
@@ -44,8 +41,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const challengeTitle = challengeMap[selectedChallenge] || selectedChallenge;
 
   try {
-    // Send email using Resend SDK
-    const data = await resend.emails.send({
+    // Send email using direct Resend API
+    const emailPayload = {
       from: 'NexusCore AI Onboarding <onboarding@resend.dev>',
       to: ['cozmo0801@gmail.com'],
       subject: `🚀 New Onboarding Complete: ${businessName} - ${challengeTitle}`,
@@ -149,17 +146,29 @@ ${specificNeeds}
 2. Contact within 24 hours for consultation  
 3. Create personalized demo for their business
 
-Completed: ${new Date(completedAt).toLocaleString()}
+ Completed: ${new Date(completedAt).toLocaleString()}
       `
+    };
+
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer re_DWv1JTQb_F6RZhMdjbdgMCKrMPddNK1Xn`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(emailPayload),
     });
 
-    if (data.error) {
-      throw new Error(data.error.message || 'Failed to send email');
+    if (!resendResponse.ok) {
+      const errorData = await resendResponse.text();
+      throw new Error(`Resend API error: ${resendResponse.status} - ${errorData}`);
     }
+
+    const responseData = await resendResponse.json();
     
     return res.status(200).json({ 
       message: 'Onboarding completed successfully! Our team will contact you within 24 hours.',
-      id: data.data?.id 
+      id: responseData.id 
     });
 
   } catch (error) {
