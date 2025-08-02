@@ -6,35 +6,35 @@
 
 @layer base {
   :root {
-    /* Core dark theme colors */
-    --background: 248 39% 11%;
-    --foreground: 0 0% 98%;
+    /* Core dark theme colors - Updated to match original site */
+    --background: 233 18% 12%;  /* #1A1A2E approximation */
+    --foreground: 0 0% 100%;
 
-    --card: 248 39% 11%;
-    --card-foreground: 0 0% 98%;
+    --card: 233 18% 12%;
+    --card-foreground: 0 0% 100%;
 
-    --popover: 248 39% 11%;
-    --popover-foreground: 0 0% 98%;
+    --popover: 233 18% 12%;
+    --popover-foreground: 0 0% 100%;
 
     /* Brand colors */
-    --primary: 273 75% 66%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 188 100% 42%;  /* Teal primary */
+    --primary-foreground: 233 18% 12%;
 
-    --secondary: 248 50% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 233 25% 20%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 248 25% 20%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 233 15% 25%;
+    --muted-foreground: 0 0% 75%;
 
-    --accent: 172 100% 42%;
-    --accent-foreground: 248 39% 11%;
+    --accent: 188 100% 42%;  /* Teal accent */
+    --accent-foreground: 233 18% 12%;
 
-    /* Updated accent colors */
-    --accent-teal: 172 100% 42%;
-    --accent-purple: 261 37% 56%;
-    --accent-orange: 15 100% 60%;
-    --accent-green: 177 52% 68%;
-    --accent-pink: 330 100% 71%;
+    /* Exact accent colors per specifications */
+    --accent-teal: 188 100% 42%;     /* #00BCD4 */
+    --accent-purple: 271 89% 54%;    /* #8A2BE2 */
+    --accent-orange: 39 100% 50%;    /* #FFA500 */
+    --accent-green: 123 100% 50%;    /* #32CD32 */
+    --accent-pink: 330 100% 71%;     /* #FF69B4 */
 
     /* Interactive states */
     --destructive: 0 84.2% 60.2%;
@@ -125,7 +125,7 @@
 
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, #0f0c29 0%, #24243e 50%, #402562 100%);
+    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F0F23 100%);
     min-height: 100vh;
   }
 

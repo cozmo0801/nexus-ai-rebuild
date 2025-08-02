@@ -16,24 +16,24 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <Zap className="h-6 w-6 text-accent-purple" />
+            <Zap className="h-6 w-6 text-accent-teal" />
             <span className="text-xl font-bold text-foreground">NexusCore AI</span>
           </div>
 
           <div className="hidden md:flex items-center gap-8">
-            <a href="#home" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
+            <a href="/" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
               <span>Home</span>
               <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300"></div>
             </a>
-            <a href="#solutions" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
+            <a href="/solutions" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
               <span>Solutions</span>
               <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300"></div>
             </a>
-            <a href="#contact" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
+            <a href="/contact" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
               <span>Contact</span>
               <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300"></div>
             </a>
-            <a href="#faq" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
+            <a href="/faq" className="text-foreground hover:text-accent-teal transition-all duration-300 relative group">
               <span>FAQ</span>
               <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300"></div>
             </a>

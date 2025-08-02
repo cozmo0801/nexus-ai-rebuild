@@ -8,7 +8,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <Zap className="h-6 w-6 text-accent-purple" />
+              <Zap className="h-6 w-6 text-accent-teal" />
               <span className="text-xl font-bold text-white">NexusCore AI</span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed max-w-md">
@@ -22,17 +22,17 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Solutions</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <a href="/solutions#chatbots" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   AI Chatbots
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <a href="/solutions#automation" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   Automation
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <a href="/solutions#insights" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   Customer Service
                 </a>
               </li>
@@ -44,17 +44,17 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <a href="/" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <a href="/contact" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   Contact
                 </a>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <a href="/contact" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   Support
                 </a>
               </li>
