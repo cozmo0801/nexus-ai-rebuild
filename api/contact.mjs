@@ -1,14 +1,12 @@
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   console.log('=== Contact API Called ===')
   console.log('Method:', req.method)
 
-  // CORS and response headers
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
   res.setHeader('Content-Type', 'application/json')
 
-  // Handle preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end()
   }
@@ -18,22 +16,23 @@ module.exports = async (req, res) => {
   }
 
   try {
-    if (!req.body) {
-      console.log('No request body received')
-      return res.status(400).json({ message: 'No data received' })
+    let parsedBody
+    if (req.body && Object.keys(req.body).length > 0) {
+      parsedBody = typeof req.body === 'string' ? safeParseJson(req.body) : req.body
+    } else {
+      const raw = await readBody(req)
+      parsedBody = safeParseJson(raw)
     }
 
-    // Parse the body if it came in as a string
-    const parsedBody = typeof req.body === 'string' ? safeParseJson(req.body) : req.body
     if (!parsedBody) {
-      return res.status(400).json({ message: 'Invalid JSON body' })
+      console.log('No valid JSON body received')
+      return res.status(400).json({ message: 'Invalid or missing JSON body' })
     }
 
     const { firstName, lastName, email, company, phone, subject, message } = parsedBody
 
     console.log('Form data received:', { firstName, lastName, email, company, phone, subject })
 
-    // Validation
     if (!firstName || !lastName || !email || !subject || !message) {
       return res.status(400).json({ message: 'Missing required fields' })
     }
@@ -43,7 +42,6 @@ module.exports = async (req, res) => {
       return res.status(400).json({ message: 'Invalid email address' })
     }
 
-    // Configuration via environment variables
     const RESEND_API_KEY = process.env.RESEND_API_KEY
     const CONTACT_EMAIL = process.env.CONTACT_EMAIL || process.env.EMAIL_TO || 'hello@nexuscore.ai'
     const EMAIL_FROM = process.env.EMAIL_FROM || 'NexusCore AI Contact <onboarding@resend.dev>'
@@ -64,7 +62,6 @@ module.exports = async (req, res) => {
       })
     }
 
-    // Prepare email payload
     const emailPayload = {
       from: EMAIL_FROM,
       to: [CONTACT_EMAIL],
@@ -161,4 +158,19 @@ function safeParseJson(value) {
   } catch (_) {
     return null
   }
+}
+
+async function readBody(req) {
+  return new Promise((resolve, reject) => {
+    try {
+      let data = ''
+      req.on('data', (chunk) => {
+        data += chunk
+      })
+      req.on('end', () => resolve(data))
+      req.on('error', (err) => reject(err))
+    } catch (err) {
+      reject(err)
+    }
+  })
 }
