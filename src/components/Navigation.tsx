@@ -126,11 +126,11 @@ const Navigation = () => {
             <Button
               variant="hero"
               size="default"
-              onClick={() => (window.location.href = "/get-started")}
+              onClick={() => (window.location.href = "/contact")}
               className="hidden md:inline-flex group hover:scale-105 transition-transform duration-300"
             >
               <span className="flex items-center gap-2">
-                Get Started
+                Get Quote
                 <div className="w-1 h-1 bg-white rounded-full group-hover:scale-150 transition-transform duration-300"></div>
               </span>
             </Button>
@@ -185,10 +185,10 @@ const Navigation = () => {
                     <Button
                       variant="hero"
                       size="default"
-                      onClick={() => (window.location.href = "/get-started")}
+                      onClick={() => (window.location.href = "/contact")}
                       className="w-full"
                     >
-                      Get Started
+                      Get Quote
                     </Button>
                   </div>
                 </div>

@@ -255,12 +255,12 @@ const Footer = () => {
                 Join thousands of businesses already growing with AI.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button
-                  onClick={() => window.location.href = "/get-started"}
-                  className="bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
-                >
-                  Start Free Trial
-                </Button>
+                                    <Button
+                      onClick={() => window.location.href = "/contact"}
+                      className="bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
+                    >
+                      Get Custom Quote
+                    </Button>
                 <Button
                   variant="outline"
                   onClick={openChat}
