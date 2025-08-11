@@ -277,10 +277,10 @@ const Onboarding = () => {
                       <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-glass mb-6 ${challenge.color} shadow-inner`}>
                         <IconComponent className="h-8 w-8" />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-3">
+                      <h3 className="text-xl font-bold text-foreground mb-3">
                         {challenge.title}
                       </h3>
-                      <p className="text-white/70">
+                      <p className="text-muted-foreground">
                         {challenge.description}
                       </p>
                       {isSelected && (
@@ -436,7 +436,7 @@ const Onboarding = () => {
                       </div>
                       <div>
                         <p className="text-white font-semibold">Sarah Chen</p>
-                        <p className="text-white/70 text-sm">Tech Startup CEO</p>
+                        <p className="text-muted-foreground text-sm">Tech Startup CEO</p>
                       </div>
                     </div>
                     <p className="text-white/90 italic">
@@ -451,8 +451,8 @@ const Onboarding = () => {
                     <div className="w-24 h-24 mx-auto bg-gradient-to-r from-accent-teal to-accent-purple rounded-full flex items-center justify-center animate-pulse">
                       <TrendingUp className="h-12 w-12 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white">Live Demo</h3>
-                    <p className="text-white/70">
+                    <h3 className="text-2xl font-bold text-foreground">Live Demo</h3>
+                    <p className="text-muted-foreground">
                       Watch how our AI solution works in real-time for businesses just like yours.
                     </p>
                     <div className="bg-accent-green/20 rounded-xl p-4">
@@ -550,7 +550,7 @@ const Onboarding = () => {
                         onChange={(e) => setSliderValue(Number(e.target.value))}
                         className="w-full h-3 bg-secondary/50 rounded-lg appearance-none cursor-pointer slider"
                       />
-                      <div className="flex justify-between text-sm text-white/70 mt-2">
+                      <div className="flex justify-between text-sm text-muted-foreground mt-2">
                         <span>10</span>
                         <span className="text-accent-teal font-semibold text-lg">{sliderValue}</span>
                         <span>500</span>
@@ -566,9 +566,9 @@ const Onboarding = () => {
                     <p className="text-6xl font-bold text-accent-green mb-4">
                       ${estimatedSavings.toLocaleString()}
                     </p>
-                    <p className="text-lg text-white/80">per year with NexusCore AI</p>
+                    <p className="text-lg text-foreground/80">per year with NexusCore AI</p>
                     
-                    <div className="mt-6 text-sm text-white/70">
+                    <div className="mt-6 text-sm text-muted-foreground">
                       <p>
                         * Based on industry averages and typical improvements seen with AI automation
                       </p>
@@ -648,7 +648,7 @@ const Onboarding = () => {
                   {/* Step 1: Basic Contact */}
                   {formStep === 1 && (
                     <div className="space-y-6">
-                      <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                      <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
                         Basic Contact Information
                       </h3>
                       
@@ -712,7 +712,7 @@ const Onboarding = () => {
                   {/* Step 2: Business Context */}
                   {formStep === 2 && (
                     <div className="space-y-6">
-                      <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                      <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
                         Business Information
                       </h3>
                       
@@ -792,7 +792,7 @@ const Onboarding = () => {
                   {/* Step 3: Specific Needs */}
                   {formStep === 3 && (
                     <div className="space-y-6">
-                      <h3 className="text-2xl font-bold text-white mb-6 text-center">
+                      <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
                         Specific Requirements
                       </h3>
                       

@@ -10,9 +10,9 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <Zap className="h-6 w-6 text-accent-teal" />
-              <span className="text-xl font-bold text-white">NexusCore AI</span>
+              <span className="text-xl font-bold text-foreground">NexusCore AI</span>
             </div>
-            <p className="text-white/70 text-sm leading-relaxed max-w-md">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-md">
               Empowering small businesses with intelligent AI chatbots and automation 
               to save time and enhance customer service.
             </p>
@@ -20,20 +20,20 @@ const Footer = () => {
 
           {/* Solutions Column */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Solutions</h3>
+            <h3 className="font-semibold text-foreground mb-4">Solutions</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/solutions" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/solutions" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   AI Chatbots
                 </Link>
               </li>
               <li>
-                <Link to="/solutions" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/solutions" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   Automation
                 </Link>
               </li>
               <li>
-                <Link to="/solutions" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/solutions" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   Customer Service
                 </Link>
               </li>
@@ -42,20 +42,20 @@ const Footer = () => {
 
           {/* Company Column */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Company</h3>
+            <h3 className="font-semibold text-foreground mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/faq" className="text-muted-foreground hover:text-foreground transition-colors text-sm">
                   Support
                 </Link>
               </li>
@@ -65,7 +65,7 @@ const Footer = () => {
 
         {/* Copyright */}
         <div className="border-t border-glass mt-8 pt-8 text-center">
-          <p className="text-white/70 text-sm">
+                      <p className="text-muted-foreground text-sm">
             © 2025 NexusCore AI. All rights reserved.
           </p>
         </div>

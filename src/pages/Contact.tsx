@@ -173,7 +173,7 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-3xl font-bold text-white mb-4">Send us a Message</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-4">Send us a Message</h2>
                 <p className="text-muted-foreground">
                   Fill out the form below and we'll get back to you within 24 hours.
                 </p>
@@ -182,89 +182,89 @@ const Contact = () => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white">First Name *</label>
+                    <label className="text-sm font-medium text-foreground">First Name *</label>
                     <Input
                       type="text"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
                       placeholder="John"
-                      className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                      className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white">Last Name *</label>
+                    <label className="text-sm font-medium text-foreground">Last Name *</label>
                     <Input
                       type="text"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
                       placeholder="Doe"
-                      className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                      className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                       required
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">Email Address *</label>
+                  <label className="text-sm font-medium text-foreground">Email Address *</label>
                   <Input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="john@company.com"
-                    className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                    className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">Company</label>
+                  <label className="text-sm font-medium text-foreground">Company</label>
                   <Input
                     type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
                     placeholder="Your Company"
-                    className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                    className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">Phone Number</label>
+                  <label className="text-sm font-medium text-foreground">Phone Number</label>
                   <Input
                     type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
                     placeholder="+1 (555) 123-4567"
-                    className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                    className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">Subject *</label>
+                  <label className="text-sm font-medium text-foreground">Subject *</label>
                   <Input
                     type="text"
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
                     placeholder="How can we help you?"
-                    className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                    className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">Message *</label>
+                  <label className="text-sm font-medium text-foreground">Message *</label>
                   <Textarea
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
                     placeholder="Tell us about your business needs and how AI automation could help..."
-                    className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground min-h-[120px]"
+                    className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground min-h-[120px]"
                     required
                   />
                 </div>
