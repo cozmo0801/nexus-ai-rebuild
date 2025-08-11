@@ -49,7 +49,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="solutions" className="py-16 bg-secondary/30">
+    <section id="solutions" className="py-16 bg-gradient-to-b from-[hsl(var(--accent-purple))]/6 to-[hsl(var(--accent-green))]/6">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">

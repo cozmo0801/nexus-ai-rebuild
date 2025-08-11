@@ -390,7 +390,7 @@ const Contact = () => {
       </section>
 
       {/* Ready to Start Section */}
-      <section className="py-16 bg-secondary/30">
+      <section className="py-16 bg-gradient-to-b from-[hsl(var(--accent-purple))]/6 to-[hsl(var(--accent-green))]/6">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold text-white mb-6">Ready to Get Started?</h2>

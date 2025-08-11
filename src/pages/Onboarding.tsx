@@ -662,7 +662,7 @@ const Onboarding = () => {
                             value={formData.name}
                             onChange={(e) => setFormData({...formData, name: e.target.value})}
                             placeholder="John Doe"
-                            className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                            className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                             required
                           />
                         </div>
@@ -676,7 +676,7 @@ const Onboarding = () => {
                             value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}
                             placeholder="john@company.com"
-                            className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                            className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                             required
                           />
                         </div>
@@ -690,7 +690,7 @@ const Onboarding = () => {
                             value={formData.phone}
                             onChange={(e) => setFormData({...formData, phone: e.target.value})}
                             placeholder="+1 (555) 123-4567"
-                            className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                            className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                           />
                         </div>
                       </div>
@@ -726,7 +726,7 @@ const Onboarding = () => {
                             value={formData.businessName}
                             onChange={(e) => setFormData({...formData, businessName: e.target.value})}
                             placeholder="Your Company Name"
-                            className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                            className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                             required
                           />
                         </div>
@@ -738,7 +738,7 @@ const Onboarding = () => {
                           <select
                             value={formData.industry}
                             onChange={(e) => setFormData({...formData, industry: e.target.value})}
-                            className="w-full p-3 bg-secondary/50 border border-glass text-white rounded-lg"
+                            className="w-full p-3 bg-secondary/50 border border-glass text-foreground rounded-lg"
                             required
                           >
                             <option value="">Select your industry</option>
@@ -759,7 +759,7 @@ const Onboarding = () => {
                             value={formData.website}
                             onChange={(e) => setFormData({...formData, website: e.target.value})}
                             placeholder="https://yourwebsite.com"
-                            className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
+                            className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground"
                           />
                         </div>
                       </div>
@@ -804,7 +804,7 @@ const Onboarding = () => {
                           value={formData.specificNeeds}
                           onChange={(e) => setFormData({...formData, specificNeeds: e.target.value})}
                           placeholder="Tell us about your specific requirements, timeline, or any questions you have..."
-                          className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground min-h-[120px]"
+                          className="bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground min-h-[120px]"
                         />
                       </div>
 

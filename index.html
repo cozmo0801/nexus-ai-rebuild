@@ -20,9 +20,21 @@
     <!-- Vercel Analytics scripts (not bundled by Vite) -->
     <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/analytics/script.js"></script>
-    <!-- Chatbase chatbot -->
+    <!-- Chatbase chatbot (lazy init) -->
     <script>
-(function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="-hHBm8K_fvurRvli9lz9-";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+      window.loadChatbase = function(){
+        if(!window.chatbase||window.chatbase("getState")!=="initialized"){
+          window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};
+          window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})
+        }
+        const existing = document.getElementById("-hHBm8K_fvurRvli9lz9-");
+        if(existing) return;
+        const script=document.createElement("script");
+        script.src="https://www.chatbase.co/embed.min.js";
+        script.id="-hHBm8K_fvurRvli9lz9-";
+        script.domain="www.chatbase.co";
+        document.body.appendChild(script);
+      };
     </script>
   </body>
 </html>
