@@ -1,48 +1,73 @@
 module.exports = async (req, res) => {
-  console.log('=== Contact API Called ===');
-  console.log('Method:', req.method);
+  console.log('=== Contact API Called ===')
+  console.log('Method:', req.method)
 
-  // Add CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Content-Type', 'application/json');
+  // CORS and response headers
+  res.setHeader('Access-Control-Allow-Origin', '*')
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
+  res.setHeader('Content-Type', 'application/json')
 
   // Handle preflight
   if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+    return res.status(200).end()
   }
 
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+    return res.status(405).json({ message: 'Method not allowed' })
   }
 
   try {
     if (!req.body) {
-      console.log('No request body received');
-      return res.status(400).json({ message: 'No data received' });
+      console.log('No request body received')
+      return res.status(400).json({ message: 'No data received' })
     }
 
-    const { firstName, lastName, email, company, phone, subject, message } = req.body;
+    // Parse the body if it came in as a string
+    const parsedBody = typeof req.body === 'string' ? safeParseJson(req.body) : req.body
+    if (!parsedBody) {
+      return res.status(400).json({ message: 'Invalid JSON body' })
+    }
 
-    console.log('Form data received:', { firstName, lastName, email, company, phone, subject, message });
+    const { firstName, lastName, email, company, phone, subject, message } = parsedBody
+
+    console.log('Form data received:', { firstName, lastName, email, company, phone, subject })
 
     // Validation
     if (!firstName || !lastName || !email || !subject || !message) {
-      return res.status(400).json({ message: 'Missing required fields' });
+      return res.status(400).json({ message: 'Missing required fields' })
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
-      return res.status(400).json({ message: 'Invalid email address' });
+      return res.status(400).json({ message: 'Invalid email address' })
     }
 
-    // Send email using direct fetch to Resend API
-    console.log('Sending email via Resend API...');
-    
+    // Configuration via environment variables
+    const RESEND_API_KEY = process.env.RESEND_API_KEY
+    const CONTACT_EMAIL = process.env.CONTACT_EMAIL || process.env.EMAIL_TO || 'hello@nexuscore.ai'
+    const EMAIL_FROM = process.env.EMAIL_FROM || 'NexusCore AI Contact <onboarding@resend.dev>'
+
+    if (!RESEND_API_KEY) {
+      console.error('Missing RESEND_API_KEY environment variable')
+      return res.status(500).json({
+        message: 'Email service not configured. Missing RESEND_API_KEY.',
+        success: false,
+      })
+    }
+
+    if (!CONTACT_EMAIL) {
+      console.error('Missing CONTACT_EMAIL environment variable')
+      return res.status(500).json({
+        message: 'Email recipient not configured. Missing CONTACT_EMAIL.',
+        success: false,
+      })
+    }
+
+    // Prepare email payload
     const emailPayload = {
-      from: 'NexusCore AI Contact <onboarding@resend.dev>',
-      to: ['cozmo0801@gmail.com'],
+      from: EMAIL_FROM,
+      to: [CONTACT_EMAIL],
       subject: `New Contact Form: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -88,47 +113,52 @@ Message:
 ${message}
 
 Submitted on: ${new Date().toLocaleString()}
-      `
-    };
+      `,
+    }
 
-    console.log('Email payload prepared');
-    
+    console.log('Sending email via Resend API...')
+
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer re_DWv1JTQb_F6RZhMdjbdgMCKrMPddNK1Xn`,
+        Authorization: `Bearer ${RESEND_API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(emailPayload),
-    });
+    })
 
-    console.log('Resend response status:', resendResponse.status);
-    
+    console.log('Resend response status:', resendResponse.status)
+
     if (!resendResponse.ok) {
-      const errorText = await resendResponse.text();
-      console.log('Resend error response:', errorText);
-      throw new Error(`Resend API error: ${resendResponse.status} - ${errorText}`);
+      const errorText = await resendResponse.text()
+      console.error('Resend error response:', errorText)
+      throw new Error(`Resend API error: ${resendResponse.status} - ${errorText}`)
     }
 
-    const responseData = await resendResponse.json();
-    console.log('Resend response data:', responseData);
-    console.log('Email sent successfully! ID:', responseData.id);
+    const responseData = await resendResponse.json()
+    console.log('Email sent successfully! ID:', responseData.id)
 
     return res.status(200).json({
-      message: 'Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.',
+      message: "Thank you! Your message has been sent successfully. We'll get back to you within 24 hours.",
       success: true,
-      emailId: responseData.id
-    });
-
+      emailId: responseData.id,
+    })
   } catch (error) {
-    console.error('=== ERROR ===');
-    console.error('Error details:', error);
-    console.error('Error message:', error instanceof Error ? error.message : 'Unknown error');
+    console.error('=== ERROR ===')
+    console.error('Error message:', error instanceof Error ? error.message : 'Unknown error')
 
     return res.status(500).json({
       message: 'Failed to send email. Please try again or contact us directly.',
       success: false,
-      error: error instanceof Error ? error.message : 'Unknown error'
-    });
+      error: error instanceof Error ? error.message : 'Unknown error',
+    })
   }
-};
+}
+
+function safeParseJson(value) {
+  try {
+    return JSON.parse(value)
+  } catch (_) {
+    return null
+  }
+}
