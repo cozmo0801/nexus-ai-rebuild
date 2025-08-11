@@ -2,13 +2,11 @@ export default async function handler(req, res) {
   console.log('=== Contact API Called ===')
   console.log('Method:', req.method)
 
-  // CORS and response headers
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS')
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type')
   res.setHeader('Content-Type', 'application/json')
 
-  // Handle preflight
   if (req.method === 'OPTIONS') {
     return res.status(200).end()
   }
@@ -35,7 +33,6 @@ export default async function handler(req, res) {
 
     console.log('Form data received:', { firstName, lastName, email, company, phone, subject })
 
-    // Validation
     if (!firstName || !lastName || !email || !subject || !message) {
       return res.status(400).json({ message: 'Missing required fields' })
     }
@@ -45,7 +42,6 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Invalid email address' })
     }
 
-    // Configuration via environment variables
     const RESEND_API_KEY = process.env.RESEND_API_KEY
     const CONTACT_EMAIL = process.env.CONTACT_EMAIL || process.env.EMAIL_TO || 'hello@nexuscore.ai'
     const EMAIL_FROM = process.env.EMAIL_FROM || 'NexusCore AI Contact <onboarding@resend.dev>'
@@ -66,7 +62,6 @@ export default async function handler(req, res) {
       })
     }
 
-    // Prepare email payload
     const emailPayload = {
       from: EMAIL_FROM,
       to: [CONTACT_EMAIL],
