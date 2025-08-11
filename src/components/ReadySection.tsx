@@ -8,10 +8,10 @@ const ReadySection = () => {
       <div className="absolute inset-0 bg-gradient-primary"></div>
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-foreground mb-6">
+          <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-muted-foreground mb-8 leading-relaxed">
+          <p className="text-xl text-white/80 mb-8 leading-relaxed">
             Let's discuss how AI can transform your business operations and boost your sales
           </p>
           <StarBorderButton 
