@@ -61,32 +61,36 @@ const BackgroundPaths = () => {
           className="path-line"
           d="M-100,100 Q300,50 600,200 T1300,150"
           stroke="url(#pathGradient)"
-          strokeWidth="1"
+          strokeWidth="2"
           fill="none"
+          opacity="0.6"
         />
         
         <path
           className="path-line"
           d="M-50,300 Q400,250 700,400 T1350,350"
           stroke="url(#pathGradient)"
-          strokeWidth="1"
+          strokeWidth="2"
           fill="none"
+          opacity="0.6"
         />
         
         <path
           className="path-line"
           d="M-150,500 Q250,450 550,600 T1250,550"
           stroke="url(#pathGradient)"
-          strokeWidth="1"
+          strokeWidth="2"
           fill="none"
+          opacity="0.6"
         />
         
         <path
           className="path-line"
           d="M-200,700 Q350,650 650,800 T1400,750"
           stroke="url(#pathGradient)"
-          strokeWidth="1"
+          strokeWidth="2"
           fill="none"
+          opacity="0.6"
         />
       </svg>
     </div>

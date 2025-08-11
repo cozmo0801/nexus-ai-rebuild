@@ -28,6 +28,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState("");
