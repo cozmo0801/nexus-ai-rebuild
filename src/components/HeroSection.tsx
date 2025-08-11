@@ -1,11 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { Play } from "lucide-react";
 import BackgroundPaths from "./BackgroundPaths";
+import { FluidBlob } from "@/components/ui/fluid-blob";
+import { StarBorderButton } from "@/components/ui/star-border-button";
 
 const HeroSection = () => {
   return (
     <section id="home" className="relative pt-24 pb-16 min-h-screen overflow-hidden">
       <BackgroundPaths />
+      
+      {/* Fluid blob background effect */}
+      <div className="absolute inset-0 opacity-10 mix-blend-screen">
+        <FluidBlob className="w-full h-full" />
+      </div>
+      
       <div className="relative z-10 container mx-auto px-4 flex items-center min-h-[calc(100vh-6rem)]">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
@@ -53,13 +61,23 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button variant="hero" size="lg" className="w-full sm:w-auto group">
-              <span className="relative z-10">Get Started Free</span>
-            </Button>
-            <Button variant="heroSecondary" size="lg" className="w-full sm:w-auto group">
-              <Play className="h-5 w-5 mr-2 group-hover:scale-110 transition-transform" />
-              <span>Watch Demo</span>
-            </Button>
+            <StarBorderButton 
+              color="hsl(var(--accent-teal))"
+              speed="4s"
+              className="w-full sm:w-auto font-medium"
+              onClick={() => window.location.href = '/get-started'}
+            >
+              Get Started Free
+            </StarBorderButton>
+            <StarBorderButton 
+              color="hsl(var(--accent-purple))"
+              speed="5s"
+              className="w-full sm:w-auto font-medium"
+              onClick={() => window.location.href = '/contact'}
+            >
+              <Play className="h-5 w-5 mr-2" />
+              Watch Demo
+            </StarBorderButton>
           </div>
         </div>
       </div>

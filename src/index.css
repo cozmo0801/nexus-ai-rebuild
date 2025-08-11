@@ -40,22 +40,22 @@
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 248 25% 20%;
-    --input: 248 25% 20%;
-    --ring: 273 75% 66%;
+    --border: 233 15% 25%;
+    --input: 233 15% 25%;
+    --ring: 188 100% 42%;
 
     --radius: 0.75rem;
 
-    /* Custom glassmorphism gradients and effects */
-    --gradient-primary: linear-gradient(135deg, hsl(261 37% 56%), hsl(248 39% 11%));
-    --gradient-hero: linear-gradient(180deg, hsl(248 39% 8%), hsl(248 50% 4%));
-    --gradient-accent: linear-gradient(135deg, hsl(172 100% 42%), hsl(261 37% 56%));
+    /* Custom glassmorphism gradients and effects - Original */
+    --gradient-primary: linear-gradient(135deg, hsl(271 89% 54%), hsl(233 18% 12%));
+    --gradient-hero: linear-gradient(180deg, hsl(233 18% 8%), hsl(233 25% 4%));
+    --gradient-accent: linear-gradient(135deg, hsl(188 100% 42%), hsl(271 89% 54%));
     --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    --gradient-button: linear-gradient(145deg, hsl(261 37% 56%), hsl(330 100% 71%), hsl(15 100% 60%));
+    --gradient-button: linear-gradient(145deg, hsl(271 89% 54%), hsl(330 100% 71%), hsl(39 100% 50%));
     --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
 
-    /* Glassmorphism shadows and effects */
-    --shadow-glow: 0 0 40px hsl(261 37% 56% / 0.3);
+    /* Glassmorphism shadows and effects - Original */
+    --shadow-glow: 0 0 40px hsl(271 89% 54% / 0.3);
     --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
     --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     --shadow-inner: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
@@ -63,19 +63,12 @@
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -135,6 +128,186 @@
     backdrop-filter: blur(20px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: var(--shadow-glass);
+  }
+
+  /* Custom slider styles for onboarding */
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, hsl(188 100% 42%), hsl(271 89% 54%));
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 188, 212, 0.3);
+  }
+
+  .slider::-moz-range-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, hsl(188 100% 42%), hsl(271 89% 54%));
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 188, 212, 0.3);
+  }
+
+  /* Blob animations */
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  @keyframes blob-reverse {
+    0% {
+      transform: translate(0px, 0px) scale(1) rotate(0deg);
+    }
+    33% {
+      transform: translate(-30px, 50px) scale(0.9) rotate(120deg);
+    }
+    66% {
+      transform: translate(20px, -20px) scale(1.1) rotate(240deg);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1) rotate(360deg);
+    }
+  }
+
+  @keyframes blob-alt {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    25% {
+      transform: translate(20px, 20px) scale(1.1);
+    }
+    50% {
+      transform: translate(-20px, 40px) scale(0.8);
+    }
+    75% {
+      transform: translate(40px, -20px) scale(1.2);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  @keyframes blob-slow {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    50% {
+      transform: translate(20px, -20px) scale(1.05);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+
+  @keyframes blob-fast {
+    0% {
+      transform: translate(0px, 0px) scale(1) rotate(0deg);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1) rotate(360deg);
+    }
+  }
+
+  @keyframes blob-morph {
+    0%, 100% {
+      d: path("M50,100 C50,60 70,20 100,20 C130,20 150,60 150,100 C150,140 130,180 100,180 C70,180 50,140 50,100 Z");
+    }
+    50% {
+      d: path("M40,100 C40,50 60,10 100,10 C140,10 160,50 160,100 C160,150 140,190 100,190 C60,190 40,150 40,100 Z");
+    }
+  }
+
+  @keyframes blob-morph-reverse {
+    0%, 100% {
+      d: path("M60,100 C60,70 75,40 100,40 C125,40 140,70 140,100 C140,130 125,160 100,160 C75,160 60,130 60,100 Z");
+    }
+    50% {
+      d: path("M70,100 C70,80 80,60 100,60 C120,60 130,80 130,100 C130,120 120,140 100,140 C80,140 70,120 70,100 Z");
+    }
+  }
+
+  @keyframes tilt {
+    0%, 50%, 100% {
+      transform: rotate(0deg);
+    }
+    25% {
+      transform: rotate(0.5deg);
+    }
+    75% {
+      transform: rotate(-0.5deg);
+    }
+  }
+
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animate-blob-reverse {
+    animation: blob-reverse 8s infinite;
+  }
+
+  .animate-blob-alt {
+    animation: blob-alt 9s infinite;
+  }
+
+  .animate-blob-slow {
+    animation: blob-slow 10s infinite;
+  }
+
+  .animate-blob-fast {
+    animation: blob-fast 6s infinite;
+  }
+
+  .animate-blob-morph {
+    animation: blob-morph 8s infinite;
+  }
+
+  .animate-blob-morph-reverse {
+    animation: blob-morph-reverse 10s infinite;
+  }
+
+  .animate-tilt {
+    animation: tilt 10s infinite linear;
+  }
+
+  /* Star border movement animations */
+  @keyframes star-movement-bottom {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes star-movement-top {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(50%);
+    }
+  }
+
+  .animate-star-movement-bottom {
+    animation: star-movement-bottom 6s linear infinite;
+  }
+
+  .animate-star-movement-top {
+    animation: star-movement-top 6s linear infinite;
   }
 
   .glass-button {
