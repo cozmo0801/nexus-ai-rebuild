@@ -1,7 +1,28 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const BackgroundPaths = () => {
   const svgRef = useRef<SVGSVGElement>(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Check if dark mode is active
+    const checkDarkMode = () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      setIsDarkMode(isDark);
+    };
+
+    // Initial check
+    checkDarkMode();
+
+    // Watch for theme changes
+    const observer = new MutationObserver(checkDarkMode);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class']
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const svg = svgRef.current;
@@ -13,6 +34,11 @@ const BackgroundPaths = () => {
       (path as SVGPathElement).style.animationDelay = `${index * 0.5}s`;
     });
   }, []);
+
+  // Don't render path lines in dark mode
+  if (isDarkMode) {
+    return null;
+  }
 
   return (
     <div className="background-paths">

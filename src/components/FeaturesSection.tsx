@@ -183,7 +183,7 @@ const FeaturesSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-white font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
+            <button className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
               Start Free Trial
             </button>
             <button className="px-8 py-4 border border-accent-purple/30 text-accent-purple font-semibold rounded-2xl hover:bg-accent-purple/5 transition-all duration-300">

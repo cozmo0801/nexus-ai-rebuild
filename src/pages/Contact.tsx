@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import MotionBubbles from "@/components/MotionBubbles";
 import {
   Mail,
   Phone,
@@ -216,12 +217,10 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      {/* Enhanced Contact Header */}
-      <section className="pt-24 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-teal/5 via-accent-purple/5 to-accent-green/5" />
-        <div className="absolute top-20 left-10 w-32 h-32 bg-accent-teal/10 rounded-full blur-3xl animate-float-gentle" />
-        <div className="absolute top-40 right-20 w-24 h-24 bg-accent-purple/10 rounded-full blur-2xl animate-float-gentle" style={{ animationDelay: '1s' }} />
-        <div className="absolute bottom-20 left-1/4 w-20 h-20 bg-accent-green/10 rounded-full blur-2xl animate-float-gentle" style={{ animationDelay: '2s' }} />
+                   {/* Enhanced Contact Header */}
+             <section className="pt-24 pb-16 relative overflow-hidden">
+               <div className="absolute inset-0 bg-gradient-to-br from-accent-teal/5 via-accent-purple/5 to-accent-green/5" />
+               <MotionBubbles />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
@@ -551,11 +550,10 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Enhanced Quick Start CTA */}
-      <section className="py-20 bg-gradient-to-b from-accent-purple/6 via-accent-teal/6 to-accent-green/6 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/5 via-transparent to-accent-green/5" />
-        <div className="absolute top-10 left-10 w-40 h-40 bg-accent-purple/10 rounded-full blur-3xl animate-float-gentle" />
-        <div className="absolute bottom-10 right-10 w-32 h-32 bg-accent-green/10 rounded-full blur-2xl animate-float-gentle" style={{ animationDelay: '1s' }} />
+                   {/* Enhanced Quick Start CTA */}
+             <section className="py-20 bg-gradient-to-b from-accent-purple/6 via-accent-teal/6 to-accent-green/6 relative overflow-hidden">
+               <div className="absolute inset-0 bg-gradient-to-br from-accent-purple/5 via-transparent to-accent-green/5" />
+               <MotionBubbles />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">

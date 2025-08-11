@@ -359,21 +359,21 @@ const Onboarding = () => {
                       </div>
                     )}
                     
-                    <h3 className="text-2xl font-bold text-white mb-4">Key Benefits:</h3>
+                    <h3 className="text-2xl font-bold text-foreground mb-4">Key Benefits:</h3>
                     <ul className="space-y-3">
                       {selectedChallenge === 'inquiries' && (
                         <>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">24/7 automated customer support</span>
+                            <span className="text-foreground">24/7 automated customer support</span>
                           </li>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">98.5% customer satisfaction rate</span>
+                            <span className="text-foreground">98.5% customer satisfaction rate</span>
                           </li>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">60% reduction in support costs</span>
+                            <span className="text-foreground">60% reduction in support costs</span>
                           </li>
                         </>
                       )}
@@ -381,15 +381,15 @@ const Onboarding = () => {
                         <>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">40% increase in qualified leads</span>
+                            <span className="text-foreground">40% increase in qualified leads</span>
                           </li>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">Automated lead scoring & nurturing</span>
+                            <span className="text-foreground">Automated lead scoring & nurturing</span>
                           </li>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">CRM integration & tracking</span>
+                            <span className="text-foreground">CRM integration & tracking</span>
                           </li>
                         </>
                       )}
@@ -397,15 +397,15 @@ const Onboarding = () => {
                         <>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">Up to 60% cost reduction</span>
+                            <span className="text-foreground">Up to 60% cost reduction</span>
                           </li>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">Automated workflow optimization</span>
+                            <span className="text-foreground">Automated workflow optimization</span>
                           </li>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">Reduced staffing requirements</span>
+                            <span className="text-foreground">Reduced staffing requirements</span>
                           </li>
                         </>
                       )}
@@ -413,15 +413,15 @@ const Onboarding = () => {
                         <>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">Real-time customer analytics</span>
+                            <span className="text-foreground">Real-time customer analytics</span>
                           </li>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">Predictive behavior modeling</span>
+                            <span className="text-foreground">Predictive behavior modeling</span>
                           </li>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-white">Custom dashboard reporting</span>
+                            <span className="text-foreground">Custom dashboard reporting</span>
                           </li>
                         </>
                       )}
@@ -432,14 +432,14 @@ const Onboarding = () => {
                   <div className="glass-card rounded-2xl p-6 border border-glass backdrop-blur-glass">
                     <div className="flex items-center gap-4 mb-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-r from-accent-teal to-accent-purple flex items-center justify-center">
-                        <Users className="h-6 w-6 text-white" />
+                                                    <Users className="h-6 w-6 text-foreground" />
                       </div>
                       <div>
-                        <p className="text-white font-semibold">Sarah Chen</p>
+                                                  <p className="text-foreground font-semibold">Sarah Chen</p>
                         <p className="text-muted-foreground text-sm">Tech Startup CEO</p>
                       </div>
                     </div>
-                    <p className="text-white/90 italic">
+                                              <p className="text-muted-foreground italic">
                       "NexusCore AI transformed our customer service. We went from overwhelmed to optimized in just 2 weeks!"
                     </p>
                   </div>
@@ -449,7 +449,7 @@ const Onboarding = () => {
                 <div className="glass-card rounded-3xl p-8 border border-glass backdrop-blur-glass text-center">
                   <div className="space-y-6">
                     <div className="w-24 h-24 mx-auto bg-gradient-to-r from-accent-teal to-accent-purple rounded-full flex items-center justify-center animate-pulse">
-                      <TrendingUp className="h-12 w-12 text-white" />
+                                              <TrendingUp className="h-12 w-12 text-foreground" />
                     </div>
                     <h3 className="text-2xl font-bold text-foreground">Live Demo</h3>
                     <p className="text-muted-foreground">
@@ -529,12 +529,12 @@ const Onboarding = () => {
               <div className="glass-card rounded-3xl p-12 border border-glass backdrop-blur-glass mb-8">
                 <div className="flex items-center justify-center gap-4 mb-8">
                   <Calculator className="h-8 w-8 text-accent-teal" />
-                  <h2 className="text-2xl font-bold text-white">Interactive ROI Calculator</h2>
+                                      <h2 className="text-2xl font-bold text-foreground">Interactive ROI Calculator</h2>
                 </div>
 
                 <div className="space-y-8">
                   <div className="text-left">
-                    <label className="block text-lg font-semibold text-white mb-4">
+                                          <label className="block text-lg font-semibold text-foreground mb-4">
                       {selectedChallenge === 'inquiries' && "How many customer inquiries do you get per day?"}
                       {selectedChallenge === 'leads' && "How many leads do you want to generate per month?"}
                       {selectedChallenge === 'costs' && "What's your estimated monthly operational cost?"}
@@ -654,7 +654,7 @@ const Onboarding = () => {
                       
                       <div className="space-y-4">
                         <div>
-                          <label className="text-sm font-medium text-white mb-2 block">
+                          <label className="text-sm font-medium text-foreground mb-2 block">
                             Full Name *
                           </label>
                           <Input
@@ -668,7 +668,7 @@ const Onboarding = () => {
                         </div>
                         
                         <div>
-                          <label className="text-sm font-medium text-white mb-2 block">
+                          <label className="text-sm font-medium text-foreground mb-2 block">
                             Email Address *
                           </label>
                           <Input
@@ -682,7 +682,7 @@ const Onboarding = () => {
                         </div>
                         
                         <div>
-                          <label className="text-sm font-medium text-white mb-2 block">
+                          <label className="text-sm font-medium text-foreground mb-2 block">
                             Phone Number
                           </label>
                           <Input
@@ -718,7 +718,7 @@ const Onboarding = () => {
                       
                       <div className="space-y-4">
                         <div>
-                          <label className="text-sm font-medium text-white mb-2 block">
+                          <label className="text-sm font-medium text-foreground mb-2 block">
                             Business Name *
                           </label>
                           <Input
@@ -732,7 +732,7 @@ const Onboarding = () => {
                         </div>
                         
                         <div>
-                          <label className="text-sm font-medium text-white mb-2 block">
+                          <label className="text-sm font-medium text-foreground mb-2 block">
                             Industry *
                           </label>
                           <select
@@ -743,7 +743,7 @@ const Onboarding = () => {
                           >
                             <option value="">Select your industry</option>
                             {industries.map(industry => (
-                              <option key={industry} value={industry} className="bg-secondary text-white">
+                              <option key={industry} value={industry} className="bg-secondary text-foreground">
                                 {industry}
                               </option>
                             ))}
@@ -751,7 +751,7 @@ const Onboarding = () => {
                         </div>
                         
                         <div>
-                          <label className="text-sm font-medium text-white mb-2 block">
+                          <label className="text-sm font-medium text-foreground mb-2 block">
                             Current Website URL
                           </label>
                           <Input
@@ -797,7 +797,7 @@ const Onboarding = () => {
                       </h3>
                       
                       <div>
-                        <label className="text-sm font-medium text-white mb-2 block">
+                        <label className="text-sm font-medium text-foreground mb-2 block">
                           Any specific questions or needs you have?
                         </label>
                         <Textarea
@@ -811,7 +811,7 @@ const Onboarding = () => {
                       {/* Summary */}
                       <div className="bg-accent-teal/10 rounded-xl p-6 border border-accent-teal/30">
                         <h4 className="text-lg font-semibold text-accent-teal mb-4">Your AI Solution Summary:</h4>
-                        <div className="space-y-2 text-sm text-white/80">
+                        <div className="space-y-2 text-sm text-muted-foreground">
                           <p><strong>Challenge:</strong> {getChallengeDetails()?.title}</p>
                           <p><strong>Potential Savings:</strong> ${estimatedSavings.toLocaleString()} per year</p>
                           <p><strong>Business:</strong> {formData.businessName} ({formData.industry})</p>
@@ -860,7 +860,7 @@ const Onboarding = () => {
                       </div>
 
                       {/* Privacy Assurance */}
-                      <p className="text-xs text-white/60 text-center">
+                      <p className="text-xs text-muted-foreground text-center">
                         🔒 Your information is secure and will never be shared with third parties.
                       </p>
                     </div>
@@ -904,7 +904,7 @@ const Onboarding = () => {
                   <div className="absolute inset-0 bg-accent-green/20 rounded-full animate-ping"></div>
                   <div className="absolute inset-2 bg-accent-green/30 rounded-full animate-pulse"></div>
                   <div className="absolute inset-4 bg-accent-green rounded-full flex items-center justify-center">
-                    <CheckCircle className="h-16 w-16 text-white animate-bounce" />
+                    <CheckCircle className="h-16 w-16 text-foreground animate-bounce" />
                   </div>
                 </div>
               </div>
@@ -919,31 +919,31 @@ const Onboarding = () => {
 
               {/* What Happens Next */}
               <div className="glass-card rounded-3xl p-12 border border-glass backdrop-blur-glass mb-12">
-                <h2 className="text-3xl font-bold text-white mb-8">What Happens Next:</h2>
+                <h2 className="text-3xl font-bold text-foreground mb-8">What Happens Next:</h2>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-accent-teal to-accent-purple rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-white">1</span>
+                      <span className="text-2xl font-bold text-foreground">1</span>
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Immediate Response</h3>
-                    <p className="text-white/70 text-sm">You'll receive a confirmation email within the next few minutes</p>
+                    <h3 className="text-lg font-semibold text-foreground mb-2">Immediate Response</h3>
+                    <p className="text-muted-foreground text-sm">You'll receive a confirmation email within the next few minutes</p>
                   </div>
                   
                   <div className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-accent-purple to-accent-orange rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-white">2</span>
+                      <span className="text-2xl font-bold text-foreground">2</span>
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Expert Consultation</h3>
-                    <p className="text-white/70 text-sm">Our AI specialist will contact you within 24 hours to discuss your custom solution</p>
+                                          <h3 className="text-lg font-semibold text-foreground mb-2">Expert Consultation</h3>
+                      <p className="text-muted-foreground text-sm">Our AI specialist will contact you within 24 hours to discuss your custom solution</p>
                   </div>
                   
                   <div className="text-center">
                     <div className="w-16 h-16 bg-gradient-to-r from-accent-orange to-accent-green rounded-full flex items-center justify-center mx-auto mb-4">
-                      <span className="text-2xl font-bold text-white">3</span>
+                      <span className="text-2xl font-bold text-foreground">3</span>
                     </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Custom Demo</h3>
-                    <p className="text-white/70 text-sm">We'll create a personalized demo showing how AI will transform your specific business</p>
+                                          <h3 className="text-lg font-semibold text-foreground mb-2">Custom Demo</h3>
+                      <p className="text-muted-foreground text-sm">We'll create a personalized demo showing how AI will transform your specific business</p>
                   </div>
                 </div>
               </div>
@@ -953,20 +953,20 @@ const Onboarding = () => {
                 <h3 className="text-2xl font-bold text-accent-green mb-4">Your Potential Transformation:</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                   <div>
-                    <p className="text-white/70 text-sm">Selected Challenge:</p>
-                    <p className="text-white font-semibold">{getChallengeDetails()?.title}</p>
+                    <p className="text-muted-foreground text-sm">Selected Challenge:</p>
+                    <p className="text-foreground font-semibold">{getChallengeDetails()?.title}</p>
                   </div>
                   <div>
-                    <p className="text-white/70 text-sm">Estimated Annual Savings:</p>
+                    <p className="text-muted-foreground text-sm">Estimated Annual Savings:</p>
                     <p className="text-accent-green font-bold text-xl">${estimatedSavings.toLocaleString()}</p>
                   </div>
                   <div>
-                    <p className="text-white/70 text-sm">Business:</p>
-                    <p className="text-white font-semibold">{formData.businessName}</p>
+                    <p className="text-muted-foreground text-sm">Business:</p>
+                    <p className="text-foreground font-semibold">{formData.businessName}</p>
                   </div>
                   <div>
-                    <p className="text-white/70 text-sm">Industry:</p>
-                    <p className="text-white font-semibold">{formData.industry}</p>
+                    <p className="text-muted-foreground text-sm">Industry:</p>
+                    <p className="text-foreground font-semibold">{formData.industry}</p>
                   </div>
                 </div>
               </div>
