@@ -124,14 +124,13 @@
   .slider::-webkit-slider-thumb { appearance: none; height: 20px; width: 20px; border-radius: 50%; background: linear-gradient(135deg, hsl(0 0% 0%), hsl(0 0% 20%)); cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
   .slider::-moz-range-thumb { height: 20px; width: 20px; border-radius: 50%; background: linear-gradient(135deg, hsl(0 0% 0%), hsl(0 0% 20%)); cursor: pointer; border: none; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); }
 
-  /* Animations (unchanged) */
+  /* Animations */
   @keyframes blob { 0% { transform: translate(0px, 0px) scale(1); } 33% { transform: translate(30px, -50px) scale(1.1); } 66% { transform: translate(-20px, 20px) scale(0.9); } 100% { transform: translate(0px, 0px) scale(1); } }
   @keyframes blob-reverse { 0% { transform: translate(0px, 0px) scale(1) rotate(0deg); } 33% { transform: translate(-30px, 50px) scale(0.9) rotate(120deg); } 66% { transform: translate(20px, -20px) scale(1.1) rotate(240deg); } 100% { transform: translate(0px, 0px) scale(1) rotate(360deg); } }
   @keyframes blob-alt { 0% { transform: translate(0px, 0px) scale(1); } 25% { transform: translate(20px, 20px) scale(1.1); } 50% { transform: translate(-20px, 40px) scale(0.8); } 75% { transform: translate(40px, -20px) scale(1.2); } 100% { transform: translate(0px, 0px) scale(1); } }
   @keyframes blob-slow { 0% { transform: translate(0px, 0px) scale(1); } 50% { transform: translate(20px, -20px) scale(1.05); } 100% { transform: translate(0px, 0px) scale(1); } }
   @keyframes blob-fast { 0% { transform: translate(0px, 0px) scale(1) rotate(0deg); } 100% { transform: translate(0px, 0px) scale(1) rotate(360deg); } }
-  @keyframes blob-morph { 0%, 100% { d: path("M50,100 C50,60 70,20 100,20 C130,20 150,60 150,100 C150,140 130,180 100,180 C70,180 50,140 50,100 Z"); } 50% { d: path("M40,100 C40,50 60,10 100,10 C140,10 160,50 160,100 C160,150 140,190 100,190 C60,190 40,150 40,100 Z"); } }
-  @keyframes blob-morph-reverse { 0%, 100% { d: path("M60,100 C60,70 75,40 100,40 C125,40 140,70 140,100 C140,130 125,160 100,160 C75,160 60,130 60,100 Z"); } 50% { d: path("M70,100 C70,80 80,60 100,60 C120,60 130,80 130,100 C130,120 120,140 100,140 C80,140 70,120 70,100 Z"); } }
+  @keyframes pathDraw { 0%, 100% { opacity: 0; stroke-dasharray: 1000; stroke-dashoffset: 1000; } 50% { opacity: 1; stroke-dasharray: 1000; stroke-dashoffset: 0; } }
   @keyframes tilt { 0%, 50%, 100% { transform: rotate(0deg); } 25% { transform: rotate(0.5deg); } 75% { transform: rotate(-0.5deg); } }
 
   .animate-blob { animation: blob 7s infinite; }
@@ -145,9 +144,7 @@
 
   /* Background paths animation */
   .background-paths { position: absolute; inset: 0; overflow: hidden; z-index: 0; }
-  .path-line { stroke: rgba(0, 0, 0, 0.05); stroke-width: 1; fill: none; opacity: 0; animation: pathDraw 8s ease-in-out infinite; }
-  .dark .path-line { stroke: rgba(255, 255, 255, 0.06); }
-  @keyframes pathDraw { 0%, 100% { opacity: 0; stroke-dasharray: 1000; stroke-dashoffset: 1000; } 50% { opacity: 1; stroke-dasharray: 1000; stroke-dashoffset: 0; } }
+  .path-line { /* stroke color comes from SVG gradient */ stroke-width: 1; fill: none; opacity: 0; animation: pathDraw 8s ease-in-out infinite; }
 
   .glass-button { background: var(--gradient-button); backdrop-filter: blur(20px); border: 1px solid rgba(0, 0, 0, 0.12); position: relative; overflow: hidden; }
   .glass-button::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); transition: left 0.6s; }
