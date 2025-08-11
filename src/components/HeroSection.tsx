@@ -30,8 +30,8 @@ const HeroSection = () => {
           {/* Product Preview: AI Chat */}
           <div className="mb-12">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-[hsl(var(--accent-purple))]/20 rounded-3xl blur-3xl"></div>
-              <div className="relative bg-background/80 backdrop-blur-sm border rounded-3xl p-6 shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--accent-purple))]/15 to-[hsl(var(--accent-green))]/15 rounded-3xl blur-3xl"></div>
+              <div className="relative bg-card border rounded-3xl p-6 shadow-2xl">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3">
                     <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
