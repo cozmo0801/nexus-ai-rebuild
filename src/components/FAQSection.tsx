@@ -155,7 +155,7 @@ const FAQSection = () => {
                   onClick={() => setActiveCategory(category.id)}
                   className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all duration-300 ${
                     isActive
-                      ? 'bg-accent-purple text-white border-accent-purple shadow-lg'
+                      ? 'bg-accent-purple text-foreground border-accent-purple shadow-lg'
                       : 'bg-card text-muted-foreground border-border hover:border-accent-purple/30 hover:text-foreground'
                   }`}
                 >
@@ -248,7 +248,7 @@ const FAQSection = () => {
               Our team of AI experts is here to help you get the most out of NexusCore AI.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-white font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
+              <button className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
                 Chat with Support
               </button>
               <button className="px-8 py-4 border border-accent-purple/30 text-accent-purple font-semibold rounded-2xl hover:bg-accent-purple/5 transition-all duration-300">

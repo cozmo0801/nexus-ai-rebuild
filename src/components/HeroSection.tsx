@@ -90,7 +90,7 @@ const HeroSection = () => {
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="h-10 w-10 rounded-full bg-gradient-to-r from-accent-purple to-accent-teal flex items-center justify-center">
-                      <Bot className="h-5 w-5 text-white" />
+                      <Bot className="h-5 w-5 text-foreground" />
                     </div>
                     <div className="text-sm font-medium">AI Business Assistant</div>
                     <div className="ml-auto flex items-center gap-2">

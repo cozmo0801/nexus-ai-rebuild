@@ -25,16 +25,6 @@ const TransformSection = () => {
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-4xl font-bold text-foreground mb-6">
-            Transform Your Business with AI
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Small businesses face overwhelming customer inquiries and repetitive tasks that consume valuable time. 
-            Our AI solutions automate these processes, allowing you to focus on what matters most - growing your business.
-          </p>
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {benefits.map((benefit, index) => {
             const IconComponent = benefit.icon;
@@ -46,10 +36,10 @@ const TransformSection = () => {
               <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-glass mb-6 ${benefit.color} group-hover:scale-110 transition-transform shadow-inner`}>
                 <IconComponent className="h-8 w-8" />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-accent-teal transition-colors">
+              <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-accent-teal transition-colors">
                 {benefit.title}
               </h3>
-              <p className="text-white/70 group-hover:text-white/90 transition-colors">
+              <p className="text-muted-foreground group-hover:text-foreground transition-colors">
                 {benefit.description}
               </p>
             </div>
