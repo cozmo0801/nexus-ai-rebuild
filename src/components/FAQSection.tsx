@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { ChevronDown, Search, MessageCircle, Zap, Shield, Clock } from "lucide-react";
+import { ChevronDown, MessageCircle, Zap, Shield, Clock } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const FAQSection = () => {
-  const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("all");
 
   const categories = [
@@ -92,10 +91,8 @@ const FAQSection = () => {
   ];
 
   const filteredFAQs = faqs.filter(faq => {
-    const matchesSearch = faq.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         faq.answer.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesCategory = activeCategory === "all" || faq.category === activeCategory;
-    return matchesSearch && matchesCategory;
+    return matchesCategory;
   });
 
   const popularFAQs = faqs.filter(faq => faq.popular);
@@ -129,19 +126,7 @@ const FAQSection = () => {
           </p>
         </div>
 
-        {/* Search and Filter Section */}
-        <div className="max-w-4xl mx-auto mb-12">
-          {/* Search Bar */}
-          <div className="relative mb-8">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-            <input
-              type="text"
-              placeholder="Search for answers..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-4 bg-card border border-border rounded-2xl focus:outline-none focus:ring-2 focus:ring-accent-purple focus:border-transparent transition-all duration-300 placeholder:text-muted-foreground"
-            />
-          </div>
+
 
           {/* Category Filters */}
           <div className="flex flex-wrap items-center justify-center gap-3">
@@ -173,7 +158,7 @@ const FAQSection = () => {
         </div>
 
         {/* Popular Questions Section */}
-        {searchQuery === "" && activeCategory === "all" && (
+        {activeCategory === "all" && (
           <div className="max-w-4xl mx-auto mb-12">
             <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
               Most Popular Questions
