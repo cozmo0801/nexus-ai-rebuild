@@ -27,29 +27,38 @@ export default async function handler(req, res) {
     }
 
     if (!parsedBody) {
+      console.log('No valid JSON body')
       return res.status(400).json({ message: 'Invalid or missing JSON body' })
     }
 
     const { firstName, lastName, email, company, phone, subject, message } = parsedBody
+    console.log('Form parsed:', { firstName, lastName, email, subject })
 
     if (!firstName || !lastName || !email || !subject || !message) {
+      console.log('Missing required fields')
       return res.status(400).json({ message: 'Missing required fields' })
     }
     if (!isValidEmail(email)) {
+      console.log('Invalid email format:', email)
       return res.status(400).json({ message: 'Invalid email address' })
     }
 
-    // Rate limit by IP and path
     const ip = getClientIp(req)
     const rlKey = `contact:${ip}`
-    const rl = checkRateLimit(rlKey, 5, 60 * 1000) // 5 requests/minute
+    const rl = checkRateLimit(rlKey, 5, 60 * 1000)
     if (!rl.allowed) {
+      console.log('Rate limited:', ip)
       return res.status(429).json({ message: 'Too many requests. Please try again later.' })
     }
 
     const RESEND_API_KEY = (process.env.RESEND_API_KEY || '').trim()
     const CONTACT_EMAIL = (process.env.CONTACT_EMAIL || process.env.EMAIL_TO || 'hello@nexuscore.ai').trim()
     const EMAIL_FROM = (process.env.EMAIL_FROM || 'NexusCore AI Contact <onboarding@resend.dev>').trim()
+    console.log('Env presence:', {
+      RESEND_API_KEY: !!RESEND_API_KEY,
+      CONTACT_EMAIL: !!CONTACT_EMAIL,
+      EMAIL_FROM: !!EMAIL_FROM,
+    })
 
     if (!RESEND_API_KEY) {
       return res.status(500).json({ message: 'Email service not configured. Missing RESEND_API_KEY.', success: false })
@@ -87,19 +96,19 @@ export default async function handler(req, res) {
       reply_to: email,
     }
 
-    // Send admin email
+    console.log('Sending admin email...')
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify(adminEmailPayload),
     })
+    console.log('Admin email status:', resendResponse.status)
     if (!resendResponse.ok) {
       const errorText = await resendResponse.text()
       console.error('Admin email failed:', errorText)
       throw new Error(`Resend API error: ${resendResponse.status} - ${errorText}`)
     }
 
-    // Auto-reply to submitter
     const autoReplyPayload = {
       from: EMAIL_FROM,
       to: [email],
@@ -119,13 +128,14 @@ export default async function handler(req, res) {
       reply_to: CONTACT_EMAIL,
     }
 
+    console.log('Sending auto-reply...')
     try {
       const autoRes = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
         body: JSON.stringify(autoReplyPayload),
       })
-      console.log('Auto-reply response status:', autoRes.status)
+      console.log('Auto-reply status:', autoRes.status)
       if (!autoRes.ok) {
         const errText = await autoRes.text()
         console.error('Auto-reply failed:', errText)
@@ -134,7 +144,6 @@ export default async function handler(req, res) {
       console.error('Auto-reply error:', e)
     }
 
-    // Fire analytics event (best-effort)
     await postAnalyticsEvent({ type: 'contact_submitted', payload: { firstName, lastName, email, company, phone, subject }, req })
 
     return res.status(200).json({

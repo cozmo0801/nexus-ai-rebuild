@@ -46,7 +46,14 @@ if (!globalThis.__RATE_LIMIT_STORE__) {
   globalThis.__RATE_LIMIT_STORE__ = globalStore
 }
 
+export function isRateLimitDisabled() {
+  return (process.env.RATE_LIMIT_DISABLED || '').trim() === '1'
+}
+
 export function checkRateLimit(key, limit, windowMs) {
+  if (isRateLimitDisabled()) {
+    return { allowed: true, remaining: limit, resetMs: 0 }
+  }
   const now = Date.now()
   const windowStart = now - windowMs
   const entries = globalStore.get(key) || []
