@@ -168,7 +168,7 @@ const Solutions = () => {
                         <IconComponent className="h-8 w-8" />
                       </div>
                       <div>
-                        <h2 className="text-3xl font-bold text-white">
+                        <h2 className="text-3xl font-bold text-foreground">
                           {solution.title}
                         </h2>
                         <p className="text-lg text-accent-teal">
@@ -182,7 +182,7 @@ const Solutions = () => {
                     </p>
 
                     <div className="space-y-3">
-                      <h3 className="text-xl font-semibold text-white">
+                      <h3 className="text-xl font-semibold text-foreground">
                         Key Features:
                       </h3>
                       <ul className="space-y-2">
@@ -203,10 +203,10 @@ const Solutions = () => {
                     <div className="glass-card rounded-2xl p-6 border border-glass backdrop-blur-glass">
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-sm text-white/70 mb-1">
+                          <p className="text-sm text-muted-foreground mb-1">
                             Proven Results
                           </p>
-                          <p className="text-2xl font-bold text-white">
+                          <p className="text-2xl font-bold text-foreground">
                             {solution.metrics}
                           </p>
                         </div>
@@ -227,10 +227,10 @@ const Solutions = () => {
                         >
                           <IconComponent className="h-12 w-12" />
                         </div>
-                        <h3 className="text-2xl font-bold text-white group-hover:text-accent-teal transition-colors">
+                        <h3 className="text-2xl font-bold text-foreground group-hover:text-accent-teal transition-colors">
                           {solution.title}
                         </h3>
-                        <p className="text-white/70 leading-relaxed group-hover:text-white/90 transition-colors">
+                        <p className="text-muted-foreground leading-relaxed group-hover:text-foreground/90 transition-colors">
                           Experience the power of AI-driven{" "}
                           {solution.title.toLowerCase()} that adapts to your
                           business needs and scales with your growth.
@@ -249,7 +249,7 @@ const Solutions = () => {
       <section className="py-16 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-white mb-6">
+            <h2 className="text-4xl font-bold text-foreground mb-6">
               Ready to Transform Your Business?
             </h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto">

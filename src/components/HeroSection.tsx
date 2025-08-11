@@ -33,28 +33,28 @@ const HeroSection = () => {
               <div className="text-center group">
                 <div className="flex items-center justify-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse shadow-lg shadow-red-500/50"></div>
-                  <span className="text-sm text-white/70">Live Status</span>
+                  <span className="text-sm text-foreground/70">Live Status</span>
                 </div>
-                <div className="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">247</div>
-                <div className="text-sm text-white/70">Active Conversations</div>
+                <div className="text-4xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform">247</div>
+                <div className="text-sm text-foreground/70">Active Conversations</div>
               </div>
               
               <div className="text-center group">
                 <div className="flex items-center justify-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse shadow-lg shadow-yellow-500/50"></div>
-                  <span className="text-sm text-white/70">Performance</span>
+                  <span className="text-sm text-foreground/70">Performance</span>
                 </div>
-                <div className="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">0.3s</div>
-                <div className="text-sm text-white/70">Response Time</div>
+                <div className="text-4xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform">0.3s</div>
+                <div className="text-sm text-foreground/70">Response Time</div>
               </div>
               
               <div className="text-center group">
                 <div className="flex items-center justify-center gap-2 mb-3">
                   <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
-                  <span className="text-sm text-white/70">Quality</span>
+                  <span className="text-sm text-foreground/70">Quality</span>
                 </div>
-                <div className="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform">98.5%</div>
-                <div className="text-sm text-white/70">Customer Satisfaction</div>
+                <div className="text-4xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform">98.5%</div>
+                <div className="text-sm text-foreground/70">Customer Satisfaction</div>
               </div>
             </div>
           </div>
