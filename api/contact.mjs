@@ -42,9 +42,9 @@ export default async function handler(req, res) {
       return res.status(400).json({ message: 'Invalid email address' })
     }
 
-    const RESEND_API_KEY = process.env.RESEND_API_KEY
-    const CONTACT_EMAIL = process.env.CONTACT_EMAIL || process.env.EMAIL_TO || 'hello@nexuscore.ai'
-    const EMAIL_FROM = process.env.EMAIL_FROM || 'NexusCore AI Contact <onboarding@resend.dev>'
+    const RESEND_API_KEY = (process.env.RESEND_API_KEY || '').trim()
+    const CONTACT_EMAIL = (process.env.CONTACT_EMAIL || process.env.EMAIL_TO || 'hello@nexuscore.ai').trim()
+    const EMAIL_FROM = (process.env.EMAIL_FROM || 'NexusCore AI Contact <onboarding@resend.dev>').trim()
 
     if (!RESEND_API_KEY) {
       console.error('Missing RESEND_API_KEY environment variable')
