@@ -66,7 +66,7 @@ const FeaturesSection = () => {
             return (
             <div 
               key={index}
-              className="relative glass-card rounded-3xl p-6 hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group border border-glass backdrop-blur-glass"
+              className="relative rounded-3xl p-6 hover:shadow-glow transition-all duration-300 hover:-translate-y-1 group border bg-card"
             >
               <GlowingEffect disabled className="opacity-60" variant="purple" spread={18} borderWidth={1} />
               <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-glass mb-4 ${feature.color} group-hover:scale-110 transition-transform shadow-inner`}>
