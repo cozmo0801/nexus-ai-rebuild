@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
+import { Play, Bot } from "lucide-react";
 import BackgroundPaths from "./BackgroundPaths";
 import { FluidBlob } from "@/components/ui/fluid-blob";
 import { StarBorderButton } from "@/components/ui/star-border-button";
@@ -27,34 +27,34 @@ const HeroSection = () => {
             and boost sales with intelligent customer interactions.
           </p>
 
-          {/* Metrics Dashboard */}
-          <div className="glass-card rounded-3xl p-8 mb-12 shadow-glass border border-glass backdrop-blur-glass animate-float">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center group">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse shadow-lg shadow-red-500/50"></div>
-                  <span className="text-sm text-foreground/70">Live Status</span>
+          {/* Product Preview: AI Chat */}
+          <div className="mb-12">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-[hsl(var(--accent-purple))]/20 rounded-3xl blur-3xl"></div>
+              <div className="relative bg-background/80 backdrop-blur-sm border rounded-3xl p-6 shadow-2xl">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-8 w-8 rounded-full bg-primary flex items-center justify-center">
+                      <Bot className="h-4 w-4 text-primary-foreground" />
+                    </div>
+                    <div className="text-sm font-medium">AI Assistant</div>
+                  </div>
+                  <div className="space-y-3 text-left">
+                    <div className="bg-muted rounded-lg p-3 text-sm">
+                      Hi! I'm here to help you 24/7. How can I assist you today?
+                    </div>
+                    <div className="bg-primary text-primary-foreground rounded-lg p-3 text-sm ml-8">
+                      What are your business hours?
+                    </div>
+                    <div className="bg-muted rounded-lg p-3 text-sm">
+                      We're open Monday-Friday 9AM-6PM EST, but I'm available 24/7 to help with questions, bookings, and support!
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                    <div className="h-2 w-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <span>Online and ready to help</span>
+                  </div>
                 </div>
-                <div className="text-4xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform">247</div>
-                <div className="text-sm text-foreground/70">Active Conversations</div>
-              </div>
-              
-              <div className="text-center group">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse shadow-lg shadow-yellow-500/50"></div>
-                  <span className="text-sm text-foreground/70">Performance</span>
-                </div>
-                <div className="text-4xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform">0.3s</div>
-                <div className="text-sm text-foreground/70">Response Time</div>
-              </div>
-              
-              <div className="text-center group">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
-                  <span className="text-sm text-foreground/70">Quality</span>
-                </div>
-                <div className="text-4xl font-bold text-foreground mb-2 group-hover:scale-110 transition-transform">98.5%</div>
-                <div className="text-sm text-foreground/70">Customer Satisfaction</div>
               </div>
             </div>
           </div>
