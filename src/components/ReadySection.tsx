@@ -11,9 +11,9 @@ const ReadySection = () => {
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Get Started?
           </h2>
-          <p className="text-xl text-white/80 mb-8 leading-relaxed">
-            Let's discuss how AI can transform your business operations and boost your sales
-          </p>
+                  <p className="text-xl text-white/80 mb-8 leading-relaxed">
+          Let's discuss how AI can transform your startup operations and boost your growth
+        </p>
           <StarBorderButton 
             color="hsl(var(--accent-teal))"
             speed="3s"

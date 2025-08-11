@@ -174,7 +174,7 @@ const FeaturesSection = () => {
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8">
             <Users className="h-5 w-5 text-accent-purple" />
             <span className="text-sm font-medium text-foreground">
-              Join 500+ businesses already growing with AI
+              Join growing startups already transforming with AI
             </span>
           </div>
           
@@ -184,7 +184,7 @@ const FeaturesSection = () => {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
-              Start Free Trial
+              Get Custom Quote
             </button>
             <button className="px-8 py-4 border border-accent-purple/30 text-accent-purple font-semibold rounded-2xl hover:bg-accent-purple/5 transition-all duration-300">
               Schedule Demo

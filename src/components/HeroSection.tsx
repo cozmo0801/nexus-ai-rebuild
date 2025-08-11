@@ -44,7 +44,7 @@ const HeroSection = () => {
           {/* Trust Badge */}
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-full px-4 py-2 mb-8 animate-fade-in">
             <Sparkles className="h-4 w-4 text-accent-purple" />
-            <span className="text-sm font-medium text-foreground">Trusted by 500+ Small Businesses</span>
+            <span className="text-sm font-medium text-foreground">Trusted by Growing Startups</span>
           </div>
 
           {/* Main Headline with Enhanced Typography */}
@@ -132,10 +132,10 @@ const HeroSection = () => {
               color="hsl(var(--accent-teal))"
               speed="4s"
               className="w-full sm:w-auto font-medium text-lg px-8 py-4 group"
-              onClick={() => window.location.href = '/get-started'}
+              onClick={() => window.location.href = '/contact'}
             >
               <span className="flex items-center gap-2">
-                Start Free Trial
+                Get Custom Quote
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </span>
             </StarBorderButton>
@@ -156,12 +156,12 @@ const HeroSection = () => {
           <div className={`mt-12 transition-all duration-1000 delay-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <p className="text-sm text-muted-foreground mb-4">Join thousands of businesses already growing with AI</p>
-            <div className="flex items-center justify-center gap-6 text-xs text-muted-foreground">
-              <span>✓ No credit card required</span>
-              <span>✓ Setup in 5 minutes</span>
-              <span>✓ 30-day free trial</span>
-            </div>
+            <p className="text-sm text-muted-foreground mb-4">Join growing startups already transforming with AI</p>
+                      <div className="flex items-center justify-center gap-6 text-xs text-muted-foreground">
+            <span>✓ Custom pricing plans</span>
+            <span>✓ Setup in 5 minutes</span>
+            <span>✓ Flexible payment terms</span>
+          </div>
           </div>
         </div>
       </div>

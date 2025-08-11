@@ -375,15 +375,15 @@ const ContactSection = () => {
             {/* Quick Start CTA */}
             <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl p-6 text-center">
               <h4 className="font-semibold text-foreground mb-2">Ready to get started?</h4>
-              <p className="text-muted-foreground text-sm mb-4">
-                Start your free trial today and see the difference AI can make.
-              </p>
-              <Button
-                onClick={() => window.location.href = "/get-started"}
-                className="w-full bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
-              >
-                Start Free Trial
-              </Button>
+                              <p className="text-muted-foreground text-sm mb-4">
+                  Get a custom quote today and see how AI can transform your business.
+                </p>
+                                  <Button
+                      onClick={() => window.location.href = "/contact"}
+                      className="w-full bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
+                    >
+                      Get Custom Quote
+                    </Button>
             </div>
           </div>
         </div>
