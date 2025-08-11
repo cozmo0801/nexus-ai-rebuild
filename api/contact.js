@@ -18,15 +18,17 @@ module.exports = async (req, res) => {
   }
 
   try {
-    if (!req.body) {
-      console.log('No request body received')
-      return res.status(400).json({ message: 'No data received' })
+    let parsedBody
+    if (req.body && Object.keys(req.body).length > 0) {
+      parsedBody = typeof req.body === 'string' ? safeParseJson(req.body) : req.body
+    } else {
+      const raw = await readBody(req)
+      parsedBody = safeParseJson(raw)
     }
 
-    // Parse the body if it came in as a string
-    const parsedBody = typeof req.body === 'string' ? safeParseJson(req.body) : req.body
     if (!parsedBody) {
-      return res.status(400).json({ message: 'Invalid JSON body' })
+      console.log('No valid JSON body received')
+      return res.status(400).json({ message: 'Invalid or missing JSON body' })
     }
 
     const { firstName, lastName, email, company, phone, subject, message } = parsedBody
@@ -161,4 +163,19 @@ function safeParseJson(value) {
   } catch (_) {
     return null
   }
+}
+
+async function readBody(req) {
+  return new Promise((resolve, reject) => {
+    try {
+      let data = ''
+      req.on('data', (chunk) => {
+        data += chunk
+      })
+      req.on('end', () => resolve(data))
+      req.on('error', (err) => reject(err))
+    } catch (err) {
+      reject(err)
+    }
+  })
 }
