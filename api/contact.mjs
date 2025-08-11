@@ -68,9 +68,9 @@ export default async function handler(req, res) {
           <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="margin-top: 0; color: #333;">Contact Information</h3>
             <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+            <p><strong>Email:</strong> <a href=\"mailto:${email}\">${email}</a></p>
             ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
-            ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}
+            ${phone ? `<p><strong>Phone:</strong> <a href=\"tel:${phone}\">${phone}</a></p>` : ''}
           </div>
           <div style="background: #ffffff; padding: 20px; border: 1px solid #e9ecef; border-radius: 8px;">
             <h3 style="margin-top: 0; color: #333;">Subject</h3>
@@ -84,6 +84,7 @@ export default async function handler(req, res) {
         </div>
       `,
       text: `New Contact Form Submission - NexusCore AI\n\nName: ${firstName} ${lastName}\nEmail: ${email}\n${company ? `Company: ${company}` : ''}\n${phone ? `Phone: ${phone}` : ''}\n\nSubject: ${subject}\n\nMessage:\n${message}\n\nSubmitted on: ${new Date().toLocaleString()}`,
+      reply_to: email,
     }
 
     // Send admin email
@@ -94,6 +95,7 @@ export default async function handler(req, res) {
     })
     if (!resendResponse.ok) {
       const errorText = await resendResponse.text()
+      console.error('Admin email failed:', errorText)
       throw new Error(`Resend API error: ${resendResponse.status} - ${errorText}`)
     }
 
@@ -114,12 +116,23 @@ export default async function handler(req, res) {
         </div>
       `,
       text: `Thanks for reaching out, ${firstName}! We received your message and will get back to you within 24 hours.\n\nYour message:\n${message}`,
+      reply_to: CONTACT_EMAIL,
     }
-    await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify(autoReplyPayload),
-    }).catch(() => {})
+
+    try {
+      const autoRes = await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(autoReplyPayload),
+      })
+      console.log('Auto-reply response status:', autoRes.status)
+      if (!autoRes.ok) {
+        const errText = await autoRes.text()
+        console.error('Auto-reply failed:', errText)
+      }
+    } catch (e) {
+      console.error('Auto-reply error:', e)
+    }
 
     // Fire analytics event (best-effort)
     await postAnalyticsEvent({ type: 'contact_submitted', payload: { firstName, lastName, email, company, phone, subject }, req })
