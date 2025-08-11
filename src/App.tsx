@@ -15,10 +15,8 @@ const queryClient = new QueryClient();
 
 function AnalyticsRouteChangeTracker() {
   const location = useLocation();
-  // @vercel/analytics for SPA: call window.va?.page() on route changes
   React.useEffect(() => {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).va?.page();
     } catch {}
   }, [location.pathname, location.search, location.hash]);

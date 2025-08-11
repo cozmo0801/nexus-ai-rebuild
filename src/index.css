@@ -6,8 +6,7 @@
 
 @layer base {
   :root {
-    /* Core dark theme colors */
-    /* Core dark theme colors - Original design */
+    /* Core dark theme colors - Updated to match original site */
     --background: 233 18% 12%;  /* #1A1A2E approximation */
     --foreground: 0 0% 100%;
 
@@ -17,7 +16,7 @@
     --popover: 233 18% 12%;
     --popover-foreground: 0 0% 100%;
 
-    /* Brand colors - Original */
+    /* Brand colors */
     --primary: 188 100% 42%;  /* Teal primary */
     --primary-foreground: 233 18% 12%;
 
@@ -30,7 +29,7 @@
     --accent: 188 100% 42%;  /* Teal accent */
     --accent-foreground: 233 18% 12%;
 
-    /* Original accent colors */
+    /* Exact accent colors per specifications */
     --accent-teal: 188 100% 42%;     /* #00BCD4 */
     --accent-purple: 271 89% 54%;    /* #8A2BE2 */
     --accent-orange: 39 100% 50%;    /* #FFA500 */
@@ -64,19 +63,12 @@
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 

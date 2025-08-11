@@ -3,133 +3,127 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Linkedin, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Linkedin,
   Send,
   MessageSquare,
   Clock,
   Users,
   CheckCircle,
-  AlertCircle
+  AlertCircle,
 } from "lucide-react";
 import { useState } from "react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    company: '',
-    phone: '',
-    subject: '',
-    message: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    phone: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [statusMessage, setStatusMessage] = useState('');
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    console.log('Submitting form with data:', formData);
+    setSubmitStatus("idle");
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
-      console.log('Response status:', response.status);
-      console.log('Response headers:', response.headers);
+      let data: any;
+      const contentType = response.headers.get("content-type");
 
-      let data;
-      const contentType = response.headers.get('content-type');
-      console.log('Content-Type:', contentType);
-      
-      if (contentType && contentType.includes('application/json')) {
+      if (contentType && contentType.includes("application/json")) {
         try {
           data = await response.json();
-          console.log('Response data:', data);
-        } catch (jsonError) {
-          console.error('Failed to parse JSON response:', jsonError);
-          throw new Error('Invalid JSON response from server');
+        } catch {
+          throw new Error("Invalid JSON response from server");
         }
       } else {
         const responseText = await response.text();
-        console.error('Non-JSON response:', responseText);
         data = { message: responseText };
       }
 
       if (response.ok) {
-        setSubmitStatus('success');
-        setStatusMessage('Thank you! Your message has been sent successfully. We\'ll get back to you within 24 hours.');
-        // Reset form
+        setSubmitStatus("success");
+        setStatusMessage(
+          "Thank you! Your message has been sent successfully. We'll get back to you within 24 hours."
+        );
         setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          company: '',
-          phone: '',
-          subject: '',
-          message: ''
+          firstName: "",
+          lastName: "",
+          email: "",
+          company: "",
+          phone: "",
+          subject: "",
+          message: "",
         });
       } else {
-        setSubmitStatus('error');
+        setSubmitStatus("error");
         setStatusMessage(data.message || `Server error (${response.status}). Please try again.`);
       }
     } catch (error) {
-      console.error('Contact form error:', error);
-      setSubmitStatus('error');
-      setStatusMessage(error instanceof Error ? error.message : 'Network error. Please check your connection and try again.');
+      setSubmitStatus("error");
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Network error. Please check your connection and try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
+
   const contactMethods = [
     {
       icon: Mail,
       title: "Email Us",
       description: "Get in touch via email",
       value: "hello@nexuscore.ai",
-      action: "mailto:hello@nexuscore.ai"
+      action: "mailto:hello@nexuscore.ai",
     },
     {
       icon: Phone,
       title: "Call Us",
       description: "Speak with our team",
       value: "+1 (555) 123-4567",
-      action: "tel:+15551234567"
+      action: "tel:+15551234567",
     },
     {
       icon: MapPin,
       title: "Visit Us",
       description: "Our headquarters",
       value: "San Francisco, CA",
-      action: null
+      action: null,
     },
     {
       icon: Linkedin,
       title: "LinkedIn",
       description: "Connect professionally",
       value: "@nexuscore-ai",
-      action: "https://linkedin.com/company/nexuscore-ai"
-    }
+      action: "https://linkedin.com/company/nexuscore-ai",
+    },
   ];
 
   const supportOptions = [
@@ -137,26 +131,26 @@ const Contact = () => {
       icon: MessageSquare,
       title: "Live Chat",
       description: "Get instant answers to your questions",
-      availability: "24/7 Available"
+      availability: "24/7 Available",
     },
     {
       icon: Clock,
       title: "Response Time",
       description: "We typically respond within",
-      availability: "2 Hours"
+      availability: "2 Hours",
     },
     {
       icon: Users,
       title: "Dedicated Support",
       description: "Personal account manager for enterprise clients",
-      availability: "Enterprise Plans"
-    }
+      availability: "Enterprise Plans",
+    },
   ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       {/* Contact Header */}
       <section className="pt-24 pb-16">
         <div className="container mx-auto px-4">
@@ -165,8 +159,8 @@ const Contact = () => {
               Contact Us
             </h1>
             <p className="text-xl text-muted-foreground leading-relaxed">
-              Ready to transform your business with AI? Let's discuss how NexusCore AI 
-              can be tailored to your specific needs and goals.
+              Ready to transform your business with AI? Let's discuss how NexusCore AI can be tailored
+              to your specific needs and goals.
             </p>
           </div>
         </div>
@@ -176,7 +170,6 @@ const Contact = () => {
       <section className="pb-16">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-            
             {/* Contact Form */}
             <div className="space-y-8">
               <div>
@@ -185,15 +178,13 @@ const Contact = () => {
                   Fill out the form below and we'll get back to you within 24 hours.
                 </p>
               </div>
-              
+
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white">
-                      First Name *
-                    </label>
-                    <Input 
-                      type="text" 
+                    <label className="text-sm font-medium text-white">First Name *</label>
+                    <Input
+                      type="text"
                       name="firstName"
                       value={formData.firstName}
                       onChange={handleInputChange}
@@ -203,11 +194,9 @@ const Contact = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-white">
-                      Last Name *
-                    </label>
-                    <Input 
-                      type="text" 
+                    <label className="text-sm font-medium text-white">Last Name *</label>
+                    <Input
+                      type="text"
                       name="lastName"
                       value={formData.lastName}
                       onChange={handleInputChange}
@@ -217,13 +206,11 @@ const Contact = () => {
                     />
                   </div>
                 </div>
-                
+
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">
-                    Email Address *
-                  </label>
-                  <Input 
-                    type="email" 
+                  <label className="text-sm font-medium text-white">Email Address *</label>
+                  <Input
+                    type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
@@ -232,13 +219,11 @@ const Contact = () => {
                     required
                   />
                 </div>
-                
+
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">
-                    Company
-                  </label>
-                  <Input 
-                    type="text" 
+                  <label className="text-sm font-medium text-white">Company</label>
+                  <Input
+                    type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleInputChange}
@@ -246,13 +231,11 @@ const Contact = () => {
                     className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">
-                    Phone Number
-                  </label>
-                  <Input 
-                    type="tel" 
+                  <label className="text-sm font-medium text-white">Phone Number</label>
+                  <Input
+                    type="tel"
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
@@ -260,13 +243,11 @@ const Contact = () => {
                     className="bg-secondary/50 border-glass text-white placeholder:text-muted-foreground"
                   />
                 </div>
-                
+
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">
-                    Subject *
-                  </label>
-                  <Input 
-                    type="text" 
+                  <label className="text-sm font-medium text-white">Subject *</label>
+                  <Input
+                    type="text"
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
@@ -275,12 +256,10 @@ const Contact = () => {
                     required
                   />
                 </div>
-                
+
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-white">
-                    Message *
-                  </label>
-                  <Textarea 
+                  <label className="text-sm font-medium text-white">Message *</label>
+                  <Textarea
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
@@ -289,33 +268,37 @@ const Contact = () => {
                     required
                   />
                 </div>
-                
+
                 {/* Status Message */}
-                {submitStatus !== 'idle' && (
-                  <div className={`glass-card rounded-2xl p-4 border ${
-                    submitStatus === 'success' 
-                      ? 'border-accent-green bg-accent-green/10' 
-                      : 'border-red-500 bg-red-500/10'
-                  } backdrop-blur-glass`}>
+                {submitStatus !== "idle" && (
+                  <div
+                    className={`glass-card rounded-2xl p-4 border ${
+                      submitStatus === "success"
+                        ? "border-accent-green bg-accent-green/10"
+                        : "border-red-500 bg-red-500/10"
+                    } backdrop-blur-glass`}
+                  >
                     <div className="flex items-center gap-3">
-                      {submitStatus === 'success' ? (
+                      {submitStatus === "success" ? (
                         <CheckCircle className="h-5 w-5 text-accent-green flex-shrink-0" />
                       ) : (
                         <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
                       )}
-                      <p className={`text-sm ${
-                        submitStatus === 'success' ? 'text-accent-green' : 'text-red-500'
-                      }`}>
+                      <p
+                        className={`text-sm ${
+                          submitStatus === "success" ? "text-accent-green" : "text-red-500"
+                        }`}
+                      >
                         {statusMessage}
                       </p>
                     </div>
                   </div>
                 )}
-                
-                <Button 
-                  type="submit" 
-                  variant="hero" 
-                  size="lg" 
+
+                <Button
+                  type="submit"
+                  variant="hero"
+                  size="lg"
                   className="w-full group"
                   disabled={isSubmitting}
                 >
@@ -333,23 +316,23 @@ const Contact = () => {
                 </Button>
               </form>
             </div>
-            
+
             {/* Contact Information */}
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold text-white mb-4">Get in Touch</h2>
                 <p className="text-muted-foreground">
-                  Choose the method that works best for you. Our team is here to help 
-                  you every step of the way.
+                  Choose the method that works best for you. Our team is here to help you every step
+                  of the way.
                 </p>
               </div>
-              
+
               {/* Contact Methods */}
               <div className="space-y-4">
                 {contactMethods.map((method, index) => {
                   const IconComponent = method.icon;
                   return (
-                    <div 
+                    <div
                       key={index}
                       className="glass-card rounded-2xl p-6 hover:shadow-glow transition-all duration-300 border border-glass backdrop-blur-glass group"
                     >
@@ -363,7 +346,7 @@ const Contact = () => {
                           </h3>
                           <p className="text-sm text-white/70 mb-1">{method.description}</p>
                           {method.action ? (
-                            <a 
+                            <a
                               href={method.action}
                               className="text-accent-teal hover:text-accent-purple transition-colors font-medium"
                             >
@@ -378,14 +361,17 @@ const Contact = () => {
                   );
                 })}
               </div>
-              
+
               {/* Support Information */}
               <div className="space-y-4 mt-8">
                 <h3 className="text-xl font-semibold text-white">Support & Response</h3>
                 {supportOptions.map((option, index) => {
                   const IconComponent = option.icon;
                   return (
-                    <div key={index} className="flex items-center gap-4 p-4 glass-card rounded-xl border border-glass backdrop-blur-glass">
+                    <div
+                      key={index}
+                      className="flex items-center gap-4 p-4 glass-card rounded-xl border border-glass backdrop-blur-glass"
+                    >
                       <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-glass text-accent-green shadow-inner">
                         <IconComponent className="h-5 w-5" />
                       </div>
@@ -407,12 +393,10 @@ const Contact = () => {
       <section className="py-16 bg-secondary/30">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Ready to Get Started?
-            </h2>
+            <h2 className="text-4xl font-bold text-white mb-6">Ready to Get Started?</h2>
             <p className="text-lg text-muted-foreground mb-12">
-              Join hundreds of businesses already using NexusCore AI to automate their operations 
-              and accelerate growth. Let's discuss your specific needs today.
+              Join hundreds of businesses already using NexusCore AI to automate their operations and
+              accelerate growth. Let's discuss your specific needs today.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Button variant="hero" size="lg" className="w-full sm:w-auto">

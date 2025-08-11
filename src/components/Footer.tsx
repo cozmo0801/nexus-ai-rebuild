@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <Zap className="h-6 w-6 text-accent-purple" />
+              <Zap className="h-6 w-6 text-accent-teal" />
               <span className="text-xl font-bold text-white">NexusCore AI</span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed max-w-md">
