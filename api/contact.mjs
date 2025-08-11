@@ -54,10 +54,12 @@ export default async function handler(req, res) {
     const RESEND_API_KEY = (process.env.RESEND_API_KEY || '').trim()
     const CONTACT_EMAIL = (process.env.CONTACT_EMAIL || process.env.EMAIL_TO || 'hello@nexuscore.ai').trim()
     const EMAIL_FROM = (process.env.EMAIL_FROM || 'NexusCore AI Contact <onboarding@resend.dev>').trim()
+    const RESEND_TEST_RECIPIENT = (process.env.RESEND_TEST_RECIPIENT || '').trim()
     console.log('Env presence:', {
       RESEND_API_KEY: !!RESEND_API_KEY,
       CONTACT_EMAIL: !!CONTACT_EMAIL,
       EMAIL_FROM: !!EMAIL_FROM,
+      RESEND_TEST_RECIPIENT: !!RESEND_TEST_RECIPIENT,
     })
 
     if (!RESEND_API_KEY) {
@@ -77,9 +79,9 @@ export default async function handler(req, res) {
           <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="margin-top: 0; color: #333;">Contact Information</h3>
             <p><strong>Name:</strong> ${firstName} ${lastName}</p>
-            <p><strong>Email:</strong> <a href=\"mailto:${email}\">${email}</a></p>
+            <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
             ${company ? `<p><strong>Company:</strong> ${company}</p>` : ''}
-            ${phone ? `<p><strong>Phone:</strong> <a href=\"tel:${phone}\">${phone}</a></p>` : ''}
+            ${phone ? `<p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>` : ''}
           </div>
           <div style="background: #ffffff; padding: 20px; border: 1px solid #e9ecef; border-radius: 8px;">
             <h3 style="margin-top: 0; color: #333;">Subject</h3>
@@ -139,6 +141,23 @@ export default async function handler(req, res) {
       if (!autoRes.ok) {
         const errText = await autoRes.text()
         console.error('Auto-reply failed:', errText)
+        // Fallback for test-mode 403
+        if (autoRes.status === 403 && RESEND_TEST_RECIPIENT) {
+          console.log('Sending simulated auto-reply to RESEND_TEST_RECIPIENT...')
+          const simulatedPayload = {
+            from: EMAIL_FROM,
+            to: [RESEND_TEST_RECIPIENT],
+            subject: `Simulated auto-reply intended for ${email}`,
+            html: `<p>Original recipient: ${email}</p>` + autoReplyPayload.html,
+            text: `Original recipient: ${email}\n\n` + autoReplyPayload.text,
+          }
+          const simRes = await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify(simulatedPayload),
+          })
+          console.log('Simulated auto-reply status:', simRes.status)
+        }
       }
     } catch (e) {
       console.error('Auto-reply error:', e)
