@@ -61,6 +61,7 @@ export default async function handler(req, res) {
       EMAIL_FROM: !!EMAIL_FROM,
       RESEND_TEST_RECIPIENT: !!RESEND_TEST_RECIPIENT,
     })
+    console.log('EMAIL_FROM value:', EMAIL_FROM)
 
     if (!RESEND_API_KEY) {
       return res.status(500).json({ message: 'Email service not configured. Missing RESEND_API_KEY.', success: false })
@@ -98,6 +99,7 @@ export default async function handler(req, res) {
       reply_to: email,
     }
 
+    console.log('Admin from:', adminEmailPayload.from)
     console.log('Sending admin email...')
     const resendResponse = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -130,6 +132,7 @@ export default async function handler(req, res) {
       reply_to: CONTACT_EMAIL,
     }
 
+    console.log('Auto-reply from:', autoReplyPayload.from)
     console.log('Sending auto-reply...')
     try {
       const autoRes = await fetch('https://api.resend.com/emails', {
@@ -141,7 +144,6 @@ export default async function handler(req, res) {
       if (!autoRes.ok) {
         const errText = await autoRes.text()
         console.error('Auto-reply failed:', errText)
-        // Fallback for test-mode 403
         if (autoRes.status === 403 && RESEND_TEST_RECIPIENT) {
           console.log('Sending simulated auto-reply to RESEND_TEST_RECIPIENT...')
           const simulatedPayload = {
