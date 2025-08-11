@@ -2,66 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* NexusCore AI Design System - Modern dark theme with vibrant accents */
+/* NexusCore AI Design System - Updated palette inspired by preferred UI */
 
 @layer base {
   :root {
-    /* Core dark theme colors - Updated to match original site */
-    --background: 233 18% 12%;  /* #1A1A2E approximation */
-    --foreground: 0 0% 100%;
+    /* Light theme */
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
 
-    --card: 233 18% 12%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
 
-    --popover: 233 18% 12%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 47.4% 11.2%;
 
-    /* Brand colors */
-    --primary: 188 100% 42%;  /* Teal primary */
-    --primary-foreground: 233 18% 12%;
+    /* Brand */
+    --primary: 262.1 83.3% 57.8%; /* violet */
+    --primary-foreground: 210 40% 98%;
 
-    --secondary: 233 25% 20%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
 
-    --muted: 233 15% 25%;
-    --muted-foreground: 0 0% 75%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
 
-    --accent: 188 100% 42%;  /* Teal accent */
-    --accent-foreground: 233 18% 12%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
 
-    /* Exact accent colors per specifications */
-    --accent-teal: 188 100% 42%;     /* #00BCD4 */
-    --accent-purple: 271 89% 54%;    /* #8A2BE2 */
-    --accent-orange: 39 100% 50%;    /* #FFA500 */
-    --accent-green: 123 100% 50%;    /* #32CD32 */
-    --accent-pink: 330 100% 71%;     /* #FF69B4 */
+    /* Accent swatches */
+    --accent-teal: 262.1 83.3% 57.8%;
+    --accent-purple: 262.1 83.3% 57.8%;
+    --accent-orange: 24.6 95% 53.1%;
+    --accent-green: 142.1 76.2% 36.3%;
+    --accent-pink: 330 81% 60%;
 
-    /* Interactive states */
+    /* States */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 233 15% 25%;
-    --input: 233 15% 25%;
-    --ring: 188 100% 42%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 262.1 83.3% 57.8%;
 
     --radius: 0.75rem;
 
-    /* Custom glassmorphism gradients and effects - Original */
-    --gradient-primary: linear-gradient(135deg, hsl(271 89% 54%), hsl(233 18% 12%));
-    --gradient-hero: linear-gradient(180deg, hsl(233 18% 8%), hsl(233 25% 4%));
-    --gradient-accent: linear-gradient(135deg, hsl(188 100% 42%), hsl(271 89% 54%));
-    --gradient-glass: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-    --gradient-button: linear-gradient(145deg, hsl(271 89% 54%), hsl(330 100% 71%), hsl(39 100% 50%));
-    --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+    /* Gradients and effects */
+    --gradient-primary: linear-gradient(135deg, hsl(262.1 83.3% 57.8%), hsl(220 90% 55%));
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 100%), hsl(240 4.8% 95.9%));
+    --gradient-accent: linear-gradient(135deg, hsl(262.1 83.3% 57.8%), hsl(220 90% 55%));
+    --gradient-glass: linear-gradient(145deg, rgba(0,0,0,0.06), rgba(0,0,0,0.03));
+    --gradient-button: linear-gradient(145deg, hsl(262.1 83.3% 57.8%), hsl(330 81% 60%), hsl(24.6 95% 53.1%));
+    --gradient-card: linear-gradient(145deg, rgba(0,0,0,0.04), rgba(0,0,0,0.01));
 
-    /* Glassmorphism shadows and effects - Original */
-    --shadow-glow: 0 0 40px hsl(271 89% 54% / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.5);
-    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    --shadow-inner: inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-    --border-glass: rgba(255, 255, 255, 0.2);
+    --shadow-glow: 0 0 40px hsl(262.1 83.3% 57.8% / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(0 0% 0% / 0.1);
+    --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+    --shadow-inner: inset 0 1px 0 0 rgba(0, 0, 0, 0.05);
+    --border-glass: rgba(0, 0, 0, 0.08);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
+    /* Sidebar (light) */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -69,7 +69,7 @@
     --sidebar-accent: 240 4.8% 95.9%;
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 262.1 83.3% 57.8%;
   }
 
   .dark {
@@ -82,8 +82,8 @@
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 40% 98%;
 
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -99,7 +99,9 @@
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --ring: 263.4 70% 50.4%;
+
+    /* Sidebar (dark) */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -107,7 +109,7 @@
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-ring: 262.1 83.3% 57.8%;
   }
 }
 
@@ -118,7 +120,6 @@
 
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(135deg, #1A1A2E 0%, #16213E 50%, #0F0F23 100%);
     min-height: 100vh;
   }
 
@@ -136,19 +137,19 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, hsl(188 100% 42%), hsl(271 89% 54%));
+    background: linear-gradient(135deg, hsl(262.1 83.3% 57.8%), hsl(330 81% 60%));
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 188, 212, 0.3);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
   }
 
   .slider::-moz-range-thumb {
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, hsl(188 100% 42%), hsl(271 89% 54%));
+    background: linear-gradient(135deg, hsl(262.1 83.3% 57.8%), hsl(330 81% 60%));
     cursor: pointer;
     border: none;
-    box-shadow: 0 2px 8px rgba(0, 188, 212, 0.3);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
   }
 
   /* Blob animations */
@@ -334,9 +335,9 @@
   }
 
   .glass-nav {
-    background: rgba(15, 12, 41, 0.8);
+    background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
   /* Background paths animation */
@@ -348,7 +349,7 @@
   }
 
   .path-line {
-    stroke: rgba(255, 255, 255, 0.03);
+    stroke: rgba(0, 0, 0, 0.05);
     stroke-width: 1;
     fill: none;
     opacity: 0;
