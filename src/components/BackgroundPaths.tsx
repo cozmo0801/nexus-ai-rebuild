@@ -25,9 +25,8 @@ const BackgroundPaths = () => {
       >
         <defs>
           <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="rgba(139, 95, 191, 0.1)" />
-            <stop offset="50%" stopColor="rgba(255, 107, 53, 0.1)" />
-            <stop offset="100%" stopColor="rgba(0, 212, 170, 0.1)" />
+            <stop offset="0%" stopColor="hsla(var(--accent-purple) / 0.12)" />
+            <stop offset="100%" stopColor="hsla(var(--accent-green) / 0.12)" />
           </linearGradient>
         </defs>
         
@@ -101,11 +100,12 @@ const BackgroundPaths = () => {
       
       {/* Floating particles */}
       <div className="absolute inset-0 overflow-hidden">
-        {[...Array(12)].map((_, i) => (
+        {[...Array(10)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-accent-teal/20 rounded-full animate-float"
+            className="absolute w-1 h-1 rounded-full animate-float"
             style={{
+              background: 'hsla(var(--accent-purple) / 0.25)',
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 6}s`,
