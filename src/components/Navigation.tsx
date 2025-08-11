@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Zap, Menu } from "lucide-react";
+import { Moon, Sun, Zap, Menu, MessageSquare } from "lucide-react";
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
@@ -21,6 +21,23 @@ const Navigation = () => {
   const Underline = () => (
     <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300" />
   );
+
+  const openChat = () => {
+    // @ts-ignore
+    if (window.loadChatbase) {
+      // @ts-ignore
+      window.loadChatbase();
+      // Give the embed a moment to initialize, then try to open if API exposes toggle
+      setTimeout(() => {
+        // @ts-ignore
+        if (window.chatbase) {
+          try {
+            // some embeds open automatically once loaded; this is a no-op safety
+          } catch {}
+        }
+      }, 300);
+    }
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 glass-nav">
@@ -49,6 +66,9 @@ const Navigation = () => {
           </div>
 
           <div className="flex items-center gap-3">
+            <Button variant="outline" size="icon" className="hidden md:inline-flex" onClick={openChat} aria-label="Open chat">
+              <MessageSquare className="h-4 w-4" />
+            </Button>
             <button
               onClick={toggleTheme}
               className="p-2 rounded-lg glass-card hover:bg-white/20 transition-all duration-300 border-glass focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal"
@@ -101,11 +121,14 @@ const Navigation = () => {
                       FAQ
                     </Link>
                   </SheetClose>
+                  <Button variant="outline" onClick={openChat}>
+                    Chat
+                  </Button>
                   <Button
                     variant="hero"
                     size="default"
                     onClick={() => (window.location.href = "/get-started")}
-                    className="mt-4"
+                    className="mt-2"
                   >
                     Get Started
                   </Button>
