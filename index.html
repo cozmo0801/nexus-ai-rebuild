@@ -12,15 +12,13 @@
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
-
-    <!-- Vercel Analytics for Vite/SPA -->
-    <script defer src="/_vercel/insights/script.js"></script>
   </head>
 
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- Vercel Web Analytics for Vite/SPA -->
+    <!-- Vercel Analytics scripts (not bundled by Vite) -->
+    <script defer src="/_vercel/insights/script.js"></script>
     <script defer src="/_vercel/analytics/script.js"></script>
   </body>
 </html>
