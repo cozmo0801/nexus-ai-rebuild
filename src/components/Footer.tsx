@@ -1,4 +1,5 @@
 import { Zap } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -22,19 +23,19 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Solutions</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/solutions" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   AI Chatbots
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/solutions" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   Automation
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/solutions" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   Customer Service
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -44,19 +45,19 @@ const Footer = () => {
             <h3 className="font-semibold text-white mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   About Us
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/contact" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   Contact
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
+                <Link to="/faq" className="text-white/70 hover:text-accent-teal transition-colors text-sm">
                   Support
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
