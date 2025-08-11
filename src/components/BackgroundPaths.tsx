@@ -62,58 +62,7 @@ const BackgroundPaths = () => {
           strokeWidth="1"
           fill="none"
         />
-        
-        {/* Diagonal intersecting lines */}
-        <path
-          className="path-line"
-          d="M0,0 L1200,800"
-          stroke="rgba(139, 95, 191, 0.05)"
-          strokeWidth="0.5"
-          fill="none"
-        />
-        
-        <path
-          className="path-line"
-          d="M0,800 L1200,0"
-          stroke="rgba(0, 212, 170, 0.05)"
-          strokeWidth="0.5"
-          fill="none"
-        />
-        
-        {/* Additional flowing lines */}
-        <path
-          className="path-line"
-          d="M-100,200 Q500,100 800,300 Q1000,400 1300,250"
-          stroke="rgba(255, 107, 53, 0.08)"
-          strokeWidth="1"
-          fill="none"
-        />
-        
-        <path
-          className="path-line"
-          d="M-50,600 Q450,500 750,700 Q950,800 1250,650"
-          stroke="rgba(139, 95, 191, 0.08)"
-          strokeWidth="1"
-          fill="none"
-        />
       </svg>
-      
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(10)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 rounded-full animate-float"
-            style={{
-              background: 'hsla(var(--accent-purple) / 0.25)',
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 6}s`,
-              animationDuration: `${4 + Math.random() * 4}s`
-            }}
-          />
-        ))}
-      </div>
     </div>
   );
 };
