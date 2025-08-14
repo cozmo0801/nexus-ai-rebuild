@@ -30,6 +30,9 @@ const Logo = ({
 
   const { icon, text, container } = sizeMap[size];
 
+  // Check if the logo is an SVG file
+  const isSVG = customLogoSrc?.toLowerCase().endsWith('.svg');
+
   return (
     <Link to="/" className={`flex items-center ${container} group ${className}`}>
       {/* Custom Logo Image */}
@@ -37,7 +40,19 @@ const Logo = ({
         <img 
           src={customLogoSrc}
           alt={customLogoAlt}
-          className={`${icon} object-contain transition-transform duration-300 group-hover:scale-110`}
+          className={`${icon} object-contain transition-transform duration-300 group-hover:scale-110 ${
+            isSVG 
+              ? 'svg-logo' // Special class for SVG logos
+              : ''
+          }`}
+          style={{
+            // Ensure SVG logos maintain crisp quality
+            ...(isSVG && {
+              imageRendering: 'optimizeQuality',
+              shapeRendering: 'geometricPrecision',
+              textRendering: 'optimizeLegibility'
+            })
+          }}
         />
       )}
       
