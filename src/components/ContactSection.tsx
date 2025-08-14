@@ -176,7 +176,7 @@ const ContactSection = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     placeholder="Your full name"
-                    className="w-full"
+                    className="w-full bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background hover:border-accent-purple/50"
                   />
                 </div>
                 <div>
@@ -191,7 +191,7 @@ const ContactSection = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="your@email.com"
-                    className="w-full"
+                    className="w-full bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background hover:border-accent-purple/50"
                   />
                 </div>
               </div>
@@ -208,7 +208,7 @@ const ContactSection = () => {
                     value={formData.company}
                     onChange={handleInputChange}
                     placeholder="Your company"
-                    className="w-full"
+                    className="w-full bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background hover:border-accent-purple/50"
                   />
                 </div>
                 <div>
@@ -222,7 +222,7 @@ const ContactSection = () => {
                     value={formData.website}
                     onChange={handleInputChange}
                     placeholder="https://yourwebsite.com"
-                    className="w-full"
+                    className="w-full bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background hover:border-accent-purple/50"
                   />
                 </div>
               </div>
@@ -239,7 +239,7 @@ const ContactSection = () => {
                   onChange={handleInputChange}
                   placeholder="Tell us about your business automation needs..."
                   rows={5}
-                  className="w-full resize-none"
+                  className="w-full bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 resize-none focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background hover:border-accent-purple/50"
                 />
               </div>
 

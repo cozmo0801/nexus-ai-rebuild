@@ -303,8 +303,8 @@ const Contact = () => {
                       onFocus={() => setActiveField("firstName")}
                       onBlur={() => setActiveField(null)}
                       placeholder="John"
-                      className={`bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground transition-all duration-300 ${
-                        activeField === "firstName" ? "border-accent-teal/50 shadow-glow" : ""
+                      className={`bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background ${
+                        activeField === "firstName" ? "border-accent-teal shadow-lg shadow-accent-teal/10" : "hover:border-accent-purple/50"
                       }`}
                       required
                     />
@@ -319,8 +319,8 @@ const Contact = () => {
                       onFocus={() => setActiveField("lastName")}
                       onBlur={() => setActiveField(null)}
                       placeholder="Doe"
-                      className={`bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground transition-all duration-300 ${
-                        activeField === "lastName" ? "border-accent-teal/50 shadow-glow" : ""
+                      className={`bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background ${
+                        activeField === "lastName" ? "border-accent-teal shadow-lg shadow-accent-teal/10" : "hover:border-accent-purple/50"
                       }`}
                       required
                     />
@@ -338,8 +338,8 @@ const Contact = () => {
                       onFocus={() => setActiveField("email")}
                       onBlur={() => setActiveField(null)}
                       placeholder="john@company.com"
-                      className={`bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground transition-all duration-300 ${
-                        activeField === "email" ? "border-accent-teal/50 shadow-glow" : ""
+                      className={`bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background ${
+                        activeField === "email" ? "border-accent-teal shadow-lg shadow-accent-teal/10" : "hover:border-accent-purple/50"
                       }`}
                       required
                     />
@@ -354,8 +354,8 @@ const Contact = () => {
                       onFocus={() => setActiveField("phone")}
                       onBlur={() => setActiveField(null)}
                       placeholder="+1 (555) 123-4567"
-                      className={`bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground transition-all duration-300 ${
-                        activeField === "phone" ? "border-accent-teal/50 shadow-glow" : ""
+                      className={`bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background ${
+                        activeField === "phone" ? "border-accent-teal shadow-lg shadow-accent-teal/10" : "hover:border-accent-purple/50"
                       }`}
                     />
                   </div>
@@ -372,8 +372,8 @@ const Contact = () => {
                       onFocus={() => setActiveField("company")}
                       onBlur={() => setActiveField(null)}
                       placeholder="Your Company"
-                      className={`bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground transition-all duration-300 ${
-                        activeField === "company" ? "border-accent-teal/50 shadow-glow" : ""
+                      className={`bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background ${
+                        activeField === "company" ? "border-accent-teal shadow-lg shadow-accent-teal/10" : "hover:border-accent-purple/50"
                       }`}
                     />
                   </div>
@@ -387,8 +387,8 @@ const Contact = () => {
                       onFocus={() => setActiveField("subject")}
                       onBlur={() => setActiveField(null)}
                       placeholder="How can we help?"
-                      className={`bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground transition-all duration-300 ${
-                        activeField === "subject" ? "border-accent-teal/50 shadow-glow" : ""
+                      className={`bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background ${
+                        activeField === "subject" ? "border-accent-teal shadow-lg shadow-accent-teal/10" : "hover:border-accent-purple/50"
                       }`}
                       required
                     />
@@ -405,8 +405,8 @@ const Contact = () => {
                     onBlur={() => setActiveField(null)}
                     placeholder="Tell us about your project, goals, or any questions you have..."
                     rows={6}
-                    className={`bg-secondary/50 border-glass text-foreground placeholder:text-muted-foreground transition-all duration-300 resize-none ${
-                      activeField === "message" ? "border-accent-teal/50 shadow-glow" : ""
+                    className={`bg-background border-2 border-border text-foreground placeholder:text-muted-foreground transition-all duration-300 resize-none focus:border-accent-teal focus:ring-2 focus:ring-accent-teal/20 focus:ring-offset-2 focus:ring-offset-background ${
+                      activeField === "message" ? "border-accent-teal shadow-lg shadow-accent-teal/10" : "hover:border-accent-purple/50"
                     }`}
                     required
                   />
