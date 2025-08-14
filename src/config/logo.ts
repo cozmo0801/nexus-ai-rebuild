@@ -2,10 +2,10 @@
 // Set this to true to use your custom logo, false to use the fallback icon + text
 export const LOGO_CONFIG = {
   // Set to true when you want to use your custom logo
-  useCustomLogo: false,
+  useCustomLogo: true,
   
   // Path to your custom logo file (relative to public directory)
-  customLogoSrc: "/images/logo.png",
+  customLogoSrc: "/images/nexuscore logo.JPG",
   
   // Alt text for your logo
   customLogoAlt: "NexusCore AI Logo",
