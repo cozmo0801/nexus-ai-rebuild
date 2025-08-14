@@ -1,189 +1,160 @@
-import { Button } from "@/components/ui/button";
-import { Moon, Sun, Zap, Menu, MessageSquare, X } from "lucide-react";
-import { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
-import { LiquidButton } from "@/components/ui/liquid-glass-button";
-import { useTheme } from "@/components/theme-provider";
+import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
+import { Button } from "@/components/ui/button";
+import { Menu, X, Underline } from "lucide-react";
 import Logo from "@/components/ui/logo";
+import { FloatingNav } from "@/components/ui/floating-navbar";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 
 const Navigation = () => {
-  const [isDark, setIsDark] = useState(true);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { pathname } = useLocation();
+  const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle("dark");
-  };
-
-  const navLinkClass = (to: string) =>
-    `text-foreground transition-all duration-300 relative group ${
-      pathname === to ? "text-accent-teal" : "hover:text-accent-teal"
+  const navLinkClass = (path: string) => {
+    const isActive = location.pathname === path;
+    return `relative px-3 py-2 text-sm font-medium transition-all duration-300 group ${
+      isActive 
+        ? 'text-accent-purple' 
+        : 'text-muted-foreground hover:text-foreground'
     }`;
-
-  const Underline = () => (
-    <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-accent-teal to-accent-purple group-hover:w-full transition-all duration-300" />
-  );
-
-  const openChat = () => {
-    // @ts-ignore
-    if (window.loadChatbase) {
-      // @ts-ignore
-      window.loadChatbase();
-      // Give the embed a moment to initialize, then try to open if API exposes toggle
-      setTimeout(() => {
-        // @ts-ignore
-        if (window.chatbase) {
-          try {
-            // some embeds open automatically once loaded; this is a no-op safety
-          } catch {}
-        }
-      }, 300);
-    }
   };
+
+  const navItems = [
+    { name: "Home", link: "/", icon: "🏠" },
+    { name: "Solutions", link: "/solutions", icon: "⚡" },
+    { name: "Contact", link: "/contact", icon: "📞" },
+    { name: "FAQ", link: "/faq", icon: "❓" },
+  ];
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      isScrolled 
-        ? 'glass-nav shadow-lg backdrop-blur-xl bg-white/80 dark:bg-black/80 border-b border-white/10 dark:border-white/5' 
-        : 'glass-nav'
-    }`}>
-      <div className="container mx-auto px-4">
-        <div className="flex items-center h-16">
-          {/* Logo with enhanced animation */}
-          <div className="flex-shrink-0">
-            <Logo size="xl" />
-          </div>
-
-          {/* Desktop links with enhanced interactions - centered */}
-          <div className="hidden md:flex items-center justify-center flex-1 mx-8">
-            <div className="flex items-center gap-8">
-              <Link to="/" className={navLinkClass("/")}>
-                <span className="relative">
-                  Home
-                  <Underline />
-                </span>
-              </Link>
-              <Link to="/solutions" className={navLinkClass("/solutions")}>
-                <span className="relative">
-                  Solutions
-                  <Underline />
-                </span>
-              </Link>
-              <Link to="/contact" className={navLinkClass("/contact")}>
-                <span className="relative">
-                  Contact
-                  <Underline />
-                </span>
-              </Link>
-              <Link to="/faq" className={navLinkClass("/faq")}>
-                <span className="relative">
-                  FAQ
-                  <Underline />
-                </span>
-              </Link>
+    <>
+      {/* Floating Navigation Bar */}
+      <FloatingNav navItems={navItems} />
+      
+      {/* Main Navigation Bar */}
+      <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center h-20">
+            {/* Logo with enhanced animation - much bigger now */}
+            <div className="flex-shrink-0">
+              <Logo size="xxl" />
             </div>
-          </div>
 
-          {/* Right side actions */}
-          <div className="flex items-center gap-3 flex-shrink-0">
-            {/* Enhanced chat button */}
-            <button
-              onClick={openChat}
-              className="hidden sm:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-xl text-accent-purple hover:bg-accent-purple/20 transition-all duration-300 group"
-            >
-              <MessageSquare className="h-4 w-4 group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">Chat</span>
-            </button>
+            {/* Desktop links with enhanced interactions - centered */}
+            <div className="hidden md:flex items-center justify-center flex-1 mx-8">
+              <div className="flex items-center gap-8">
+                <Link to="/" className={navLinkClass("/")}>
+                  <span className="relative">
+                    Home
+                    <Underline />
+                  </span>
+                </Link>
+                <Link to="/solutions" className={navLinkClass("/solutions")}>
+                  <span className="relative">
+                    Solutions
+                    <Underline />
+                  </span>
+                </Link>
+                <Link to="/contact" className={navLinkClass("/contact")}>
+                  <span className="relative">
+                    Contact
+                    <Underline />
+                  </span>
+                </Link>
+                <Link to="/faq" className={navLinkClass("/faq")}>
+                  <span className="relative">
+                    FAQ
+                    <Underline />
+                  </span>
+                </Link>
+              </div>
+            </div>
 
-            {/* Theme toggle */}
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300"
-            >
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </button>
+            {/* Right side actions */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <LiquidButton 
+                size="default"
+                onClick={() => window.location.href = '/contact'}
+                className="hidden sm:flex"
+              >
+                Get Quote
+              </LiquidButton>
 
-            {/* CTA Button */}
-            <LiquidButton
-              size="default"
-              onClick={() => window.location.href = '/contact'}
-              className="hidden sm:flex"
-            >
-              Get Quote
-            </LiquidButton>
+              {/* Mobile menu button */}
+              <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="md:hidden"
+                  onClick={() => setIsMobileMenuOpen(true)}
+                >
+                  <Menu className="h-6 w-6" />
+                </Button>
+                <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+                  <div className="flex flex-col h-full">
+                    {/* Mobile menu header */}
+                    <div className="flex items-center justify-between mb-8">
+                      <Logo size="xl" onClick={() => setIsMobileMenuOpen(false)} />
+                      <SheetClose asChild>
+                        <button className="p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300">
+                          <X className="h-5 w-5" />
+                        </button>
+                      </SheetClose>
+                    </div>
 
-            {/* Mobile menu button */}
-            <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <button className="md:hidden p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300">
-                  <Menu className="h-5 w-5" />
-                </button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-80 bg-background/95 backdrop-blur-xl border-l border-border/50">
-                <div className="flex flex-col h-full">
-                  {/* Mobile menu header */}
-                  <div className="flex items-center justify-between mb-8">
-                    <Logo size="lg" onClick={() => setIsMobileMenuOpen(false)} />
-                    <SheetClose asChild>
-                      <button className="p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300">
-                        <X className="h-5 w-5" />
-                      </button>
-                    </SheetClose>
-                  </div>
-
-                  {/* Mobile navigation links */}
-                  <nav className="flex-1 space-y-4">
-                    {[
-                      { to: "/", label: "Home" },
-                      { to: "/solutions", label: "Solutions" },
-                      { to: "/contact", label: "Contact" },
-                      { to: "/faq", label: "FAQ" }
-                    ].map((link) => (
+                    {/* Mobile navigation links */}
+                    <nav className="flex-1 space-y-4">
                       <Link
-                        key={link.to}
-                        to={link.to}
-                        className={`block p-3 rounded-xl text-lg font-medium transition-all duration-300 ${
-                          pathname === link.to
-                            ? "bg-accent-purple/10 text-accent-purple border border-accent-purple/20"
-                            : "text-foreground hover:bg-accent-purple/5 hover:text-accent-purple"
-                        }`}
+                        to="/"
+                        className="block px-4 py-3 text-lg font-medium text-foreground hover:bg-accent-purple/10 rounded-xl transition-colors"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
-                        {link.label}
+                        Home
                       </Link>
-                    ))}
-                  </nav>
+                      <Link
+                        to="/solutions"
+                        className="block px-4 py-3 text-lg font-medium text-foreground hover:bg-accent-purple/10 rounded-xl transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Solutions
+                      </Link>
+                      <Link
+                        to="/contact"
+                        className="block px-4 py-3 text-lg font-medium text-foreground hover:bg-accent-purple/10 rounded-xl transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        Contact
+                      </Link>
+                      <Link
+                        to="/faq"
+                        className="block px-4 py-3 text-lg font-medium text-foreground hover:bg-accent-purple/10 rounded-xl transition-colors"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        FAQ
+                      </Link>
+                    </nav>
 
-                  {/* Mobile CTA */}
-                  <div className="pt-6 border-t border-border/50">
-                    <LiquidButton
-                      onClick={() => {
-                        setIsMobileMenuOpen(false);
-                        window.location.href = '/contact';
-                      }}
-                      className="w-full"
-                    >
-                      Get Custom Quote
-                    </LiquidButton>
+                    {/* Mobile CTA */}
+                    <div className="pt-6 border-t border-border">
+                      <LiquidButton
+                        onClick={() => {
+                          setIsMobileMenuOpen(false);
+                          window.location.href = '/contact';
+                        }}
+                        className="w-full"
+                      >
+                        Get Custom Quote
+                      </LiquidButton>
+                    </div>
                   </div>
-                </div>
-              </SheetContent>
-            </Sheet>
+                </SheetContent>
+              </Sheet>
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 

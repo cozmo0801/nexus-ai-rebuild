@@ -5,7 +5,7 @@ import { LOGO_CONFIG } from "@/config/logo";
 interface LogoProps {
   className?: string;
   showText?: boolean;
-  size?: "sm" | "md" | "lg" | "xl";
+  size?: "sm" | "md" | "lg" | "xl" | "xxl";
   useCustomLogo?: boolean;
   customLogoSrc?: string;
   customLogoAlt?: string;
@@ -19,12 +19,13 @@ const Logo = ({
   customLogoSrc = LOGO_CONFIG.customLogoSrc,
   customLogoAlt = LOGO_CONFIG.customLogoAlt
 }: LogoProps) => {
-  // Logo size mappings - making all sizes bigger for better visibility
+  // Logo size mappings - making all sizes much bigger for better visibility
   const sizeMap = {
-    sm: { icon: "h-8 w-8", text: "text-lg", container: "gap-3" },
-    md: { icon: "h-10 w-10", text: "text-xl", container: "gap-4" },
-    lg: { icon: "h-12 w-12", text: "text-2xl", container: "gap-4" },
-    xl: { icon: "h-16 w-16", text: "text-3xl", container: "gap-5" }
+    sm: { icon: "h-12 w-12", text: "text-xl", container: "gap-4" },
+    md: { icon: "h-16 w-16", text: "text-2xl", container: "gap-5" },
+    lg: { icon: "h-20 w-20", text: "text-3xl", container: "gap-5" },
+    xl: { icon: "h-24 w-24", text: "text-4xl", container: "gap-6" },
+    xxl: { icon: "h-32 w-32", text: "text-5xl", container: "gap-8" }
   };
 
   const { icon, text, container } = sizeMap[size];
