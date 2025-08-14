@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Hammer } from "lucide-react";
 import Logo from "@/components/ui/logo";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
@@ -22,7 +22,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Home", link: "/", icon: "🏠" },
-    { name: "Solutions", link: "/solutions", icon: "⚡" },
+    { name: "Solutions", link: "/solutions", icon: "🔨" },
     { name: "Contact", link: "/contact", icon: "📞" },
     { name: "FAQ", link: "/faq", icon: "❓" },
   ];
@@ -69,15 +69,7 @@ const Navigation = () => {
 
             {/* Right side actions */}
             <div className="flex items-center gap-3 flex-shrink-0">
-              <LiquidButton 
-                size="default"
-                onClick={() => window.location.href = '/contact'}
-                className="hidden sm:flex"
-              >
-                Get Quote
-              </LiquidButton>
-
-              {/* Mobile menu button */}
+              {/* Mobile menu button - moved to top right */}
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <Button
                   variant="ghost"
@@ -146,6 +138,26 @@ const Navigation = () => {
                   </div>
                 </SheetContent>
               </Sheet>
+
+              {/* Solutions Quick Access Button - Hammer icon */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="hidden sm:flex hover:bg-accent-purple/10 text-accent-purple hover:text-accent-purple transition-all duration-300"
+                onClick={() => window.location.href = '/solutions'}
+                title="View Solutions"
+              >
+                <Hammer className="h-5 w-5" />
+              </Button>
+
+              {/* Get Quote Button */}
+              <LiquidButton 
+                size="default"
+                onClick={() => window.location.href = '/contact'}
+                className="hidden sm:flex"
+              >
+                Get Quote
+              </LiquidButton>
             </div>
           </div>
         </div>
