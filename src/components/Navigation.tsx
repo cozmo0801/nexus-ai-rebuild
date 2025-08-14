@@ -1,24 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu, X, Hammer } from "lucide-react";
-import Logo from "@/components/ui/logo";
-import { FloatingNav } from "@/components/ui/floating-navbar";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import { FloatingNav } from "@/components/ui/floating-navbar";
+import Logo from "@/components/ui/logo";
+import { CompactThemeToggle } from "@/components/ui/theme-toggle";
+import { ScrollProgress } from "@/components/ui/custom-scrollbar";
 
 const Navigation = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  const navLinkClass = (path: string) => {
-    const isActive = location.pathname === path;
-    return `relative px-3 py-2 text-sm font-medium transition-all duration-300 group ${
-      isActive 
-        ? 'text-accent-purple' 
-        : 'text-muted-foreground hover:text-foreground'
-    }`;
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", link: "/", icon: "🏠" },
@@ -27,13 +30,29 @@ const Navigation = () => {
     { name: "FAQ", link: "/faq", icon: "❓" },
   ];
 
+  const navLinkClass = (path: string) => {
+    const isActive = location.pathname === path;
+    return `relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+      isActive
+        ? "text-accent-teal bg-accent-teal/10 border border-accent-teal/20"
+        : "text-muted-foreground hover:text-foreground hover:bg-accent-purple/5 hover:border-accent-purple/20 border border-transparent"
+    }`;
+  };
+
   return (
     <>
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress height="3px" />
+      
       {/* Floating Navigation Bar */}
       <FloatingNav navItems={navItems} />
-      
+
       {/* Main Navigation Bar */}
-      <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <nav className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
+        isScrolled 
+          ? "bg-background/95 backdrop-blur-md shadow-lg border-border/50" 
+          : "bg-background/80 backdrop-blur-sm border-border/20"
+      }`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center h-20">
             {/* Logo with enhanced animation - much bigger now */}
@@ -69,6 +88,9 @@ const Navigation = () => {
 
             {/* Right side actions */}
             <div className="flex items-center gap-3 flex-shrink-0">
+              {/* Theme Toggle */}
+              <CompactThemeToggle />
+              
               {/* Mobile menu button - moved to top right */}
               <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
                 <Button
@@ -83,57 +105,60 @@ const Navigation = () => {
                   <div className="flex flex-col h-full">
                     {/* Mobile menu header */}
                     <div className="flex items-center justify-between mb-8">
-                      <Logo size="xl" onClick={() => setIsMobileMenuOpen(false)} />
-                      <SheetClose asChild>
-                        <button className="p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300">
-                          <X className="h-5 w-5" />
-                        </button>
-                      </SheetClose>
+                      <Logo size="lg" />
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        <X className="h-6 w-6" />
+                      </Button>
                     </div>
 
                     {/* Mobile navigation links */}
                     <nav className="flex-1 space-y-4">
-                      <Link
-                        to="/"
-                        className="block px-4 py-3 text-lg font-medium text-foreground hover:bg-accent-purple/10 rounded-xl transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        Home
-                      </Link>
-                      <Link
-                        to="/solutions"
-                        className="block px-4 py-3 text-lg font-medium text-foreground hover:bg-accent-purple/10 rounded-xl transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        Solutions
-                      </Link>
-                      <Link
-                        to="/contact"
-                        className="block px-4 py-3 text-lg font-medium text-foreground hover:bg-accent-purple/10 rounded-xl transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        Contact
-                      </Link>
-                      <Link
-                        to="/faq"
-                        className="block px-4 py-3 text-lg font-medium text-foreground hover:bg-accent-purple/10 rounded-xl transition-colors"
-                        onClick={() => setIsMobileMenuOpen(false)}
-                      >
-                        FAQ
-                      </Link>
+                      {navItems.map((item) => (
+                        <Link
+                          key={item.link}
+                          to={item.link}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={`block px-4 py-3 text-lg font-medium rounded-lg transition-all duration-300 ${
+                            location.pathname === item.link
+                              ? "text-accent-teal bg-accent-teal/10 border border-accent-teal/20"
+                              : "text-muted-foreground hover:text-foreground hover:bg-accent-purple/5"
+                          }`}
+                        >
+                          <span className="mr-3">{item.icon}</span>
+                          {item.name}
+                        </Link>
+                      ))}
                     </nav>
 
-                    {/* Mobile CTA */}
-                    <div className="pt-6 border-t border-border">
-                      <LiquidButton
+                    {/* Mobile CTA section */}
+                    <div className="pt-6 border-t border-border/50 space-y-4">
+                      <Button
+                        variant="default"
+                        size="lg"
+                        className="w-full"
                         onClick={() => {
                           setIsMobileMenuOpen(false);
                           window.location.href = '/contact';
                         }}
-                        className="w-full"
                       >
-                        Get Custom Quote
-                      </LiquidButton>
+                        Get Quote
+                      </Button>
+                      <div className="text-center">
+                        <p className="text-sm text-muted-foreground mb-2">
+                          Need help? Our team is here for you.
+                        </p>
+                        <Link
+                          to="/contact"
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="text-sm text-accent-teal hover:text-accent-teal/80 transition-colors"
+                        >
+                          Contact Support →
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </SheetContent>
@@ -151,7 +176,7 @@ const Navigation = () => {
               </Button>
 
               {/* Get Quote Button */}
-              <LiquidButton 
+              <LiquidButton
                 size="default"
                 onClick={() => window.location.href = '/contact'}
                 className="hidden sm:flex"

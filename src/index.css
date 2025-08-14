@@ -380,3 +380,163 @@ img[src*=".svg"] {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
+
+/* Custom Scrollbar Styles */
+.scrollbar-custom {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--accent-teal)) transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: hsl(var(--accent-teal));
+  border-radius: 4px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: all 0.2s ease;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--accent-teal-foreground));
+  transform: scale(1.1);
+}
+
+.scrollbar-custom::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Enhanced scroll effects */
+.smooth-scroll-container {
+  scroll-behavior: smooth;
+}
+
+/* Scroll progress indicator animations */
+@keyframes scroll-progress {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Enhanced focus states for accessibility */
+.focus-visible:focus-visible {
+  outline: 2px solid hsl(var(--accent-teal));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Improved button focus states */
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid hsl(var(--accent-teal));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Smooth page transitions */
+.page-transition {
+  animation: pageFadeIn 0.5s ease-out;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced loading states */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--muted)) 0%,
+    hsl(var(--muted-foreground)) 50%,
+    hsl(var(--muted)) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Improved mobile responsiveness */
+@media (max-width: 768px) {
+  .mobile-optimized {
+    padding: 1rem;
+  }
+  
+  .mobile-text {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+/* Enhanced dark mode support */
+@media (prefers-color-scheme: dark) {
+  .dark-mode-optimized {
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .high-contrast {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-optimized {
+    color: black !important;
+    background: white !important;
+  }
+}
