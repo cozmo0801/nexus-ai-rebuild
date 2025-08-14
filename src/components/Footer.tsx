@@ -64,7 +64,7 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {/* Company Info */}
             <div className="lg:col-span-2">
-              <Logo size="xl" className="mb-6" />
+              <Logo size="xxl" className="mb-6" />
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 Transforming small businesses in Central Florida with intelligent state-of-the-art automation systems. Automate customer service, 
                 boost sales, and scale your operations with our comprehensive AI solutions.

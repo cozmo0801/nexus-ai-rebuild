@@ -14,7 +14,7 @@ export const LOGO_CONFIG = {
   showText: true,
   
   // Default logo size - making it much bigger for better visibility
-  defaultSize: "lg" as const,
+  defaultSize: "xl" as const,
 };
 
 // Logo file recommendations:
