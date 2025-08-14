@@ -17,6 +17,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import GlowingEffect from "@/components/ui/glowing-effect";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -242,18 +244,18 @@ const ContactSection = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold py-3 rounded-xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
+                className="w-full bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
               >
                 {isSubmitting ? (
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
                     Sending...
                   </div>
                 ) : (
-                  <div className="flex items-center gap-2">
-                    <Send className="h-4 w-4" />
+                  <span className="flex items-center gap-2">
                     Send Message
-                  </div>
+                    <ArrowRight className="h-4 w-4" />
+                  </span>
                 )}
               </Button>
 
@@ -360,7 +362,7 @@ const ContactSection = () => {
               <p className="text-sm text-muted-foreground mb-4">
                 Our AI assistant is available 24/7 to answer your questions and help you get started.
               </p>
-              <Button
+              <LiquidButton
                 onClick={() => {
                   // @ts-ignore
                   if (window.loadChatbase) {
@@ -368,10 +370,10 @@ const ContactSection = () => {
                     window.loadChatbase();
                   }
                 }}
-                className="w-full bg-accent-purple text-foreground font-medium py-2 rounded-xl hover:bg-accent-purple/90 transition-colors"
+                className="w-full"
               >
                 Start Chat Now
-              </Button>
+              </LiquidButton>
             </div>
           </div>
         </div>

@@ -18,8 +18,13 @@ import {
   Calculator,
   Sparkles,
   Send,
-  AlertCircle
+  AlertCircle,
+  Bot,
+  Puzzle,
+  Clock,
+  Star
 } from "lucide-react";
+import { LiquidButton, MetalButton } from "@/components/ui/liquid-glass-button";
 import { useState, useEffect } from "react";
 
 const Onboarding = () => {
@@ -212,24 +217,23 @@ const Onboarding = () => {
 
               {/* Initial CTAs */}
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Button 
+                <LiquidButton 
+                  size="lg"
                   onClick={nextFrame}
-                  variant="hero" 
-                  size="lg" 
-                  className="w-full sm:w-auto group text-lg px-8 py-4"
+                  className="w-full sm:w-auto group text-lg"
                 >
                   <Sparkles className="h-6 w-6 mr-3 group-hover:animate-spin" />
                   <span className="relative z-10">Yes, Let's Do It!</span>
                   <ArrowRight className="h-6 w-6 ml-3 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <Button 
+                </LiquidButton>
+                <MetalButton 
+                  variant="primary"
+                  size="lg"
                   onClick={nextFrame}
-                  variant="heroSecondary" 
-                  size="lg" 
-                  className="w-full sm:w-auto text-lg px-8 py-4"
+                  className="w-full sm:w-auto text-lg"
                 >
                   Tell Me More First
-                </Button>
+                </MetalButton>
               </div>
 
               {/* Progress Indicator */}
