@@ -56,47 +56,52 @@ const Navigation = () => {
         : 'glass-nav'
     }`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center h-16">
           {/* Logo with enhanced animation */}
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative">
-              <Zap className="h-7 w-7 text-accent-teal group-hover:scale-110 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-accent-teal/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
-            </div>
-            <span className="text-xl font-bold text-foreground group-hover:text-accent-teal transition-colors duration-300">
-              NexusCore AI
-            </span>
-          </Link>
-
-          {/* Desktop links with enhanced interactions */}
-          <div className="hidden md:flex items-center gap-8">
-            <Link to="/" className={navLinkClass("/")}>
-              <span className="relative">
-                Home
-                <Underline />
-              </span>
-            </Link>
-            <Link to="/solutions" className={navLinkClass("/solutions")}>
-              <span className="relative">
-                Solutions
-                <Underline />
-              </span>
-            </Link>
-            <Link to="/contact" className={navLinkClass("/contact")}>
-              <span className="relative">
-                Contact
-                <Underline />
-              </span>
-            </Link>
-            <Link to="/faq" className={navLinkClass("/faq")}>
-              <span className="relative">
-                FAQ
-                <Underline />
+          <div className="flex-shrink-0">
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="relative">
+                <Zap className="h-7 w-7 text-accent-teal group-hover:scale-110 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-accent-teal/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
+              </div>
+              <span className="text-xl font-bold text-foreground group-hover:text-accent-teal transition-colors duration-300">
+                NexusCore AI
               </span>
             </Link>
           </div>
 
-          <div className="flex items-center gap-3">
+          {/* Desktop links with enhanced interactions - centered */}
+          <div className="hidden md:flex items-center justify-center flex-1 mx-8">
+            <div className="flex items-center gap-8">
+              <Link to="/" className={navLinkClass("/")}>
+                <span className="relative">
+                  Home
+                  <Underline />
+                </span>
+              </Link>
+              <Link to="/solutions" className={navLinkClass("/solutions")}>
+                <span className="relative">
+                  Solutions
+                  <Underline />
+                </span>
+              </Link>
+              <Link to="/contact" className={navLinkClass("/contact")}>
+                <span className="relative">
+                  Contact
+                  <Underline />
+                </span>
+              </Link>
+              <Link to="/faq" className={navLinkClass("/faq")}>
+                <span className="relative">
+                  FAQ
+                  <Underline />
+                </span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right side actions */}
+          <div className="flex items-center gap-3 flex-shrink-0">
             {/* Enhanced chat button */}
             <button
               onClick={openChat}

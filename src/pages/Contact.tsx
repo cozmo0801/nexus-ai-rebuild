@@ -236,6 +236,18 @@ const Contact = () => {
                 Ready to transform your Central Florida business with state-of-the-art automation? Let's discuss how NexusCore AI can be tailored
                 to your specific needs and goals.
               </p>
+              
+              {/* Free Trial Information */}
+              <div className="mb-8 p-4 bg-gradient-to-r from-accent-green/10 to-accent-teal/10 border border-accent-green/20 rounded-2xl max-w-2xl mx-auto">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <CheckCircle className="h-5 w-5 text-accent-green" />
+                  <span className="text-sm font-medium text-accent-green">One-Week Free Trial Available</span>
+                </div>
+                <p className="text-sm text-muted-foreground text-center">
+                  Try our automation solution for your business free for one week. Fill out the form below to learn more and get started.
+                </p>
+              </div>
+              
               <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
                   <CheckCircle className="h-4 w-4 text-accent-green" />

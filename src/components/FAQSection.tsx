@@ -12,6 +12,12 @@ const FAQSection = () => {
       popular: true
     },
     {
+      id: "free-trial",
+      question: "Do you offer a free trial?",
+      answer: "Yes! We offer a one-week free trial of our automation solution specifically tailored to your business needs. This allows you to experience the benefits firsthand before making a commitment. To learn more about the free trial and get started, simply fill out our contact form and our team will reach out to discuss your specific automation requirements.",
+      popular: true
+    },
+    {
       id: "technical",
       question: "Do I need technical knowledge to manage the AI systems?",
       answer: "Not at all! Our state-of-the-art automation systems are designed for business owners, not developers. We provide: Complete setup and configuration by our team, intuitive dashboard for monitoring and adjustments, 24/7 technical support, regular training sessions, and detailed documentation. Most clients are fully comfortable managing their AI systems within the first week.",
