@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { useState } from "react";
+import Logo from "@/components/ui/logo";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
@@ -62,17 +63,11 @@ const Footer = () => {
         <div className="py-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             {/* Company Info */}
-            <div className="lg:col-span-1">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="relative">
-                  <Zap className="h-8 w-8 text-accent-teal" />
-                  <div className="absolute inset-0 bg-accent-teal/20 rounded-full blur-md"></div>
-                </div>
-                <span className="text-2xl font-bold text-foreground">NexusCore AI</span>
-              </div>
+            <div className="lg:col-span-2">
+              <Logo size="lg" className="mb-6" />
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 Transforming small businesses in Central Florida with intelligent state-of-the-art automation systems. Automate customer service, 
-                boost sales, and scale your business with our cutting-edge technology.
+                boost sales, and scale your operations with our comprehensive AI solutions.
               </p>
               
               {/* Social Links */}
