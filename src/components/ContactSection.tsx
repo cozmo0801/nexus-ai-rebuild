@@ -135,6 +135,17 @@ const ContactSection = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Get a custom quote today and see how our state-of-the-art automation systems can transform your Central Florida business operations.
           </p>
+          
+          {/* Free Trial Information */}
+          <div className="mt-6 p-4 bg-gradient-to-r from-accent-green/10 to-accent-teal/10 border border-accent-green/20 rounded-2xl max-w-2xl mx-auto">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <CheckCircle className="h-5 w-5 text-accent-green" />
+              <span className="text-sm font-medium text-accent-green">One-Week Free Trial Available</span>
+            </div>
+            <p className="text-sm text-muted-foreground text-center">
+              Try our automation solution for your business free for one week. Fill out the form below to learn more and get started.
+            </p>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

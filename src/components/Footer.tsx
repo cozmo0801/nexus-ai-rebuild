@@ -202,6 +202,17 @@ const Footer = () => {
                 Join growing startups in Central Florida already transforming with AI. Get the latest insights, tips, and updates delivered to your inbox.
               </p>
               
+              {/* Free Trial Information */}
+              <div className="mb-6 p-4 bg-gradient-to-r from-accent-green/10 to-accent-teal/10 border border-accent-green/20 rounded-2xl max-w-md mx-auto">
+                <div className="flex items-center justify-center gap-2 mb-2">
+                  <CheckCircle className="h-4 w-4 text-accent-green" />
+                  <span className="text-xs font-medium text-accent-green">One-Week Free Trial Available</span>
+                </div>
+                <p className="text-xs text-muted-foreground text-center">
+                  Try our automation solution for your business free for one week. Contact us to learn more.
+                </p>
+              </div>
+              
               <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                 <div className="flex-1">
                   <Input
