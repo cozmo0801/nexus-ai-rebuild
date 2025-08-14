@@ -14,19 +14,19 @@ const FAQSection = () => {
     {
       id: "technical",
       question: "Do I need technical knowledge to manage the AI systems?",
-      answer: "Not at all! Our AI solutions are designed for business owners, not developers. We provide: Complete setup and configuration by our team, intuitive dashboard for monitoring and adjustments, 24/7 technical support, regular training sessions, and detailed documentation. Most clients are fully comfortable managing their AI systems within the first week.",
+      answer: "Not at all! Our state-of-the-art automation systems are designed for business owners, not developers. We provide: Complete setup and configuration by our team, intuitive dashboard for monitoring and adjustments, 24/7 technical support, regular training sessions, and detailed documentation. Most clients are fully comfortable managing their AI systems within the first week.",
       popular: true
     },
     {
       id: "pricing",
       question: "How does your pricing work?",
-      answer: "We offer transparent, custom pricing tailored to meet your specific business needs. Our plans start at $150/month and scale based on your requirements and usage. As a startup, we work closely with each client to create a pricing structure that fits your budget and goals. We also offer flexible payment terms and a consultation to discuss your specific needs.",
+      answer: "We offer transparent, custom pricing tailored to meet your specific business needs. Our plans start at $150/month and scale based on your requirements and usage. As a startup focused on Central Florida businesses, we work closely with each client to create a pricing structure that fits your budget and goals. We also offer flexible payment terms and a consultation to discuss your specific needs.",
       popular: true
     },
     {
       id: "implementation",
       question: "How long does implementation take?",
-      answer: "Most implementations are completed within 2-4 weeks. Simple chatbot setups can be live within 48 hours, while comprehensive automation suites may take 3-4 weeks for full deployment. We provide a detailed timeline during onboarding and keep you updated on progress throughout the process.",
+      answer: "Implementation time varies based on your business complexity and automation needs. Simple chatbot setups can be live within 48 hours, while comprehensive automation suites may take 2-4 weeks for full deployment. Each solution is customized to your specific business goals, so we provide a detailed timeline during onboarding and keep you updated on progress throughout the process.",
       popular: false
     }
   ];

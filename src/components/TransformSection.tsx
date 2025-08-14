@@ -4,19 +4,19 @@ const TransformSection = () => {
   const benefits = [
     {
       title: "24/7 AI Support",
-      description: "Never miss a customer inquiry",
+      description: "Never miss a customer inquiry with intelligent chatbots that work around the clock",
       icon: Clock,
       color: "text-accent-teal"
     },
     {
       title: "40% Cost Reduction",
-      description: "Reduce customer service costs",
+      description: "Reduce customer service costs while maintaining quality",
       icon: TrendingDown,
       color: "text-accent-green"
     },
     {
       title: "15hrs Time Saved",
-      description: "Focus on growing your business",
+      description: "Focus on growing your business with automated processes",
       icon: Timer,
       color: "text-accent-orange"
     }

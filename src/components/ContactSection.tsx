@@ -10,7 +10,8 @@ import {
   AlertCircle,
   User,
   Building,
-  Globe
+  Globe,
+  ArrowRight
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -34,7 +35,7 @@ const ContactSection = () => {
       icon: Mail,
       title: "Email Support",
       description: "Get a response within 2 hours during business hours",
-      contact: "hello@nexuscore.ai",
+      contact: "contact@nexuscore-ai.com",
       action: "Send Email",
       color: "text-accent-purple",
       bgColor: "from-accent-purple/10 to-accent-purple/5"
@@ -43,7 +44,7 @@ const ContactSection = () => {
       icon: Phone,
       title: "Phone Support",
       description: "Speak directly with our AI experts",
-      contact: "+1 (555) 123-4567",
+      contact: "(407) 730-1373",
       action: "Call Now",
       color: "text-accent-green",
       bgColor: "from-accent-green/10 to-accent-green/5"
@@ -64,19 +65,19 @@ const ContactSection = () => {
       icon: Clock,
       title: "Business Hours",
       details: "Monday - Friday: 9AM - 6PM EST",
-      subtitle: "Weekend support available"
+      subtitle: "AI support available 24/7"
     },
     {
       icon: MapPin,
       title: "Headquarters",
-      details: "123 AI Boulevard, Tech City, TC 12345",
-      subtitle: "Remote-first company"
+      details: "Clermont, Florida",
+      subtitle: "Serving Central Florida businesses"
     },
     {
       icon: Globe,
-      title: "Global Reach",
-      details: "Serving businesses worldwide",
-      subtitle: "24/7 AI support available"
+      title: "Local Focus",
+      details: "Central Florida business expertise",
+      subtitle: "Deep understanding of local market"
     }
   ];
 
@@ -110,29 +111,20 @@ const ContactSection = () => {
     }, 3000);
   };
 
-  const openChat = () => {
-    // @ts-ignore
-    if (window.loadChatbase) {
-      // @ts-ignore
-      window.loadChatbase();
-    }
-  };
-
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-muted/30 to-background relative overflow-hidden">
+    <section id="contact" className="py-20 bg-gradient-to-b from-background to-muted/30 relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-20 left-10 w-32 h-32 bg-accent-purple/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-accent-teal/5 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent-orange/3 rounded-full blur-3xl"></div>
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
-        <div className="max-w-4xl mx-auto text-center mb-20">
+        <div className="max-w-4xl mx-auto text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-full px-4 py-2 mb-6">
             <MessageSquare className="h-4 w-4 text-accent-purple" />
-            <span className="text-sm font-medium text-foreground">Get in Touch</span>
+            <span className="text-sm font-medium text-foreground">Get In Touch</span>
           </div>
           
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
@@ -141,103 +133,88 @@ const ContactSection = () => {
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Let's discuss how NexusCore AI can help you automate customer service, boost sales, and scale your business. 
-            Our team of experts is here to guide you every step of the way.
+            Get a custom quote today and see how our state-of-the-art automation systems can transform your Central Florida business operations.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div className="space-y-8">
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-4">Send us a Message</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-4">Send us a message</h3>
               <p className="text-muted-foreground">
-                Fill out the form below and we'll get back to you within 2 hours during business hours.
+                Tell us about your business needs and we'll get back to you with a customized solution.
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-sm font-medium text-foreground">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="name" className="text-sm font-medium text-foreground mb-2 block">
                     Full Name *
                   </Label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      id="name"
-                      name="name"
-                      type="text"
-                      required
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      placeholder="Your full name"
-                      className="pl-10"
-                    />
-                  </div>
+                  <Input
+                    id="name"
+                    name="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder="Your full name"
+                    className="w-full"
+                  />
                 </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-sm font-medium text-foreground">
+                <div>
+                  <Label htmlFor="email" className="text-sm font-medium text-foreground mb-2 block">
                     Email Address *
                   </Label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      placeholder="your@email.com"
-                      className="pl-10"
-                    />
-                  </div>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder="your@email.com"
+                    className="w-full"
+                  />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="company" className="text-sm font-medium text-foreground">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="company" className="text-sm font-medium text-foreground mb-2 block">
                     Company Name
                   </Label>
-                  <div className="relative">
-                    <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      id="company"
-                      name="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      placeholder="Your company"
-                      className="pl-10"
-                    />
-                  </div>
+                  <Input
+                    id="company"
+                    name="company"
+                    type="text"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    placeholder="Your company"
+                    className="w-full"
+                  />
                 </div>
-                
-                <div className="space-y-2">
-                  <Label htmlFor="website" className="text-sm font-medium text-foreground">
-                    Website URL
+                <div>
+                  <Label htmlFor="website" className="text-sm font-medium text-foreground mb-2 block">
+                    Website
                   </Label>
-                  <div className="relative">
-                    <Globe className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      id="website"
-                      name="website"
-                      type="url"
-                      value={formData.website}
-                      onChange={handleInputChange}
-                      placeholder="https://yoursite.com"
-                      className="pl-10"
-                    />
-                  </div>
+                  <Input
+                    id="website"
+                    name="website"
+                    type="url"
+                    value={formData.website}
+                    onChange={handleInputChange}
+                    placeholder="https://yourwebsite.com"
+                    className="w-full"
+                  />
                 </div>
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-sm font-medium text-foreground">
-                  How can we help? *
+              <div>
+                <Label htmlFor="message" className="text-sm font-medium text-foreground mb-2 block">
+                  Message *
                 </Label>
                 <Textarea
                   id="message"
@@ -245,42 +222,21 @@ const ContactSection = () => {
                   required
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Tell us about your business needs and how we can help..."
+                  placeholder="Tell us about your business automation needs..."
                   rows={5}
-                  className="resize-none"
+                  className="w-full resize-none"
                 />
-              </div>
-
-              <div className="space-y-2">
-                <Label className="text-sm font-medium text-foreground">
-                  Preferred Contact Method
-                </Label>
-                <div className="flex gap-4">
-                  {["email", "phone", "chat"].map((method) => (
-                    <label key={method} className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="contactMethod"
-                        value={method}
-                        checked={formData.contactMethod === method}
-                        onChange={handleInputChange}
-                        className="text-accent-purple focus:ring-accent-purple"
-                      />
-                      <span className="text-sm capitalize">{method}</span>
-                    </label>
-                  ))}
-                </div>
               </div>
 
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold py-4 rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold py-3 rounded-xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
               >
                 {isSubmitting ? (
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                    Sending Message...
+                    <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"></div>
+                    Sending...
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
@@ -292,56 +248,65 @@ const ContactSection = () => {
 
               {/* Form Status */}
               {submitStatus === "success" && (
-                <div className="flex items-center gap-2 text-accent-green bg-accent-green/10 border border-accent-green/20 rounded-lg p-4">
-                  <CheckCircle className="h-5 w-5" />
-                  <span className="font-medium">Message sent successfully! We'll get back to you soon.</span>
+                <div className="flex items-center gap-2 text-accent-green bg-accent-green/10 border border-accent-green/20 rounded-lg p-3">
+                  <CheckCircle className="h-4 w-4" />
+                  <span className="text-sm">Message sent successfully! We'll get back to you soon.</span>
                 </div>
               )}
-              
+
               {submitStatus === "error" && (
-                <div className="flex items-center gap-2 text-destructive bg-destructive/10 border border-destructive/20 rounded-lg p-4">
-                  <AlertCircle className="h-5 w-5" />
-                  <span className="font-medium">Something went wrong. Please try again.</span>
+                <div className="flex items-center gap-2 text-accent-orange bg-accent-orange/10 border border-accent-orange/20 rounded-lg p-3">
+                  <AlertCircle className="h-4 w-4" />
+                  <span className="text-sm">Something went wrong. Please try again.</span>
                 </div>
               )}
             </form>
           </div>
 
-          {/* Contact Methods & Business Info */}
+          {/* Contact Information */}
           <div className="space-y-8">
             {/* Contact Methods */}
             <div>
-              <h3 className="text-2xl font-bold text-foreground mb-6">Get in Touch</h3>
+              <h3 className="text-2xl font-bold text-foreground mb-6">Get in touch</h3>
               <div className="space-y-4">
                 {contactMethods.map((method, index) => {
                   const IconComponent = method.icon;
                   return (
                     <div
                       key={index}
-                      className={`p-6 rounded-2xl border border-border bg-gradient-to-br ${method.bgColor} hover:shadow-lg transition-all duration-300 cursor-pointer group`}
+                      className="group cursor-pointer"
                       onClick={() => {
-                        if (method.title === "Live Chat") {
-                          openChat();
+                        if (method.title === "Email Support") {
+                          window.location.href = `mailto:${method.contact}`;
+                        } else if (method.title === "Phone Support") {
+                          window.location.href = `tel:${method.contact}`;
+                        } else {
+                          // Open chat for live chat
+                          // @ts-ignore
+                          if (window.loadChatbase) {
+                            // @ts-ignore
+                            window.loadChatbase();
+                          }
                         }
                       }}
                     >
-                      <div className="flex items-start gap-4">
-                        <div className={`p-3 rounded-xl bg-white/80 ${method.color} group-hover:scale-110 transition-transform duration-300`}>
+                      <div className="flex items-center gap-4 p-4 rounded-2xl border border-border hover:border-accent-purple/30 transition-all duration-300 hover:shadow-lg group-hover:-translate-y-1">
+                        <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br ${method.bgColor} ${method.color} group-hover:scale-110 transition-transform duration-300`}>
                           <IconComponent className="h-6 w-6" />
                         </div>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-foreground mb-2">{method.title}</h4>
-                          <p className="text-muted-foreground text-sm mb-3">{method.description}</p>
-                          <div className="flex items-center justify-between">
-                            <span className="text-sm font-medium text-foreground">{method.contact}</span>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="text-xs border-accent-purple/30 text-accent-purple hover:bg-accent-purple/5"
-                            >
-                              {method.action}
-                            </Button>
-                          </div>
+                          <h4 className="font-semibold text-foreground group-hover:text-accent-purple transition-colors">
+                            {method.title}
+                          </h4>
+                          <p className="text-sm text-muted-foreground mb-1">
+                            {method.description}
+                          </p>
+                          <p className="text-sm font-medium text-accent-purple">
+                            {method.contact}
+                          </p>
+                        </div>
+                        <div className="text-accent-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <ArrowRight className="h-4 w-4" />
                         </div>
                       </div>
                     </div>
@@ -357,14 +322,20 @@ const ContactSection = () => {
                 {businessInfo.map((info, index) => {
                   const IconComponent = info.icon;
                   return (
-                    <div key={index} className="flex items-start gap-4 p-4 rounded-xl hover:bg-muted/50 transition-colors duration-300">
-                      <div className="p-2 rounded-lg bg-accent-purple/10 text-accent-purple">
+                    <div key={index} className="flex items-start gap-4 p-4 rounded-2xl bg-muted/30 border border-border/50">
+                      <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-accent-purple/10 text-accent-purple flex-shrink-0">
                         <IconComponent className="h-5 w-5" />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-foreground mb-1">{info.title}</h4>
-                        <p className="text-foreground text-sm">{info.details}</p>
-                        <p className="text-muted-foreground text-xs">{info.subtitle}</p>
+                        <h4 className="font-semibold text-foreground mb-1">
+                          {info.title}
+                        </h4>
+                        <p className="text-sm text-foreground font-medium">
+                          {info.details}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          {info.subtitle}
+                        </p>
                       </div>
                     </div>
                   );
@@ -372,18 +343,24 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Quick Start CTA */}
-            <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl p-6 text-center">
-              <h4 className="font-semibold text-foreground mb-2">Ready to get started?</h4>
-                              <p className="text-muted-foreground text-sm mb-4">
-                  Get a custom quote today and see how AI can transform your business.
-                </p>
-                                  <Button
-                      onClick={() => window.location.href = "/contact"}
-                      className="w-full bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
-                    >
-                      Get Custom Quote
-                    </Button>
+            {/* Quick Actions */}
+            <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl p-6">
+              <h4 className="font-semibold text-foreground mb-3">Need immediate assistance?</h4>
+              <p className="text-sm text-muted-foreground mb-4">
+                Our AI assistant is available 24/7 to answer your questions and help you get started.
+              </p>
+              <Button
+                onClick={() => {
+                  // @ts-ignore
+                  if (window.loadChatbase) {
+                    // @ts-ignore
+                    window.loadChatbase();
+                  }
+                }}
+                className="w-full bg-accent-purple text-foreground font-medium py-2 rounded-xl hover:bg-accent-purple/90 transition-colors"
+              >
+                Start Chat Now
+              </Button>
             </div>
           </div>
         </div>

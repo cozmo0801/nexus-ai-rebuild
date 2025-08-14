@@ -98,95 +98,86 @@ const Navigation = () => {
 
           <div className="flex items-center gap-3">
             {/* Enhanced chat button */}
-            <Button 
-              variant="outline" 
-              size="icon" 
-              className="hidden md:inline-flex relative group hover:scale-105 transition-transform duration-300" 
-              onClick={openChat} 
-              aria-label="Open chat"
-            >
-              <MessageSquare className="h-4 w-4 group-hover:text-accent-purple transition-colors" />
-              <div className="absolute -top-1 -right-1 h-3 w-3 bg-accent-green rounded-full animate-pulse"></div>
-            </Button>
-
-            {/* Enhanced theme toggle */}
             <button
-              onClick={toggleTheme}
-              className="p-2.5 rounded-xl glass-card hover:bg-white/20 transition-all duration-300 border-glass focus:outline-none focus-visible:ring-2 focus-visible:ring-accent-teal hover:scale-105 group"
-              aria-label="Toggle theme"
+              onClick={openChat}
+              className="hidden sm:flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-xl text-accent-purple hover:bg-accent-purple/20 transition-all duration-300 group"
             >
-              {isDark ? (
-                <Sun className="h-4 w-4 text-foreground group-hover:text-accent-orange transition-colors" />
-              ) : (
-                <Moon className="h-4 w-4 text-foreground group-hover:text-accent-purple transition-colors" />
-              )}
+              <MessageSquare className="h-4 w-4 group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-medium">Chat</span>
             </button>
 
-            {/* Enhanced CTA button */}
-            <Button
-              variant="hero"
-              size="default"
-              onClick={() => (window.location.href = "/contact")}
-              className="hidden md:inline-flex group hover:scale-105 transition-transform duration-300"
+            {/* Theme toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300"
             >
-              <span className="flex items-center gap-2">
-                Get Quote
-                <div className="w-1 h-1 bg-white rounded-full group-hover:scale-150 transition-transform duration-300"></div>
-              </span>
+              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+            </button>
+
+            {/* CTA Button */}
+            <Button
+              onClick={() => window.location.href = '/contact'}
+              className="hidden sm:flex bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
+            >
+              Get Quote
             </Button>
 
-            {/* Enhanced mobile menu */}
+            {/* Mobile menu button */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
               <SheetTrigger asChild>
-                <button
-                  aria-label="Open menu"
-                  className="md:hidden p-2.5 rounded-xl glass-card border-glass hover:bg-white/20 transition-all duration-300 hover:scale-105 group"
-                >
-                  <Menu className="h-5 w-5 group-hover:text-accent-purple transition-colors" />
+                <button className="md:hidden p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300">
+                  <Menu className="h-5 w-5" />
                 </button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-full sm:max-w-xs bg-white/95 dark:bg-black/95 backdrop-blur-xl border-l border-white/10 dark:border-white/5">
-                <div className="flex flex-col gap-4 mt-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-lg font-semibold text-foreground">Menu</span>
+              <SheetContent side="right" className="w-80 bg-background/95 backdrop-blur-xl border-l border-border/50">
+                <div className="flex flex-col h-full">
+                  {/* Mobile menu header */}
+                  <div className="flex items-center justify-between mb-8">
+                    <Link to="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
+                      <div className="relative">
+                        <Zap className="h-6 w-6 text-accent-teal" />
+                        <div className="absolute inset-0 bg-accent-teal/20 rounded-full blur-md"></div>
+                      </div>
+                      <span className="text-lg font-bold text-foreground">NexusCore AI</span>
+                    </Link>
                     <SheetClose asChild>
-                      <button className="p-2 rounded-lg hover:bg-white/10 dark:hover:bg-white/5 transition-colors">
+                      <button className="p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300">
                         <X className="h-5 w-5" />
                       </button>
                     </SheetClose>
                   </div>
-                  
-                  <SheetClose asChild>
-                    <Link to="/" className="text-lg p-3 rounded-lg hover:bg-accent-purple/10 hover:text-accent-purple transition-all duration-300" aria-label="Home">
-                      Home
-                    </Link>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Link to="/solutions" className="text-lg p-3 rounded-lg hover:bg-accent-purple/10 hover:text-accent-purple transition-all duration-300" aria-label="Solutions">
-                      Solutions
-                    </Link>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Link to="/contact" className="text-lg p-3 rounded-lg hover:bg-accent-purple/10 hover:text-accent-purple transition-all duration-300" aria-label="Contact">
-                      Contact
-                    </Link>
-                  </SheetClose>
-                  <SheetClose asChild>
-                    <Link to="/faq" className="text-lg p-3 rounded-lg hover:bg-accent-purple/10 hover:text-accent-purple transition-all duration-300" aria-label="FAQ">
-                      FAQ
-                    </Link>
-                  </SheetClose>
-                  
-                  <div className="pt-4 border-t border-border">
-                    <Button variant="outline" onClick={openChat} className="w-full mb-3">
-                      <MessageSquare className="h-4 w-4 mr-2" />
-                      Chat Support
-                    </Button>
+
+                  {/* Mobile navigation links */}
+                  <nav className="flex-1 space-y-4">
+                    {[
+                      { to: "/", label: "Home" },
+                      { to: "/solutions", label: "Solutions" },
+                      { to: "/contact", label: "Contact" },
+                      { to: "/faq", label: "FAQ" }
+                    ].map((link) => (
+                      <Link
+                        key={link.to}
+                        to={link.to}
+                        className={`block p-3 rounded-xl text-lg font-medium transition-all duration-300 ${
+                          pathname === link.to
+                            ? "bg-accent-purple/10 text-accent-purple border border-accent-purple/20"
+                            : "text-foreground hover:bg-accent-purple/5 hover:text-accent-purple"
+                        }`}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </nav>
+
+                  {/* Mobile CTA */}
+                  <div className="pt-6 border-t border-border/50">
                     <Button
-                      variant="hero"
-                      size="default"
-                      onClick={() => (window.location.href = "/contact")}
-                      className="w-full"
+                      onClick={() => {
+                        setIsMobileMenuOpen(false);
+                        window.location.href = '/contact';
+                      }}
+                      className="w-full bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300"
                     >
                       Get Quote
                     </Button>

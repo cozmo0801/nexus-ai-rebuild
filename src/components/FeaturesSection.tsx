@@ -58,14 +58,14 @@ const FeaturesSection = () => {
       statLabel: "More Leads"
     },
     {
-      title: "Instant Integration",
-      description: "One-click setup with your existing website, CRM, and business tools. No technical expertise required - get started in under 5 minutes.",
+      title: "Fast & Tailored Setup",
+      description: "Custom implementation based on your specific business goals and workflow requirements. Each automation is unique to your business process.",
       icon: Zap,
       color: "text-accent-pink",
       bgColor: "from-accent-pink/10 to-accent-pink/5",
       borderColor: "border-accent-pink/20",
-      stat: "5min",
-      statLabel: "Setup Time"
+      stat: "Custom",
+      statLabel: "Setup"
     },
     {
       title: "Enterprise Security",
@@ -101,7 +101,7 @@ const FeaturesSection = () => {
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Transform your customer service, boost sales, and scale your business with our comprehensive AI solutions designed specifically for small businesses.
+            Transform your customer service, boost sales, and scale your business with our comprehensive state-of-the-art automation systems designed specifically for small businesses in Central Florida.
           </p>
         </div>
 
@@ -174,12 +174,12 @@ const FeaturesSection = () => {
           <div className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8">
             <Users className="h-5 w-5 text-accent-purple" />
             <span className="text-sm font-medium text-foreground">
-              Join growing startups already transforming with AI
+              Join growing startups in Central Florida already transforming with AI
             </span>
           </div>
           
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Ready to transform your business? Start your free trial today and see the difference AI can make.
+            Ready to transform your business? Get a custom quote today and see the difference our state-of-the-art automation systems can make.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

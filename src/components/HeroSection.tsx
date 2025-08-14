@@ -44,7 +44,7 @@ const HeroSection = () => {
           {/* Trust Badge */}
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-full px-4 py-2 mb-8 animate-fade-in">
             <Sparkles className="h-4 w-4 text-accent-purple" />
-            <span className="text-sm font-medium text-foreground">Trusted by Growing Startups</span>
+            <span className="text-sm font-medium text-foreground">Trusted by Growing Startups in Central Florida</span>
           </div>
 
           {/* Main Headline with Enhanced Typography */}
@@ -56,7 +56,7 @@ const HeroSection = () => {
             </span>
             <br />
             <span className="text-4xl md:text-6xl bg-gradient-to-r from-accent-purple to-accent-teal bg-clip-text text-transparent">
-              with AI-Powered Solutions
+              with State-of-the-Art AI Solutions
             </span>
           </h1>
           
@@ -74,7 +74,7 @@ const HeroSection = () => {
           <p className={`text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            Stop losing customers to slow responses and missed opportunities. Our AI solutions work 24/7 to 
+            Stop losing customers to slow responses and missed opportunities. Our state-of-the-art automation systems work 24/7 to 
             <span className="font-semibold text-foreground"> capture leads</span>, 
             <span className="font-semibold text-foreground"> answer questions</span>, and 
             <span className="font-semibold text-foreground"> close sales</span> while you focus on growing your business.
@@ -106,7 +106,7 @@ const HeroSection = () => {
                       What are your business hours and pricing?
                     </div>
                     <div className="bg-muted rounded-lg p-4 text-sm">
-                      We're open Monday-Friday 9AM-6PM EST, but I'm available 24/7 to help with questions, bookings, and support! Our AI solutions start at just $29/month.
+                      We're open Monday-Friday 9AM-6PM EST, but I'm available 24/7 to help with questions, bookings, and support! Our AI solutions start at just $150/month with custom pricing plans.
                     </div>
                   </div>
                   <div className="pt-2 border-t border-border">
@@ -156,10 +156,10 @@ const HeroSection = () => {
           <div className={`mt-12 transition-all duration-1000 delay-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <p className="text-sm text-muted-foreground mb-4">Join growing startups already transforming with AI</p>
+            <p className="text-sm text-muted-foreground mb-4">Join growing startups in Central Florida already transforming with AI</p>
                       <div className="flex items-center justify-center gap-6 text-xs text-muted-foreground">
             <span>✓ Custom pricing plans</span>
-            <span>✓ Setup in 5 minutes</span>
+            <span>✓ Fast and tailored setup</span>
             <span>✓ Flexible payment terms</span>
           </div>
           </div>

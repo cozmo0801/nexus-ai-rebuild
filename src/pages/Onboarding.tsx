@@ -195,7 +195,7 @@ const Onboarding = () => {
                   </div>
                 </div>
                 <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  Transform your business with AI automation that works 24/7, reduces costs by 60%, and increases customer satisfaction to 98.5%
+                  Transform your Central Florida business with state-of-the-art automation that works 24/7, reduces costs by 40%, and increases customer satisfaction to 98.5%
                 </p>
               </div>
 
@@ -397,7 +397,7 @@ const Onboarding = () => {
                         <>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
-                            <span className="text-foreground">Up to 60% cost reduction</span>
+                            <span className="text-foreground">Up to 40% cost reduction</span>
                           </li>
                           <li className="flex items-center gap-3">
                             <CheckCircle className="h-5 w-5 text-accent-green" />
@@ -459,7 +459,7 @@ const Onboarding = () => {
                       <p className="text-accent-green font-bold text-2xl">
                         {selectedChallenge === 'inquiries' && "98.5% Satisfaction"}
                         {selectedChallenge === 'leads' && "+40% More Leads"}
-                        {selectedChallenge === 'costs' && "60% Cost Savings"}
+                        {selectedChallenge === 'costs' && "40% Cost Savings"}
                         {selectedChallenge === 'insights' && "3x Faster Insights"}
                       </p>
                     </div>
