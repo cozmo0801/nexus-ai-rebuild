@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { LiquidButton, MetalButton } from "@/components/ui/liquid-glass-button";
 import { Play, Bot, ArrowRight, Sparkles, CheckCircle } from "lucide-react";
 import BackgroundPaths from "./BackgroundPaths";
 import { FluidBlob } from "@/components/ui/fluid-blob";
@@ -124,32 +125,30 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Enhanced CTA Buttons */}
+          {/* Enhanced CTA Buttons with Liquid Glass */}
           <div className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1000 delay-700 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <StarBorderButton 
-              color="hsl(var(--accent-teal))"
-              speed="4s"
-              className="w-full sm:w-auto font-medium text-lg px-8 py-4 group"
+            <LiquidButton 
+              size="xl"
               onClick={() => window.location.href = '/contact'}
+              className="w-full sm:w-auto font-medium text-lg group"
             >
               <span className="flex items-center gap-2">
                 Get Custom Quote
                 <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </span>
-            </StarBorderButton>
-            <StarBorderButton 
-              color="hsl(var(--accent-purple))"
-              speed="5s"
-              className="w-full sm:w-auto font-medium text-lg px-8 py-4 group"
+            </LiquidButton>
+            <MetalButton 
+              variant="gold"
               onClick={() => window.location.href = '/contact'}
+              className="w-full sm:w-auto font-medium text-lg group"
             >
               <span className="flex items-center gap-2">
                 <Play className="h-5 w-5" />
                 Watch Demo
               </span>
-            </StarBorderButton>
+            </MetalButton>
           </div>
 
           {/* Social Proof */}

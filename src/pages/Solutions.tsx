@@ -19,6 +19,8 @@ import {
   Star,
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { LiquidButton, MetalButton } from "@/components/ui/liquid-glass-button";
+import GlowingEffect from "@/components/ui/glowing-effect";
 
 const Solutions = () => {
   const [activeSolution, setActiveSolution] = useState<string | null>(null);
@@ -432,24 +434,37 @@ const Solutions = () => {
               your specific business needs in Central Florida and start your journey towards
               intelligent automation.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button
-                variant="hero"
-                size="lg"
-                className="w-full sm:w-auto group hover:scale-105 transition-transform"
-                onClick={() => (window.location.href = "/contact")}
-              >
-                <span className="relative z-10">Get Custom Quote</span>
-                <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                variant="heroSecondary"
-                size="lg"
-                className="w-full sm:w-auto hover:scale-105 transition-transform"
-                onClick={() => (window.location.href = "/contact")}
-              >
-                Schedule Consultation
-              </Button>
+            {/* Call to action section */}
+            <div className="text-center mt-16">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8">
+                <Users className="h-5 w-5 text-accent-purple" />
+                <span className="text-sm font-medium text-foreground">
+                  Trusted by growing startups in Central Florida
+                </span>
+              </div>
+              
+              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+                Let&apos;s discuss how these state-of-the-art automation solutions can be customized for
+                your specific business needs in Central Florida and start your journey towards
+                sustainable growth.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <LiquidButton 
+                  size="lg"
+                  onClick={() => (window.location.href = "/contact")}
+                  className="w-full sm:w-auto"
+                >
+                  <span className="relative z-10">Get Custom Quote</span>
+                </LiquidButton>
+                <MetalButton 
+                  variant="success"
+                  onClick={() => (window.location.href = "/contact")}
+                  className="w-full sm:w-auto"
+                >
+                  <span className="relative z-10">Schedule Consultation</span>
+                </MetalButton>
+              </div>
             </div>
             
             {/* Trust indicators */}

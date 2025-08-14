@@ -3,6 +3,8 @@ import { Moon, Sun, Zap, Menu, MessageSquare, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
+import { useTheme } from "@/components/theme-provider";
 
 const Navigation = () => {
   const [isDark, setIsDark] = useState(true);
@@ -120,12 +122,13 @@ const Navigation = () => {
             </button>
 
             {/* CTA Button */}
-            <Button
+            <LiquidButton
+              size="default"
               onClick={() => window.location.href = '/contact'}
-              className="hidden sm:flex bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
+              className="hidden sm:flex"
             >
               Get Quote
-            </Button>
+            </LiquidButton>
 
             {/* Mobile menu button */}
             <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
@@ -177,15 +180,15 @@ const Navigation = () => {
 
                   {/* Mobile CTA */}
                   <div className="pt-6 border-t border-border/50">
-                    <Button
+                    <LiquidButton
                       onClick={() => {
                         setIsMobileMenuOpen(false);
                         window.location.href = '/contact';
                       }}
-                      className="w-full bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300"
+                      className="w-full"
                     >
-                      Get Quote
-                    </Button>
+                      Get Custom Quote
+                    </LiquidButton>
                   </div>
                 </div>
               </SheetContent>

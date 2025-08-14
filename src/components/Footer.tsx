@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { useState } from "react";
 
 const Footer = () => {
@@ -224,13 +225,13 @@ const Footer = () => {
                     required
                   />
                 </div>
-                <Button
+                <LiquidButton 
                   type="submit"
                   disabled={isSubscribing}
-                  className="bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
+                  className="w-full sm:w-auto"
                 >
                   {isSubscribing ? "Subscribing..." : "Subscribe"}
-                </Button>
+                </LiquidButton>
               </form>
 
               {/* Subscription Status */}

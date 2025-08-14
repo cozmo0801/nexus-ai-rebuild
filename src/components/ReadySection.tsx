@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle } from "lucide-react";
-import { StarBorderButton } from "@/components/ui/star-border-button";
+import { LiquidButton } from "@/components/ui/liquid-glass-button";
 
 const ReadySection = () => {
   return (
@@ -26,15 +26,14 @@ const ReadySection = () => {
           </p>
         </div>
         
-          <StarBorderButton 
-            color="hsl(var(--accent-teal))"
-            speed="3s"
-            className="font-medium"
+          <LiquidButton 
+            size="xl"
+            className="font-medium bg-white/10 border border-white/20 text-white hover:bg-white/20"
             onClick={() => window.location.href = '/contact'}
           >
             Get Custom Quote
             <ArrowRight className="h-5 w-5 ml-2" />
-          </StarBorderButton>
+          </LiquidButton>
         </div>
       </div>
     </section>

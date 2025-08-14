@@ -11,6 +11,7 @@ import {
   Target,
   CheckCircle
 } from "lucide-react";
+import { LiquidButton, MetalButton } from "@/components/ui/liquid-glass-button";
 import GlowingEffect from "@/components/ui/glowing-effect";
 import { useState } from "react";
 
@@ -195,12 +196,20 @@ const FeaturesSection = () => {
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
+            <LiquidButton 
+              size="lg"
+              onClick={() => window.location.href = '/contact'}
+              className="w-full sm:w-auto"
+            >
               Get Custom Quote
-            </button>
-            <button className="px-8 py-4 border border-accent-purple/30 text-accent-purple font-semibold rounded-2xl hover:bg-accent-purple/5 transition-all duration-300">
+            </LiquidButton>
+            <MetalButton 
+              variant="primary"
+              onClick={() => window.location.href = '/contact'}
+              className="w-full sm:w-auto"
+            >
               Schedule Demo
-            </button>
+            </MetalButton>
           </div>
         </div>
       </div>

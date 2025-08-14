@@ -24,7 +24,15 @@ import {
   Calendar,
   Shield,
   ArrowRight,
+  Bot,
+  TrendingUp,
+  DollarSign,
+  BarChart3,
+  Puzzle,
 } from "lucide-react";
+import { LiquidButton, MetalButton } from "@/components/ui/liquid-glass-button";
+import Navigation from "@/components/Navigation";
+import GlowingEffect from "@/components/ui/glowing-effect";
 import { useState, useEffect } from "react";
 
 const Contact = () => {
@@ -504,21 +512,19 @@ const Contact = () => {
                         key={index}
                         className={`glass-card rounded-xl p-4 border border-glass backdrop-blur-glass hover:shadow-glow transition-all duration-300 hover:-translate-y-1`}
                       >
-                        <div className="flex items-center gap-4">
-                          <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${option.bgColor} ${option.color}`}>
-                            <IconComponent className="h-6 w-6" />
-                          </div>
-                          <div className="flex-1">
-                            <h4 className="font-semibold text-foreground">
-                              {option.title}
-                            </h4>
-                            <p className="text-sm text-muted-foreground mb-1">
-                              {option.description}
-                            </p>
-                            <p className="text-accent-teal font-medium">
-                              {option.availability}
-                            </p>
-                          </div>
+                        <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${option.bgColor} ${option.color}`}>
+                          <IconComponent className="h-6 w-6" />
+                        </div>
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-foreground">
+                            {option.title}
+                          </h4>
+                          <p className="text-sm text-muted-foreground mb-1">
+                            {option.description}
+                          </p>
+                          <p className="text-accent-teal font-medium">
+                            {option.availability}
+                          </p>
                         </div>
                       </div>
                     );
@@ -576,24 +582,31 @@ const Contact = () => {
               Don't wait to transform your Central Florida business. Start your automation journey today
               with our free consultation and personalized demo.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <Button
-                variant="hero"
-                size="lg"
-                className="w-full sm:w-auto group hover:scale-105 transition-transform"
-                onClick={() => (window.location.href = "/contact")}
-              >
-                <span className="relative z-10">Get Custom Quote</span>
-                <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-              <Button
-                variant="heroSecondary"
-                size="lg"
-                className="w-full sm:w-auto hover:scale-105 transition-transform"
-                onClick={() => (window.location.href = "/faq")}
-              >
-                View FAQ
-              </Button>
+            {/* Call to action section */}
+            <div className="text-center mt-16">
+              <div className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8">
+                <Users className="h-5 w-5 text-accent-purple" />
+                <span className="text-sm font-medium text-foreground">
+                  Don't wait to transform your Central Florida business. Start your automation journey today
+                </span>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <LiquidButton 
+                  size="lg"
+                  onClick={() => (window.location.href = "/contact")}
+                  className="w-full sm:w-auto"
+                >
+                  <span className="relative z-10">Get Custom Quote</span>
+                </LiquidButton>
+                <MetalButton 
+                  variant="gold"
+                  onClick={() => (window.location.href = "/contact")}
+                  className="w-full sm:w-auto"
+                >
+                  <span className="relative z-10">Schedule Demo</span>
+                </MetalButton>
+              </div>
             </div>
             
             {/* Trust indicators */}
