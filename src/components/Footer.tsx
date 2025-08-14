@@ -70,7 +70,7 @@ const Footer = () => {
                 <span className="text-2xl font-bold text-foreground">NexusCore AI</span>
               </div>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Transforming small businesses with intelligent AI solutions. Automate customer service, 
+                Transforming small businesses in Central Florida with intelligent state-of-the-art automation systems. Automate customer service, 
                 boost sales, and scale your business with our cutting-edge technology.
               </p>
               
@@ -99,23 +99,63 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold text-foreground mb-6 text-lg">Solutions</h3>
               <ul className="space-y-3">
-                {[
-                  "AI Chatbots",
-                  "Lead Generation",
-                  "Customer Support",
-                  "Sales Automation",
-                  "Business Intelligence",
-                  "Integration Services"
-                ].map((item) => (
-                  <li key={item}>
-                    <a 
-                      href="#" 
-                      className="text-muted-foreground hover:text-accent-purple transition-colors duration-300 hover:translate-x-1 inline-block"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    24/7 AI Support
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Smart Lead Capture
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Customer Service Automation
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Custom AI Integrations
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Business Process Automation
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Industries */}
+            <div>
+              <h3 className="font-semibold text-foreground mb-6 text-lg">Industries</h3>
+              <ul className="space-y-3">
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Real Estate
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Tourism & Hospitality
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Healthcare
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Professional Services
+                  </a>
+                </li>
+                <li>
+                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Retail
+                  </a>
+                </li>
               </ul>
             </div>
 
@@ -123,173 +163,110 @@ const Footer = () => {
             <div>
               <h3 className="font-semibold text-foreground mb-6 text-lg">Company</h3>
               <ul className="space-y-3">
-                {[
-                  "About Us",
-                  "Our Team",
-                  "Careers",
-                  "Press & Media",
-                  "Partners",
-                  "Contact Us"
-                ].map((item) => (
-                  <li key={item}>
-                    <a 
-                      href="#" 
-                      className="text-muted-foreground hover:text-accent-purple transition-colors duration-300 hover:translate-x-1 inline-block"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Support */}
-            <div>
-              <h3 className="font-semibold text-foreground mb-6 text-lg">Support</h3>
-              <ul className="space-y-3">
-                {[
-                  "Help Center",
-                  "Documentation",
-                  "API Reference",
-                  "Community Forum",
-                  "Status Page",
-                  "Security"
-                ].map((item) => (
-                  <li key={item}>
-                    <a 
-                      href="#" 
-                      className="text-muted-foreground hover:text-accent-purple transition-colors duration-300 hover:translate-x-1 inline-block"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                ))}
+                <li>
+                  <a href="/about" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    About Us
+                  </a>
+                </li>
+                <li>
+                  <a href="/contact" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <a href="/faq" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    FAQ
+                  </a>
+                </li>
+                <li>
+                  <a href="/privacy" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Privacy Policy
+                  </a>
+                </li>
+                <li>
+                  <a href="/terms" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                    Terms of Service
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
 
-          {/* Newsletter Signup */}
-          <div className="border-t border-border pt-12 mb-12">
+          {/* Newsletter Subscription */}
+          <div className="border-t border-border/50 pt-12">
             <div className="max-w-2xl mx-auto text-center">
               <h3 className="text-2xl font-bold text-foreground mb-4">
-                Stay Updated with AI Insights
+                Stay Updated with NexusCore AI
               </h3>
               <p className="text-muted-foreground mb-6">
-                Get the latest news, tips, and insights on how AI is transforming business. 
-                Join thousands of business owners staying ahead of the curve.
+                Join growing startups in Central Florida already transforming with AI. Get the latest insights, tips, and updates delivered to your inbox.
               </p>
               
               <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-                <div className="flex-1 relative">
-                  <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <div className="flex-1">
                   <Input
                     type="email"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    className="w-full"
                     required
-                    className="pl-10"
                   />
                 </div>
                 <Button
                   type="submit"
                   disabled={isSubscribing}
-                  className="bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold px-6 py-2 rounded-xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
                 >
-                  {isSubscribing ? (
-                    <div className="flex items-center gap-2">
-                      <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
-                      Subscribing...
-                    </div>
-                  ) : (
-                    <span className="flex items-center gap-2">
-                      Subscribe
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
-                  )}
+                  {isSubscribing ? "Subscribing..." : "Subscribe"}
                 </Button>
               </form>
 
-              {/* Subscribe Status */}
+              {/* Subscription Status */}
               {subscribeStatus === "success" && (
-                <div className="flex items-center justify-center gap-2 text-accent-green mt-4">
+                <div className="flex items-center justify-center gap-2 mt-4 text-accent-green">
                   <CheckCircle className="h-4 w-4" />
-                  <span className="text-sm font-medium">Successfully subscribed! Welcome to the community.</span>
+                  <span className="text-sm">Successfully subscribed!</span>
                 </div>
               )}
-            </div>
-          </div>
 
-          {/* Contact & CTA Section */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            {/* Contact Information */}
-            <div className="space-y-4">
-              <h3 className="text-xl font-semibold text-foreground mb-4">Get in Touch</h3>
-              <div className="space-y-3">
-                {[
-                  { icon: Mail, text: "hello@nexuscore.ai", action: "Send Email" },
-                  { icon: Phone, text: "+1 (555) 123-4567", action: "Call Now" },
-                  { icon: MapPin, text: "123 AI Boulevard, Tech City, TC 12345", action: "View Map" }
-                ].map((contact, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-accent-purple/10 text-accent-purple">
-                      <contact.icon className="h-4 w-4" />
-                    </div>
-                    <span className="text-muted-foreground flex-1">{contact.text}</span>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-xs border-accent-purple/30 text-accent-purple hover:bg-accent-purple/5"
-                    >
-                      {contact.action}
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA Section */}
-            <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl p-6 text-center">
-              <h4 className="font-semibold text-foreground mb-2">Ready to get started?</h4>
-              <p className="text-muted-foreground text-sm mb-4">
-                Join thousands of businesses already growing with AI.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                                    <Button
-                      onClick={() => window.location.href = "/contact"}
-                      className="bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold hover:shadow-glow transition-all duration-300 hover:-translate-y-1"
-                    >
-                      Get Custom Quote
-                    </Button>
-                <Button
-                  variant="outline"
-                  onClick={openChat}
-                  className="border-accent-purple/30 text-accent-purple hover:bg-accent-purple/5"
-                >
-                  <MessageSquare className="h-4 w-4 mr-2" />
-                  Chat with Us
-                </Button>
-              </div>
+              {subscribeStatus === "error" && (
+                <div className="flex items-center justify-center gap-2 mt-4 text-accent-orange">
+                  <span className="text-sm">Something went wrong. Please try again.</span>
+                </div>
+              )}
             </div>
           </div>
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-border py-8">
+        <div className="border-t border-border/50 py-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <span>© {currentYear} NexusCore AI. All rights reserved.</span>
-              <div className="flex items-center gap-4">
-                <a href="#" className="hover:text-accent-purple transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-accent-purple transition-colors">Terms of Service</a>
-                <a href="#" className="hover:text-accent-purple transition-colors">Cookie Policy</a>
-              </div>
+            {/* Copyright */}
+            <div className="text-center md:text-left">
+              <p className="text-sm text-muted-foreground">
+                © {currentYear} NexusCore AI. All rights reserved. Serving Central Florida businesses with state-of-the-art automation solutions.
+              </p>
             </div>
-            
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
-              <span>Made with</span>
-              <div className="w-2 h-2 bg-accent-purple rounded-full animate-pulse"></div>
-              <span>by NexusCore AI</span>
+
+            {/* Contact Info */}
+            <div className="flex items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4" />
+                <a href="mailto:contact@nexuscore-ai.com" className="hover:text-accent-purple transition-colors">
+                  contact@nexuscore-ai.com
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="h-4 w-4" />
+                <a href="tel:(407) 730-1373" className="hover:text-accent-purple transition-colors">
+                  (407) 730-1373
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4" />
+                <span>Clermont, Florida</span>
+              </div>
             </div>
           </div>
         </div>

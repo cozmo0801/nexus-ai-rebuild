@@ -89,7 +89,7 @@ const Solutions = () => {
       title: "Cost Reduction",
       subtitle: "Optimize Operations & Expenses",
       description:
-        "Reduce customer service costs by up to 60% while improving response times and overall customer satisfaction through intelligent automation.",
+        "Reduce customer service costs by up to 40% while improving response times and overall customer satisfaction through intelligent automation.",
       icon: DollarSign,
       color: "text-accent-orange",
       bgColor: "bg-accent-orange/10",
@@ -101,11 +101,11 @@ const Solutions = () => {
         "24/7 availability without additional staffing",
         "Detailed cost analysis and reporting",
       ],
-      metrics: "60% reduction in support costs",
+      metrics: "40% reduction in support costs",
       cta: "Calculate Savings",
       benefits: ["Lower Costs", "Higher Efficiency", "Better Margins"],
       stats: {
-        value: "60%",
+        value: "40%",
         label: "Cost Reduction",
         trend: "-$50K",
         trendLabel: "Annual Savings"
@@ -140,10 +140,10 @@ const Solutions = () => {
     },
     {
       id: "integration",
-      title: "Easy Integration",
-      subtitle: "Seamless System Connection",
+      title: "Custom Integration",
+      subtitle: "Tailored System Connection",
       description:
-        "One-click integration with your existing website, CRM, and business tools. No technical expertise required for setup and maintenance.",
+        "Custom implementation based on your specific business goals and workflow requirements. Each automation is unique to your business process.",
       icon: Puzzle,
       color: "text-accent-pink",
       bgColor: "bg-accent-pink/10",
@@ -155,12 +155,12 @@ const Solutions = () => {
         "Guided setup with dedicated support",
         "Regular updates and maintenance included",
       ],
-      metrics: "Setup complete in under 30 minutes",
+      metrics: "Custom setup tailored to your needs",
       cta: "Start Integration",
-      benefits: ["Quick Setup", "No Coding", "Seamless"],
+      benefits: ["Custom Setup", "No Coding", "Seamless"],
       stats: {
-        value: "30min",
-        label: "Setup Time",
+        value: "Custom",
+        label: "Setup Process",
         trend: "-90%",
         trendLabel: "vs Custom Development"
       }
@@ -208,15 +208,15 @@ const Solutions = () => {
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-accent-teal/10 border border-accent-teal/20 rounded-full text-accent-teal text-sm font-medium">
                 <Sparkles className="h-4 w-4" />
-                AI-Powered Solutions
+                State-of-the-Art Automation Solutions
               </div>
               <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-accent-teal via-accent-purple to-accent-green bg-clip-text text-transparent animate-gradient">
                 Our AI Solutions
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                Comprehensive AI-powered tools designed to transform your business
+                Comprehensive state-of-the-art automation systems designed to transform your business
                 operations, enhance customer experience, and drive sustainable
-                growth.
+                growth in Central Florida.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
@@ -225,7 +225,7 @@ const Solutions = () => {
                 </div>
                 <div className="flex items-center gap-2">
                   <Clock className="h-4 w-4 text-accent-orange" />
-                  <span>30min Setup</span>
+                  <span>Custom Setup</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Star className="h-4 w-4 text-accent-purple" />
@@ -416,8 +416,8 @@ const Solutions = () => {
               Ready to Transform Your Business?
             </h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto">
-              Let&apos;s discuss how these AI solutions can be customized for
-              your specific business needs and start your journey towards
+              Let&apos;s discuss how these state-of-the-art automation solutions can be customized for
+              your specific business needs in Central Florida and start your journey towards
               intelligent automation.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -425,9 +425,9 @@ const Solutions = () => {
                 variant="hero"
                 size="lg"
                 className="w-full sm:w-auto group hover:scale-105 transition-transform"
-                onClick={() => (window.location.href = "/get-started")}
+                onClick={() => (window.location.href = "/contact")}
               >
-                <span className="relative z-10">Get Started Free</span>
+                <span className="relative z-10">Get Custom Quote</span>
                 <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
@@ -442,7 +442,7 @@ const Solutions = () => {
             
             {/* Trust indicators */}
             <div className="mt-12 pt-8 border-t border-border/50">
-              <p className="text-sm text-muted-foreground mb-4">Trusted by 500+ businesses worldwide</p>
+              <p className="text-sm text-muted-foreground mb-4">Trusted by growing startups in Central Florida</p>
               <div className="flex justify-center items-center gap-8 opacity-60">
                 <div className="flex items-center gap-2">
                   <Shield className="h-5 w-5 text-accent-green" />

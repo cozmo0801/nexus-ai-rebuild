@@ -12,15 +12,15 @@ const ReadySection = () => {
             Ready to Get Started?
           </h2>
                   <p className="text-xl text-white/80 mb-8 leading-relaxed">
-          Let's discuss how AI can transform your startup operations and boost your growth
+          Let's discuss how our custom state-of-the-art automation solutions can transform your Central Florida business operations and boost your growth
         </p>
           <StarBorderButton 
             color="hsl(var(--accent-teal))"
             speed="3s"
             className="font-medium"
-            onClick={() => window.location.href = '/get-started'}
+            onClick={() => window.location.href = '/contact'}
           >
-            Get Started Now
+            Get Custom Quote
             <ArrowRight className="h-5 w-5 ml-2" />
           </StarBorderButton>
         </div>

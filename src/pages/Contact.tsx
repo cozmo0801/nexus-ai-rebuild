@@ -118,8 +118,8 @@ const Contact = () => {
       icon: Mail,
       title: "Email Us",
       description: "Get in touch via email",
-      value: "hello@nexuscore.ai",
-      action: "mailto:hello@nexuscore.ai",
+      value: "contact@nexuscore-ai.com",
+      action: "mailto:contact@nexuscore-ai.com",
       color: "text-accent-teal",
       bgColor: "bg-accent-teal/10",
       borderColor: "border-accent-teal/20",
@@ -129,8 +129,8 @@ const Contact = () => {
       icon: Phone,
       title: "Call Us",
       description: "Speak with our team",
-      value: "+1 (555) 123-4567",
-      action: "tel:+15551234567",
+      value: "(407) 730-1373",
+      action: "tel:(407) 730-1373",
       color: "text-accent-green",
       bgColor: "bg-accent-green/10",
       borderColor: "border-accent-green/20",
@@ -140,7 +140,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Visit Us",
       description: "Our headquarters",
-      value: "San Francisco, CA",
+      value: "Clermont, Florida",
       action: null,
       color: "text-accent-orange",
       bgColor: "bg-accent-orange/10",
@@ -191,19 +191,19 @@ const Contact = () => {
       icon: Building,
       title: "Company",
       value: "NexusCore AI",
-      description: "Leading AI automation platform"
+      description: "Leading state-of-the-art automation platform"
     },
     {
       icon: Globe,
       title: "Founded",
-      value: "2023",
-      description: "Innovating business automation"
+      value: "2025",
+      description: "Innovating business automation in Central Florida"
     },
     {
       icon: Target,
       title: "Mission",
-      value: "Democratize AI",
-      description: "Make AI accessible to all businesses"
+      value: "Empower Small Businesses",
+      description: "Make AI automation accessible to Central Florida businesses"
     },
     {
       icon: Shield,
@@ -233,7 +233,7 @@ const Contact = () => {
                 Contact Us
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                Ready to transform your business with AI? Let's discuss how NexusCore AI can be tailored
+                Ready to transform your Central Florida business with state-of-the-art automation? Let's discuss how NexusCore AI can be tailored
                 to your specific needs and goals.
               </p>
               <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
@@ -561,7 +561,7 @@ const Contact = () => {
               Ready to Get Started?
             </h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto">
-              Don't wait to transform your business. Start your AI automation journey today
+              Don't wait to transform your Central Florida business. Start your automation journey today
               with our free consultation and personalized demo.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -569,9 +569,9 @@ const Contact = () => {
                 variant="hero"
                 size="lg"
                 className="w-full sm:w-auto group hover:scale-105 transition-transform"
-                onClick={() => (window.location.href = "/get-started")}
+                onClick={() => (window.location.href = "/contact")}
               >
-                <span className="relative z-10">Start Free Trial</span>
+                <span className="relative z-10">Get Custom Quote</span>
                 <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
               <Button
@@ -586,7 +586,7 @@ const Contact = () => {
             
             {/* Trust indicators */}
             <div className="mt-12 pt-8 border-t border-border/50">
-              <p className="text-sm text-muted-foreground mb-4">Join 500+ businesses already using NexusCore AI</p>
+              <p className="text-sm text-muted-foreground mb-4">Join growing startups in Central Florida already using NexusCore AI</p>
               <div className="flex justify-center items-center gap-8 opacity-60">
                 <div className="flex items-center gap-2">
                   <Shield className="h-5 w-5 text-accent-green" />
