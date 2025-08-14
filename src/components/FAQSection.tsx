@@ -64,7 +64,14 @@ const FAQSection = () => {
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Everything you need to know about NexusCore AI. Can't find what you're looking for? 
-            <button className="text-accent-purple hover:text-accent-teal transition-colors font-medium">
+            <button 
+              className="text-accent-purple hover:text-accent-teal transition-colors font-medium cursor-pointer"
+              onClick={() => {
+                // Open chat support - you can integrate with your chat system here
+                alert("Chat support will open here. Please integrate with your preferred chat system.");
+                // Alternative: window.open('your-chat-url', '_blank');
+              }}
+            >
               Chat with our team
             </button>
           </p>
@@ -136,10 +143,23 @@ const FAQSection = () => {
               Our team of AI experts is here to help you get the most out of NexusCore AI.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1">
+              <button 
+                className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                onClick={() => {
+                  // Open chat support - you can integrate with your chat system here
+                  alert("Chat support will open here. Please integrate with your preferred chat system.");
+                  // Alternative: window.open('your-chat-url', '_blank');
+                }}
+              >
                 Chat with Support
               </button>
-              <button className="px-8 py-4 border border-accent-purple/30 text-accent-purple font-semibold rounded-2xl hover:bg-accent-purple/5 transition-all duration-300">
+              <button 
+                className="px-8 py-4 border border-accent-purple/30 text-accent-purple font-semibold rounded-2xl hover:bg-accent-purple/5 transition-all duration-300 cursor-pointer"
+                onClick={() => {
+                  // Navigate to contact page for scheduling calls
+                  window.location.href = '/contact';
+                }}
+              >
                 Schedule a Call
               </button>
             </div>

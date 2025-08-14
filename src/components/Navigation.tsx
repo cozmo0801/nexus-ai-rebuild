@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Sheet, SheetContent, SheetClose } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Underline } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import Logo from "@/components/ui/logo";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
@@ -47,25 +47,21 @@ const Navigation = () => {
                 <Link to="/" className={navLinkClass("/")}>
                   <span className="relative">
                     Home
-                    <Underline />
                   </span>
                 </Link>
                 <Link to="/solutions" className={navLinkClass("/solutions")}>
                   <span className="relative">
                     Solutions
-                    <Underline />
                   </span>
                 </Link>
                 <Link to="/contact" className={navLinkClass("/contact")}>
                   <span className="relative">
                     Contact
-                    <Underline />
                   </span>
                 </Link>
                 <Link to="/faq" className={navLinkClass("/faq")}>
                   <span className="relative">
                     FAQ
-                    <Underline />
                   </span>
                 </Link>
               </div>
