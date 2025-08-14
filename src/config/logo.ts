@@ -5,7 +5,7 @@ export const LOGO_CONFIG = {
   useCustomLogo: true,
   
   // Path to your custom logo file (relative to public directory)
-  customLogoSrc: "/images/nexuscore logo.JPG",
+  customLogoSrc: "/images/nexuscore transparent.png",
   
   // Alt text for your logo
   customLogoAlt: "NexusCore AI Logo",
