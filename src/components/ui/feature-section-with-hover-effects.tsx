@@ -1,13 +1,13 @@
 import { cn } from "@/lib/utils";
 import {
-  MessageSquare,
-  Target,
-  Puzzle,
-  Globe,
-  Shield,
-  Rocket,
-  DollarSign,
-  TrendingUp,
+  IconMessage2,
+  IconTarget,
+  IconPuzzle,
+  IconGlobe,
+  IconShield,
+  IconRocket,
+  IconCurrencyDollar,
+  IconTrendingUp,
 } from "@tabler/icons-react";
 
 export function FeaturesSectionWithHoverEffects() {
@@ -15,42 +15,42 @@ export function FeaturesSectionWithHoverEffects() {
     {
       title: "24/7 AI Support",
       description: "Intelligent chatbots that never sleep, providing instant customer support around the clock.",
-      icon: <MessageSquare className="h-6 w-6" />,
+      icon: <IconMessage2 className="h-6 w-6" />,
     },
     {
       title: "Smart Lead Capture",
       description: "Automatically capture and qualify leads from your website, social media, and other channels.",
-      icon: <Target className="h-6 w-6" />,
+      icon: <IconTarget className="h-6 w-6" />,
     },
     {
       title: "Custom Integrations",
       description: "Seamlessly integrate with your existing CRM, email, and business tools for maximum efficiency.",
-      icon: <Puzzle className="h-6 w-6" />,
+      icon: <IconPuzzle className="h-6 w-6" />,
     },
     {
       title: "Local Expertise",
       description: "Built specifically for Central Florida businesses with deep understanding of local market needs.",
-      icon: <Globe className="h-6 w-6" />,
+      icon: <IconGlobe className="h-6 w-6" />,
     },
     {
       title: "SOC 2 Compliant",
       description: "Enterprise-grade security with SOC 2 compliance and GDPR readiness for your peace of mind.",
-      icon: <Shield className="h-6 w-6" />,
+      icon: <IconShield className="h-6 w-6" />,
     },
     {
       title: "Fast Implementation",
       description: "Get up and running quickly with our streamlined setup process tailored to your business.",
-      icon: <Rocket className="h-6 w-6" />,
+      icon: <IconRocket className="h-6 w-6" />,
     },
     {
       title: "Cost Reduction",
       description: "Reduce customer service costs by up to 40% while improving response times and satisfaction.",
-      icon: <DollarSign className="h-6 w-6" />,
+      icon: <IconCurrencyDollar className="h-6 w-6" />,
     },
     {
       title: "Scalable Growth",
       description: "Grow your business without growing your team - our AI scales with your business needs.",
-      icon: <TrendingUp className="h-6 w-6" />,
+      icon: <IconTrendingUp className="h-6 w-6" />,
     },
   ];
   return (
