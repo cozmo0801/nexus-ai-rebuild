@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MessageCircle, ChevronDown, CheckCircle, AlertCircle, Zap, Users, Clock, Star } from "lucide-react";
 import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,11 @@ import { motion } from "framer-motion";
 
 const FAQSection = () => {
   const [activeCategory, setActiveCategory] = useState("general");
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   const faqCategories = [
     {
@@ -245,7 +250,7 @@ const FAQSection = () => {
         </div>
 
         {/* Enhanced CTA Section */}
-        <div className="text-center mt-20">
+        <div className={`text-center mt-20 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-3xl p-8 max-w-2xl mx-auto">
             <h3 className="text-2xl font-bold text-foreground mb-4">
               Still Have Questions?
@@ -275,18 +280,18 @@ const FAQSection = () => {
         </div>
 
         {/* Support Features */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-accent-purple/5 to-accent-teal/5 border border-accent-purple/20">
+        <div className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-accent-purple/5 to-accent-teal/5 border border-accent-purple/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
             <MessageCircle className="h-12 w-12 text-accent-teal mx-auto mb-4" />
             <h4 className="text-lg font-semibold text-foreground mb-2">Live Chat Support</h4>
             <p className="text-muted-foreground">Get instant help from our AI experts 24/7</p>
           </div>
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-accent-teal/5 to-accent-green/5 border border-accent-teal/20">
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-accent-teal/5 to-accent-green/5 border border-accent-teal/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
             <Clock className="h-12 w-12 text-accent-green mx-auto mb-4" />
             <h4 className="text-lg font-semibold text-foreground mb-2">2hr Response Time</h4>
             <p className="text-muted-foreground">Quick responses to all your questions</p>
           </div>
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-accent-green/5 to-accent-orange/5 border border-accent-green/20">
+          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-accent-green/5 to-accent-orange/5 border border-accent-green/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
             <Users className="h-12 w-12 text-accent-orange mx-auto mb-4" />
             <h4 className="text-lg font-semibold text-foreground mb-2">Expert Team</h4>
             <p className="text-muted-foreground">Dedicated specialists ready to help</p>
