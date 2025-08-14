@@ -120,17 +120,17 @@ const FAQ = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-full px-4 py-2 mb-6">
+            <div className={`inline-flex items-center gap-2 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-full px-4 py-2 mb-6 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <HelpCircle className="h-4 w-4 text-accent-purple" />
               <span className="text-sm font-medium text-foreground">Frequently Asked Questions</span>
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6">
+            <h1 className={`text-5xl md:text-7xl font-bold text-foreground mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Everything You Need to
               <span className="bg-gradient-to-r from-accent-purple to-accent-teal bg-clip-text text-transparent"> Know</span>
             </h1>
             
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className={`text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Get answers to the most common questions about NexusCore AI. Can't find what you're looking for? 
               Our team is here to help.
             </p>
@@ -245,14 +245,14 @@ const FAQ = () => {
         
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+            <h2 className={`text-4xl md:text-5xl font-bold text-foreground mb-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Still Have Questions?
             </h2>
-            <p className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto">
+            <p className={`text-lg text-muted-foreground mb-12 max-w-3xl mx-auto transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Can't find the answer you're looking for? Our expert support team is here to help
               you with personalized assistance and custom solutions.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <div className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <Button
                 variant="hero"
                 size="lg"
@@ -273,7 +273,7 @@ const FAQ = () => {
             </div>
             
             {/* Support options */}
-            <div className="mt-12 pt-8 border-t border-border/50">
+            <div className={`mt-12 pt-8 border-t border-border/50 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="flex items-center gap-3 justify-center">
                   <MessageCircle className="h-5 w-5 text-accent-teal" />
