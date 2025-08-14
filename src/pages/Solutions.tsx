@@ -140,7 +140,7 @@ const Solutions = () => {
       <section className="pt-32 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-primary opacity-5"></div>
         <div className="relative z-10 container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
+          <div className="max-w-4xl mx-auto text-center w-full">
             <div className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8">
               <Zap className="h-5 w-5 text-accent-purple" />
               <span className="text-sm font-medium text-foreground">
@@ -189,7 +189,7 @@ const Solutions = () => {
       {/* Key Metrics */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {metrics.map((metric, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-accent-teal mb-2">
@@ -219,7 +219,7 @@ const Solutions = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {industrySolutions.map((solution, index) => (
               <div key={index} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
@@ -258,7 +258,7 @@ const Solutions = () => {
             </p>
           </div>
           
-          <div className="bg-card border rounded-3xl overflow-hidden shadow-2xl">
+          <div className="bg-card border rounded-3xl overflow-hidden shadow-2xl max-w-7xl mx-auto">
             <FeaturesSectionWithHoverEffects />
           </div>
         </div>
@@ -307,9 +307,9 @@ const Solutions = () => {
       {/* Trust indicators */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center">
+          <div className="text-center max-w-4xl mx-auto">
             <p className="text-sm text-muted-foreground mb-4">Trusted by growing startups in Central Florida</p>
-            <div className="flex items-center justify-center gap-8 text-muted-foreground">
+            <div className="flex items-center justify-center gap-8 text-muted-foreground flex-wrap">
               <div className="flex items-center gap-2">
                 <Shield className="h-5 w-5" />
                 <span className="text-sm">SOC 2 Compliant</span>

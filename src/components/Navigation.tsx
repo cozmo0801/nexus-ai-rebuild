@@ -62,7 +62,7 @@ const Navigation = () => {
         <div className="flex items-center h-16">
           {/* Logo with enhanced animation */}
           <div className="flex-shrink-0">
-            <Logo size="lg" />
+            <Logo size="xl" />
           </div>
 
           {/* Desktop links with enhanced interactions - centered */}
@@ -134,7 +134,7 @@ const Navigation = () => {
                 <div className="flex flex-col h-full">
                   {/* Mobile menu header */}
                   <div className="flex items-center justify-between mb-8">
-                    <Logo size="md" onClick={() => setIsMobileMenuOpen(false)} />
+                    <Logo size="lg" onClick={() => setIsMobileMenuOpen(false)} />
                     <SheetClose asChild>
                       <button className="p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300">
                         <X className="h-5 w-5" />

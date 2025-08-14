@@ -13,8 +13,8 @@ export const LOGO_CONFIG = {
   // Whether to show text alongside the logo
   showText: true,
   
-  // Default logo size
-  defaultSize: "md" as const,
+  // Default logo size - making it much bigger for better visibility
+  defaultSize: "lg" as const,
 };
 
 // Logo file recommendations:

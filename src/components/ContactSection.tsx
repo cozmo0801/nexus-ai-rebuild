@@ -123,15 +123,17 @@ const ContactSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header Section */}
-        <div className="max-w-4xl mx-auto text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-full px-4 py-2 mb-6">
-            <MessageSquare className="h-4 w-4 text-accent-purple" />
-            <span className="text-sm font-medium text-foreground">Get In Touch</span>
+        <div className="max-w-6xl mx-auto text-center mb-16">
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8">
+            <MessageSquare className="h-5 w-5 text-accent-purple" />
+            <span className="text-sm font-medium text-foreground">
+              Get in Touch
+            </span>
           </div>
           
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Ready to Transform Your
-            <span className="bg-gradient-to-r from-accent-purple to-accent-teal bg-clip-text text-transparent"> Business?</span>
+            Let's Build Something
+            <span className="bg-gradient-to-r from-accent-purple to-accent-teal bg-clip-text text-transparent"> Amazing Together</span>
           </h2>
           
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">

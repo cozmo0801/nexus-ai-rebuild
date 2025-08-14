@@ -7,7 +7,7 @@ const ReadySection = () => {
     <section id="contact" className="py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-primary"></div>
       <div className="relative z-10 container mx-auto px-4">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center w-full">
           <h2 className="text-4xl font-bold text-white mb-6">
             Ready to Get Started?
           </h2>

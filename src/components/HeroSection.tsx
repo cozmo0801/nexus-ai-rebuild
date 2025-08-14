@@ -41,7 +41,7 @@ const HeroSection = () => {
       </div>
       
       <div className="relative z-10 container mx-auto px-4 flex items-center min-h-[calc(100vh-6rem)]">
-        <div className="max-w-5xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto text-center w-full">
           {/* Trust Badge */}
           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-full px-4 py-2 mb-8 animate-fade-in">
             <Sparkles className="h-4 w-4 text-accent-purple" />
@@ -85,7 +85,7 @@ const HeroSection = () => {
           <div className={`mb-12 transition-all duration-1000 delay-500 ${
             isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
           }`}>
-            <div className="relative group">
+            <div className="relative group max-w-4xl mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--accent-purple))]/20 to-[hsl(var(--accent-green))]/20 rounded-3xl blur-3xl group-hover:blur-2xl transition-all duration-500"></div>
               <div className="relative bg-card border rounded-3xl p-8 shadow-2xl hover:shadow-glow transition-all duration-500 hover:-translate-y-2">
                 <div className="space-y-4">
@@ -163,7 +163,7 @@ const HeroSection = () => {
           </div>
           
           {/* Free Trial Information */}
-          <div className="mt-6 p-4 bg-gradient-to-r from-accent-green/10 to-accent-teal/10 border border-accent-green/20 rounded-2xl">
+          <div className="mt-6 p-4 bg-gradient-to-r from-accent-green/10 to-accent-teal/10 border border-accent-green/20 rounded-2xl max-w-2xl mx-auto">
             <div className="flex items-center justify-center gap-2 mb-2">
               <CheckCircle className="h-4 w-4 text-accent-green" />
               <span className="text-sm font-medium text-accent-green">One-Week Free Trial Available</span>
