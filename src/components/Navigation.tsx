@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
 import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { useTheme } from "@/components/theme-provider";
+import Logo from "@/components/ui/logo";
 
 const Navigation = () => {
   const [isDark, setIsDark] = useState(true);
@@ -61,15 +62,7 @@ const Navigation = () => {
         <div className="flex items-center h-16">
           {/* Logo with enhanced animation */}
           <div className="flex-shrink-0">
-            <Link to="/" className="flex items-center gap-3 group">
-              <div className="relative">
-                <Zap className="h-7 w-7 text-accent-teal group-hover:scale-110 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-accent-teal/20 rounded-full blur-md group-hover:blur-lg transition-all duration-300"></div>
-              </div>
-              <span className="text-xl font-bold text-foreground group-hover:text-accent-teal transition-colors duration-300">
-                NexusCore AI
-              </span>
-            </Link>
+            <Logo size="lg" />
           </div>
 
           {/* Desktop links with enhanced interactions - centered */}
@@ -141,13 +134,7 @@ const Navigation = () => {
                 <div className="flex flex-col h-full">
                   {/* Mobile menu header */}
                   <div className="flex items-center justify-between mb-8">
-                    <Link to="/" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
-                      <div className="relative">
-                        <Zap className="h-6 w-6 text-accent-teal" />
-                        <div className="absolute inset-0 bg-accent-teal/20 rounded-full blur-md"></div>
-                      </div>
-                      <span className="text-lg font-bold text-foreground">NexusCore AI</span>
-                    </Link>
+                    <Logo size="md" onClick={() => setIsMobileMenuOpen(false)} />
                     <SheetClose asChild>
                       <button className="p-2 rounded-xl bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300">
                         <X className="h-5 w-5" />
