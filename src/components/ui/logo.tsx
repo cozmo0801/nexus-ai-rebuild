@@ -48,9 +48,13 @@ const Logo = ({
           style={{
             // Ensure SVG logos maintain crisp quality
             ...(isSVG && {
-              imageRendering: 'optimizeQuality',
-              shapeRendering: 'geometricPrecision',
-              textRendering: 'optimizeLegibility'
+              imageRendering: 'crisp-edges',
+              shapeRendering: 'crispEdges',
+              textRendering: 'optimizeLegibility',
+              // Force high quality rendering
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
+              perspective: '1000px'
             })
           }}
         />

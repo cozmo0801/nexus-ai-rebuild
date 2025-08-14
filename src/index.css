@@ -235,18 +235,26 @@
 
 /* SVG Logo Quality Enhancements */
 .svg-logo {
-  image-rendering: optimizeQuality;
-  shape-rendering: geometricPrecision;
+  image-rendering: crisp-edges;
+  shape-rendering: crispEdges;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Force high quality rendering */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 /* Ensure SVG logos maintain crisp quality at all sizes */
 img[src*=".svg"] {
-  image-rendering: optimizeQuality;
-  shape-rendering: geometricPrecision;
-  text-rendering: optimizeLegibility;
+  image-rendering: crisp-edges !important;
+  shape-rendering: crispEdges !important;
+  text-rendering: optimizeLegibility !important;
+  /* Force high quality rendering */
+  transform: translateZ(0) !important;
+  backface-visibility: hidden !important;
+  perspective: 1000px !important;
 }
 
 /* Custom animations */
