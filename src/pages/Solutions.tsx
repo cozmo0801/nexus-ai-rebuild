@@ -26,9 +26,15 @@ import { LiquidButton, MetalButton } from "@/components/ui/liquid-glass-button";
 import { FeaturesSectionWithHoverEffects } from "@/components/ui/feature-section-with-hover-effects";
 import Navigation from "@/components/Navigation";
 import GlowingEffect from "@/components/ui/glowing-effect";
+import { useState, useEffect } from "react";
 
 const Solutions = () => {
   const currentYear = new Date().getFullYear();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   // Custom features for NexusCore AI
   const customFeatures = [
@@ -141,24 +147,24 @@ const Solutions = () => {
         <div className="absolute inset-0 bg-gradient-primary opacity-5"></div>
         <div className="relative z-10 container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center w-full">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8">
+            <div className={`inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <Zap className="h-5 w-5 text-accent-purple" />
               <span className="text-sm font-medium text-foreground">
                 State-of-the-Art Automation Solutions
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-accent-teal to-accent-purple bg-clip-text text-transparent">
+            <h1 className={`text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-accent-teal to-accent-purple bg-clip-text text-transparent transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Transform Your Business
             </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+            <p className={`text-xl text-muted-foreground leading-relaxed mb-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Comprehensive state-of-the-art automation systems designed to transform your business
               operations, enhance customer experience, and drive sustainable
               growth in Central Florida.
             </p>
             
             {/* Free Trial Information */}
-            <div className="mb-8 p-4 bg-gradient-to-r from-accent-green/10 to-accent-teal/10 border border-accent-green/20 rounded-2xl max-w-2xl mx-auto">
+            <div className={`mb-8 p-4 bg-gradient-to-r from-accent-green/10 to-accent-teal/10 border border-accent-green/20 rounded-2xl max-w-2xl mx-auto transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="flex items-center justify-center gap-2 mb-2">
                 <CheckCircle className="h-5 w-5 text-accent-green" />
                 <span className="text-sm font-medium text-accent-green">One-Week Free Trial Available</span>
@@ -168,7 +174,7 @@ const Solutions = () => {
               </p>
             </div>
             
-            <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+            <div className={`flex flex-wrap justify-center gap-4 text-sm text-muted-foreground transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-accent-green" />
                 <span>Custom automation solutions</span>
@@ -191,16 +197,14 @@ const Solutions = () => {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {metrics.map((metric, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-accent-teal mb-2">
-                  {metric.value}
-                </div>
-                <div className="text-lg font-semibold text-foreground mb-2">
-                  {metric.label}
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  {metric.description}
-                </p>
+              <div 
+                key={metric.label}
+                className={`text-center p-6 bg-card border border-border rounded-2xl hover:shadow-lg transition-all duration-300 hover:-translate-y-1 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(index + 1) * 200}ms` }}
+              >
+                <div className="text-3xl font-bold text-accent-teal mb-2">{metric.value}</div>
+                <div className="text-sm font-semibold text-foreground mb-1">{metric.label}</div>
+                <div className="text-xs text-muted-foreground">{metric.description}</div>
               </div>
             ))}
           </div>
@@ -210,7 +214,7 @@ const Solutions = () => {
       {/* Industry Solutions */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className={`text-center mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h2 className="text-4xl font-bold mb-6">
               Industry-Specific Solutions
             </h2>
@@ -221,7 +225,11 @@ const Solutions = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {industrySolutions.map((solution, index) => (
-              <div key={index} className="group relative">
+              <div 
+                key={index} 
+                className={`group relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                style={{ transitionDelay: `${(index + 1) * 200}ms` }}
+              >
                 <div className="absolute inset-0 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
                 <div className="relative bg-card border rounded-2xl p-8 hover:shadow-glow transition-all duration-500 hover:-translate-y-2">
                   <div className="text-4xl mb-4">{solution.icon}</div>
@@ -249,7 +257,7 @@ const Solutions = () => {
       {/* Features Grid with Hover Effects */}
       <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className={`text-center mb-16 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <h2 className="text-4xl font-bold mb-6">
               Why Choose NexusCore AI?
             </h2>
@@ -258,7 +266,7 @@ const Solutions = () => {
             </p>
           </div>
           
-          <div className="bg-card border rounded-3xl overflow-hidden shadow-2xl max-w-7xl mx-auto">
+          <div className={`bg-card border rounded-3xl overflow-hidden shadow-2xl max-w-7xl mx-auto transition-all duration-1000 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <FeaturesSectionWithHoverEffects />
           </div>
         </div>
@@ -268,23 +276,23 @@ const Solutions = () => {
       <section className="py-16">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8">
+            <div className={`inline-flex items-center gap-3 bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl px-6 py-4 mb-8 transition-all duration-1000 delay-800 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <Users className="h-5 w-5 text-accent-purple" />
               <span className="text-sm font-medium text-foreground">
                 Trusted by growing startups in Central Florida
               </span>
             </div>
             
-            <h2 className="text-4xl font-bold mb-6">
+            <h2 className={`text-4xl font-bold mb-6 transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Ready to Transform Your Business?
             </h2>
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className={`text-xl text-muted-foreground mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-1200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               Let's discuss how these state-of-the-art automation solutions can be customized for
               your specific business needs in Central Florida and start your journey towards
               sustainable growth.
             </p>
             
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 delay-1400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <LiquidButton 
                 size="lg"
                 onClick={() => (window.location.href = "/contact")}
@@ -293,11 +301,11 @@ const Solutions = () => {
                 <span className="relative z-10">Get Custom Quote</span>
               </LiquidButton>
               <MetalButton 
-                variant="success"
+                size="lg"
                 onClick={() => (window.location.href = "/contact")}
                 className="w-full sm:w-auto"
               >
-                <span className="relative z-10">Schedule Consultation</span>
+                <span className="relative z-10">Schedule Demo</span>
               </MetalButton>
             </div>
           </div>
