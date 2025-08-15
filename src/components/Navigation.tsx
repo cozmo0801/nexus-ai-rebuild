@@ -122,14 +122,17 @@ const Navigation = () => {
                           key={item.link}
                           to={item.link}
                           onClick={() => setIsMobileMenuOpen(false)}
-                          className={`block px-4 py-3 text-lg font-medium rounded-lg transition-all duration-300 ${
+                          className={`flex items-center px-4 py-4 text-lg font-semibold rounded-xl transition-all duration-300 ${
                             location.pathname === item.link
                               ? "text-accent-teal bg-accent-teal/10 border border-accent-teal/20"
                               : "text-muted-foreground hover:text-foreground hover:bg-accent-purple/5"
                           }`}
                         >
-                          <span className="mr-3">{item.icon}</span>
-                          {item.name}
+                          <span className="mr-4 text-2xl">{item.icon}</span>
+                          <span className="flex-1">{item.name}</span>
+                          {location.pathname === item.link && (
+                            <div className="w-2 h-2 bg-accent-teal rounded-full"></div>
+                          )}
                         </Link>
                       ))}
                     </nav>
