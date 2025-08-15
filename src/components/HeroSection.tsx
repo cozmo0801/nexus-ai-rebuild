@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle, Bot, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { LiquidButton, MetalButton } from "@/components/ui/liquid-glass-button";
 import ChatbotDemo from "@/components/ui/chatbot-demo";
 
@@ -94,16 +95,14 @@ const HeroSection = () => {
             <div className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1000 delay-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
-              <LiquidButton 
-                size="xl"
+              <Button 
+                size="lg"
                 onClick={() => window.location.href = '/contact'}
-                className="w-full sm:w-auto font-medium text-lg group"
+                className="w-full sm:w-auto font-medium text-lg group bg-gradient-to-r from-accent-purple to-accent-teal hover:from-accent-purple/90 hover:to-accent-teal/90 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <span className="flex items-center justify-center gap-2">
-                  Get Custom Quote
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
-                </span>
-              </LiquidButton>
+                <span>Get Custom Quote</span>
+                <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
               <MetalButton 
                 variant="gold"
                 onClick={() => setIsChatbotOpen(true)}
