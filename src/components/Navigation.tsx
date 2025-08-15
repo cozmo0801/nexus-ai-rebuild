@@ -168,7 +168,7 @@ const Navigation = () => {
               <Button
                 variant="ghost"
                 size="icon"
-                className="hidden sm:flex hover:bg-accent-purple/10 text-accent-purple hover:text-accent-purple transition-all duration-300"
+                className="hidden sm:flex hover:bg-accent-purple/10 text-accent-purple dark:text-accent-purple hover:text-accent-purple dark:hover:text-accent-purple transition-all duration-300"
                 onClick={() => window.location.href = '/solutions'}
                 title="View Solutions"
               >
