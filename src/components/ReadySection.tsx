@@ -32,7 +32,6 @@ const ReadySection = () => {
             onClick={() => window.location.href = '/contact'}
           >
             Get Custom Quote
-            <ArrowRight className="h-5 w-5 ml-2" />
           </LiquidButton>
         </div>
       </div>
