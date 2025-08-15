@@ -6,12 +6,12 @@ import { motion, AnimatePresence } from "framer-motion";
 type Theme = "light" | "dark" | "system";
 
 export const ThemeToggle = () => {
-  const [theme, setTheme] = useState<Theme>("system");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    // Get theme from localStorage or default to system
+    // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem("theme") as Theme;
     if (savedTheme) {
       setTheme(savedTheme);
@@ -36,6 +36,20 @@ export const ThemeToggle = () => {
     // Save to localStorage
     localStorage.setItem("theme", theme);
   }, [theme, mounted]);
+
+  // Apply light theme by default if no theme is set
+  useEffect(() => {
+    if (!mounted) return;
+    
+    const savedTheme = localStorage.getItem("theme");
+    if (!savedTheme) {
+      // No theme saved, apply light mode by default
+      const root = window.document.documentElement;
+      root.classList.remove("light", "dark");
+      root.classList.add("light");
+      localStorage.setItem("theme", "light");
+    }
+  }, [mounted]);
 
   // Listen for system theme changes
   useEffect(() => {
@@ -103,7 +117,7 @@ export const ThemeToggle = () => {
 
 // Compact theme toggle for mobile/navbar
 export const CompactThemeToggle = () => {
-  const [theme, setTheme] = useState<Theme>("system");
+  const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
