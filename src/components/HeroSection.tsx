@@ -101,7 +101,7 @@ const HeroSection = () => {
                 className="w-full sm:w-auto font-medium text-lg group bg-gradient-to-r from-accent-purple to-accent-teal hover:from-accent-purple/90 hover:to-accent-teal/90 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <span>Get Custom Quote</span>
-                <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
               <MetalButton 
                 variant="gold"
