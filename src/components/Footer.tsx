@@ -75,14 +75,16 @@ const Footer = () => {
                 {[
                   { icon: Twitter, href: "#", label: "Twitter" },
                   { icon: Linkedin, href: "#", label: "LinkedIn" },
-                  { icon: Facebook, href: "#", label: "Facebook" },
-                  { icon: Instagram, href: "#", label: "Instagram" },
+                  { icon: Facebook, href: "https://www.facebook.com/share/14KkmAik66E/?mibextid=wwXIfr", label: "Facebook" },
+                  { icon: Instagram, href: "https://www.instagram.com/nexuscoreai/", label: "Instagram" },
                   { icon: Youtube, href: "#", label: "YouTube" }
                 ].map((social) => (
                   <a
                     key={social.label}
                     href={social.href}
                     aria-label={social.label}
+                    target={social.href !== "#" ? "_blank" : undefined}
+                    rel={social.href !== "#" ? "noopener noreferrer" : undefined}
                     className="p-2 rounded-lg bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300 hover:scale-110"
                   >
                     <social.icon className="h-4 w-4" />
@@ -256,23 +258,49 @@ const Footer = () => {
               </p>
             </div>
 
-            {/* Contact Info */}
-            <div className="flex items-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
-                <a href="mailto:contact@nexuscore-ai.com" className="hover:text-accent-purple transition-colors">
-                  contact@nexuscore-ai.com
+            {/* Social Media & Contact Info */}
+            <div className="flex flex-col items-center gap-4 md:flex-row md:gap-6">
+              {/* Social Media Links */}
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-muted-foreground">Follow us:</span>
+                <a
+                  href="https://www.instagram.com/nexuscoreai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Instagram"
+                  className="p-1.5 rounded-md bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300 hover:scale-110"
+                >
+                  <Instagram className="h-3.5 w-3.5" />
+                </a>
+                <a
+                  href="https://www.facebook.com/share/14KkmAik66E/?mibextid=wwXIfr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Follow us on Facebook"
+                  className="p-1.5 rounded-md bg-muted hover:bg-accent-purple/10 text-muted-foreground hover:text-accent-purple transition-all duration-300 hover:scale-110"
+                >
+                  <Facebook className="h-3.5 w-3.5" />
                 </a>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                <a href="tel:(407) 730-1373" className="hover:text-accent-purple transition-colors">
-                  (407) 730-1373
-                </a>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4" />
-                <span>Clermont, Florida</span>
+
+              {/* Contact Info */}
+              <div className="flex items-center gap-6 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <Mail className="h-4 w-4" />
+                  <a href="mailto:contact@nexuscore-ai.com" className="hover:text-accent-purple transition-colors">
+                    contact@nexuscore-ai.com
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Phone className="h-4 w-4" />
+                  <a href="tel:(407) 730-1373" className="hover:text-accent-purple transition-colors">
+                    (407) 730-1373
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <MapPin className="h-4 w-4" />
+                  <span>Clermont, Florida</span>
+                </div>
               </div>
             </div>
           </div>
