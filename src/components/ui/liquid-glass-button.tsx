@@ -210,7 +210,7 @@ const colorVariants: Record<
     outer: "bg-gradient-to-b from-[#000] to-[#A0A0A0]",
     inner: "bg-gradient-to-b from-primary via-secondary to-muted",
     button: "bg-gradient-to-b from-primary to-primary/40",
-    textColor: "text-white",
+    textColor: "text-white dark:text-black",
     textShadow: "[text-shadow:_0_-1px_0_rgb(30_58_138_/_100%)]",
   },
   success: {
