@@ -268,7 +268,7 @@ const FAQSection = () => {
                 Chat with Support
               </button>
               <button 
-                className="px-8 py-4 border border-accent-purple/30 text-accent-purple font-semibold rounded-2xl hover:bg-accent-purple/5 transition-all duration-300 cursor-pointer"
+                className="px-8 py-4 border border-accent-purple/30 text-accent-purple dark:text-accent-purple font-semibold rounded-2xl hover:bg-accent-purple/5 dark:hover:bg-accent-purple/10 transition-all duration-300 cursor-pointer hover:border-accent-purple/50 dark:hover:border-accent-purple/40"
                 onClick={() => {
                   window.location.href = '/contact';
                 }}
