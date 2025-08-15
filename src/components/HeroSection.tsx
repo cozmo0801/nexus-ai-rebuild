@@ -99,9 +99,9 @@ const HeroSection = () => {
                 onClick={() => window.location.href = '/contact'}
                 className="w-full sm:w-auto font-medium text-lg group"
               >
-                <span className="flex items-center gap-2">
+                <span className="flex items-center justify-center gap-2">
                   Get Custom Quote
-                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform flex-shrink-0" />
                 </span>
               </LiquidButton>
               <MetalButton 
