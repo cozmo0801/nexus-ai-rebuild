@@ -96,22 +96,20 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
               <div className="flex items-center gap-2">
                 <Button
                   onClick={() => window.location.href = '/contact'}
-                  className="relative group px-6 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white font-semibold rounded-xl hover:bg-white/20 hover:border-white/50 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="relative group px-6 py-3 bg-gradient-to-r from-accent-purple to-accent-teal text-white font-semibold rounded-xl hover:from-accent-purple/90 hover:to-accent-teal/90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl border-2 border-white/20"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-accent-purple/20 to-accent-teal/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
                   <div className="relative flex items-center gap-2">
                     <MessageCircle className="h-4 w-4" />
                     Contact Form
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </Button>
                 <Button
                   variant="ghost"
                   size="sm"
                   onClick={onClose}
-                  className="text-white hover:bg-white/20 rounded-full w-10 h-10 p-0"
+                  className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 hover:border-white/50 rounded-full w-12 h-12 p-0 transition-all duration-200 hover:scale-110"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6" />
                 </Button>
               </div>
             </div>
