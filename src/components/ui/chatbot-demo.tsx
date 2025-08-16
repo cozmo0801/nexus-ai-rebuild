@@ -107,12 +107,15 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
               </div>
               <div className="flex items-center gap-2">
                 <Button
-                  variant="outline"
-                  size="sm"
                   onClick={() => window.location.href = '/contact'}
-                  className="text-white border-white/30 hover:bg-white/20 hover:border-white/50"
+                  className="relative group px-6 py-3 bg-white/10 backdrop-blur-md border border-white/30 text-white font-semibold rounded-xl hover:bg-white/20 hover:border-white/50 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
-                  Contact Form
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent-purple/20 to-accent-teal/20 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
+                  <div className="relative flex items-center gap-2">
+                    <MessageCircle className="h-4 w-4" />
+                    Contact Form
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-white/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </Button>
                 <Button
                   variant="ghost"
@@ -243,12 +246,15 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                     If you need to schedule a call or fill out a detailed contact form, click the "Contact Form" button above.
                   </p>
                   <Button
-                    variant="outline"
-                    size="sm"
                     onClick={() => window.location.href = '/contact'}
-                    className="w-full text-xs border-accent-orange/30 hover:bg-accent-orange/10 hover:border-accent-orange/50"
+                    className="relative group w-full px-4 py-3 bg-gradient-to-r from-accent-orange/20 to-accent-pink/20 backdrop-blur-sm border border-accent-orange/30 text-accent-orange font-semibold rounded-xl hover:from-accent-orange/30 hover:to-accent-pink/30 hover:border-accent-orange/50 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
                   >
-                    Go to Contact Form
+                    <div className="absolute inset-0 bg-gradient-to-r from-accent-orange/10 to-accent-pink/10 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
+                    <div className="relative flex items-center justify-center gap-2">
+                      <MessageCircle className="h-4 w-4" />
+                      Go to Contact Form
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   </Button>
                 </div>
               </div>
