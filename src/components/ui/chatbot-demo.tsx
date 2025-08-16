@@ -166,16 +166,20 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                               key={questionIndex}
                               className="w-full text-left p-3 bg-muted/50 hover:bg-muted border border-border rounded-lg transition-all duration-200 hover:border-accent-purple/30 hover:shadow-sm group"
                               onClick={async (e) => {
+                                console.log('Button clicked!', question);
                                 try {
                                   // Copy the question to clipboard
                                   await navigator.clipboard.writeText(question);
+                                  console.log('Copied to clipboard:', question);
                                   
                                   // Show visual feedback
                                   const button = e.currentTarget as HTMLButtonElement;
                                   button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
                                   
                                   // Set the copied question state to show success message
+                                  console.log('Setting copiedQuestion to:', question);
                                   setCopiedQuestion(question);
+                                  console.log('copiedQuestion state is now:', copiedQuestion);
                                   
                                   // Reset button styling after 2 seconds
                                   setTimeout(() => {
@@ -184,9 +188,11 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                                   
                                   // Clear success message after 3 seconds
                                   setTimeout(() => {
+                                    console.log('Clearing copiedQuestion');
                                     setCopiedQuestion(null);
                                   }, 3000);
                                 } catch (err) {
+                                  console.error('Error copying to clipboard:', err);
                                   // Fallback for older browsers
                                   const button = e.currentTarget as HTMLButtonElement;
                                   button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
@@ -222,6 +228,11 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                       </div>
                     </div>
                   )}
+                  
+                  {/* Debug Info */}
+                  <div className="mt-2 p-2 bg-gray-100 border border-gray-300 rounded text-xs text-gray-600">
+                    Debug: copiedQuestion = {copiedQuestion ? `"${copiedQuestion}"` : 'null'}
+                  </div>
                 </div>
 
                 {/* Pro Tips */}
