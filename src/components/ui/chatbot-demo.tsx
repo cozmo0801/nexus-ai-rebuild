@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { X, MessageCircle, Lightbulb, ArrowRight, Bot, Clock, DollarSign, Users, Zap } from "lucide-react";
+import { X, MessageCircle, Lightbulb, ArrowRight, Bot, Clock, DollarSign, Users, Zap, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ChatbotDemoProps {
@@ -9,93 +9,88 @@ interface ChatbotDemoProps {
   onClose: () => void;
 }
 
-const suggestedQuestions = [
-  {
-    category: "Services & Pricing",
-    questions: [
-      "What AI automation services do you offer?",
-      "How much do your solutions cost?",
-      "Do you offer a free trial?",
-      "What's included in your packages?"
-    ]
-  },
-  {
-    category: "Implementation",
-    questions: [
-      "How long does setup take?",
-      "What industries do you specialize in?",
-      "Can you integrate with my existing systems?",
-      "What kind of training do you provide?"
-    ]
-  },
-  {
-    category: "Business Benefits",
-    questions: [
-      "How much time can this save me?",
-      "What's the ROI of your solutions?",
-      "How do you handle customer support?",
-      "Can you help with lead generation?"
-    ]
-  }
-];
-
-const chatbotTips = [
-  {
-    icon: Clock,
-    title: "24/7 Availability",
-    description: "Get instant answers anytime, day or night"
-  },
-  {
-    icon: Zap,
-    title: "Instant Responses",
-    description: "No waiting - immediate AI-powered support"
-  },
-  {
-    icon: Users,
-    title: "Personalized Help",
-    description: "Tailored responses based on your business needs"
-  },
-  {
-    icon: DollarSign,
-    title: "Cost Savings",
-    description: "Reduce support costs while improving service"
-  }
-];
+// Floating Toast Component
+const FloatingToast = ({ message, isVisible, onClose }: { message: string; isVisible: boolean; onClose: () => void }) => {
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ opacity: 0, y: -50, scale: 0.9 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -50, scale: 0.9 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="fixed top-6 right-6 z-[9999] bg-green-500 text-white px-4 py-3 rounded-lg shadow-lg border border-green-400 max-w-sm"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-5 h-5 bg-white rounded-full flex items-center justify-center">
+              <Check className="w-3 h-3 text-green-500" />
+            </div>
+            <span className="text-sm font-medium">{message}</span>
+            <button
+              onClick={onClose}
+              className="ml-2 text-white/80 hover:text-white transition-colors"
+            >
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
 
 export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
   const [copiedQuestion, setCopiedQuestion] = useState<string | null>(null);
-
-
+  const [showToast, setShowToast] = useState(false);
 
   if (!isOpen) return null;
 
+  const handleQuestionCopy = async (question: string) => {
+    try {
+      // Copy the question to clipboard
+      await navigator.clipboard.writeText(question);
+      
+      // Show the floating toast
+      setShowToast(true);
+      
+      // Hide toast after 3 seconds
+      setTimeout(() => {
+        setShowToast(false);
+      }, 3000);
+      
+    } catch (err) {
+      // Fallback for older browsers
+      console.error('Error copying to clipboard:', err);
+    }
+  };
+
   return (
-    <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-        onClick={onClose}
-      >
+    <>
+      {/* Floating Toast */}
+      <FloatingToast
+        message={`Copied "${copiedQuestion}" to clipboard!`}
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
+
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
         <motion.div
-          initial={{ scale: 0.9, opacity: 0, y: 20 }}
-          animate={{ scale: 1, opacity: 1, y: 0 }}
-          exit={{ scale: 0.9, opacity: 0, y: 20 }}
-          transition={{ duration: 0.3 }}
-          className="bg-background rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"
-          onClick={(e) => e.stopPropagation()}
+          initial={{ opacity: 0, scale: 0.9, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.9, y: 20 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="bg-background border border-border rounded-2xl shadow-2xl w-full max-w-6xl max-h-[90vh] overflow-hidden"
         >
           {/* Header */}
-          <div className="bg-gradient-to-r from-accent-purple to-accent-teal p-6 text-white">
+          <div className="bg-gradient-to-r from-accent-purple/10 via-accent-teal/10 to-accent-orange/10 border-b border-border p-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                  <Bot className="h-6 w-6" />
+                <div className="w-10 h-10 bg-gradient-to-r from-accent-purple to-accent-teal rounded-full flex items-center justify-center">
+                  <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold">NexusCore AI Support</h2>
-                  <p className="text-white/80">Your 24/7 AI business assistant</p>
+                  <h2 className="text-xl font-bold text-foreground">AI Sales Bot Demo</h2>
+                  <p className="text-sm text-muted-foreground">Ask me anything about our solutions!</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
@@ -112,45 +107,46 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                 </Button>
                 <Button
                   variant="ghost"
-                  size="icon"
+                  size="sm"
                   onClick={onClose}
-                  className="text-white hover:bg-white/20"
+                  className="text-white hover:bg-white/20 rounded-full w-10 h-10 p-0"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="w-5 h-5" />
                 </Button>
               </div>
             </div>
           </div>
 
-          <div className="flex h-[calc(90vh-120px)]">
-            {/* Left Side - Suggested Questions & Tips */}
-            <div className="w-1/3 border-r border-border p-6 overflow-y-auto">
+          <div className="flex flex-col lg:flex-row h-[600px]">
+            {/* Left Panel - Guidance */}
+            <div className="w-full lg:w-1/3 p-6 border-r border-border overflow-y-auto">
               <div className="space-y-6">
-                {/* Quick Start Guide */}
-                <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-xl p-4">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Lightbulb className="h-5 w-5 text-accent-purple" />
-                    <h3 className="font-semibold text-foreground">💡 Quick Start Guide</h3>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Get the most out of your AI assistant with these tips:
-                  </p>
-                  <div className="space-y-2">
-                    {chatbotTips.map((tip, index) => (
-                      <div key={index} className="flex items-start gap-2 text-xs">
-                        <tip.icon className="h-3 w-3 text-accent-purple mt-0.5 flex-shrink-0" />
-                        <span className="text-muted-foreground">
-                          <strong>{tip.title}:</strong> {tip.description}
-                        </span>
-                      </div>
-                    ))}
+                {/* Quick Start */}
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+                    <Lightbulb className="w-5 h-5 text-accent-yellow" />
+                    Quick Start Guide
+                  </h3>
+                  <div className="space-y-3 text-sm text-muted-foreground">
+                    <div className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-accent-purple rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Click any suggested question below to copy it</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-accent-teal rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Paste it in the chatbot input field</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-accent-orange rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Get instant AI-powered responses</span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Suggested Questions */}
                 <div>
-                  <h3 className="font-semibold text-foreground mb-4 flex items-center gap-2">
-                    <MessageCircle className="h-4 w-4 text-accent-purple" />
+                  <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+                    <MessageCircle className="w-5 h-5 text-accent-blue" />
                     Suggested Questions
                   </h3>
                   <p className="text-xs text-muted-foreground mb-3">
@@ -159,50 +155,22 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                   <div className="space-y-4">
                     {suggestedQuestions.map((category, categoryIndex) => (
                       <div key={categoryIndex} className="space-y-2">
-                        <h4 className="text-sm font-medium text-accent-purple">
-                          {category.category}
-                        </h4>
+                        <h4 className="text-sm font-medium text-foreground">{category.title}</h4>
                         <div className="space-y-2">
                           {category.questions.map((question, questionIndex) => (
                             <button
                               key={questionIndex}
                               className="w-full text-left p-3 bg-muted/50 hover:bg-muted border border-border rounded-lg transition-all duration-200 hover:border-accent-purple/30 hover:shadow-sm group"
-                              onClick={async (e) => {
-                                // Set the copied question state immediately
+                              onClick={() => {
                                 setCopiedQuestion(question);
-                                
-                                try {
-                                  // Copy the question to clipboard
-                                  await navigator.clipboard.writeText(question);
-                                  
-                                  // Show visual feedback
-                                  const button = e.currentTarget as HTMLButtonElement;
-                                  button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
-                                  
-                                  // Clear success message after 3 seconds
-                                  setTimeout(() => {
-                                    setCopiedQuestion(null);
-                                  }, 3000);
-                                  
-                                  // Reset button styling after 2 seconds
-                                  setTimeout(() => {
-                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
-                                  }, 2000);
-                                } catch (err) {
-                                  // Fallback for older browsers
-                                  const button = e.currentTarget as HTMLButtonElement;
-                                  button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
-                                  setTimeout(() => {
-                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
-                                  }, 1000);
-                                }
+                                handleQuestionCopy(question);
                               }}
                             >
                               <div className="flex items-center justify-between">
-                                <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                                <span className="text-sm text-foreground group-hover:text-accent-purple transition-colors">
                                   {question}
                                 </span>
-                                <ArrowRight className="h-3 w-3 text-accent-purple opacity-0 group-hover:opacity-100 transition-all duration-200" />
+                                <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent-purple transition-colors" />
                               </div>
                             </button>
                           ))}
@@ -210,108 +178,112 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                       </div>
                     ))}
                   </div>
-                  
-                  {/* Success Message */}
-                  {copiedQuestion && (
-                    <div className="mt-4 p-3 bg-green-100 border border-green-300 rounded-lg">
-                      <div className="flex items-center gap-2 text-green-700">
-                        <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
-                          <span className="text-white text-sm font-bold">✓</span>
-                        </div>
-                        <span className="text-sm font-medium">
-                          Copied "{copiedQuestion}" to clipboard! Paste it in the chatbot below.
-                        </span>
-                      </div>
-                    </div>
-                  )}
-                  
-
                 </div>
 
                 {/* Pro Tips */}
-                <div className="bg-gradient-to-r from-accent-teal/10 to-accent-green/10 border border-accent-teal/20 rounded-xl p-4">
-                  <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                    <Zap className="h-4 w-4 text-accent-teal" />
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground mb-3 flex items-center gap-2">
+                    <Zap className="w-5 h-5 text-accent-yellow" />
                     Pro Tips
-                  </h4>
-                  <ul className="text-xs text-muted-foreground space-y-1">
-                    <li>• Be specific about your business needs</li>
-                    <li>• Ask about pricing and timelines</li>
-                    <li>• Request case studies from your industry</li>
-                    <li>• Ask about integration requirements</li>
-                    <li>• Inquire about ongoing support</li>
-                  </ul>
-                </div>
-
-                {/* Need More Help? */}
-                <div className="bg-gradient-to-r from-accent-orange/10 to-accent-pink/10 border border-accent-orange/20 rounded-xl p-4">
-                  <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                    <MessageCircle className="h-4 w-4 text-accent-orange" />
-                    Need More Help?
-                  </h4>
-                  <p className="text-xs text-muted-foreground mb-3">
-                    If you need to schedule a call or fill out a detailed contact form, click the "Contact Form" button above.
-                  </p>
-                  <Button
-                    onClick={() => window.location.href = '/contact'}
-                    className="relative group w-full px-4 py-3 bg-gradient-to-r from-accent-orange/20 to-accent-pink/20 backdrop-blur-sm border border-accent-orange/30 text-accent-orange font-semibold rounded-xl hover:from-accent-orange/30 hover:to-accent-pink/30 hover:border-accent-orange/50 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-accent-orange/10 to-accent-pink/10 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
-                    <div className="relative flex items-center justify-center gap-2">
-                      <MessageCircle className="h-4 w-4" />
-                      Go to Contact Form
+                  </h3>
+                  <div className="space-y-3 text-sm text-muted-foreground">
+                    <div className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-accent-purple rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Ask follow-up questions for detailed responses</span>
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </Button>
+                    <div className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-accent-teal rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Use specific industry terms for better answers</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <div className="w-2 h-2 bg-accent-orange rounded-full mt-2 flex-shrink-0"></div>
+                      <span>Request examples or case studies</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right Side - Chatbot */}
-            <div className="flex-1 flex flex-col">
+            {/* Right Panel - Chatbot */}
+            <div className="w-full lg:w-2/3 p-6 flex flex-col">
               {/* Chatbot Header */}
-              <div className="p-4 border-b border-border bg-muted/20">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-r from-accent-purple to-accent-teal flex items-center justify-center">
-                    <Bot className="h-4 w-4 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground">NexusCore AI Assistant</h3>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <span>Online • Ready to help</span>
-                    </div>
-                  </div>
-                </div>
+              <div className="mb-4">
+                <h3 className="text-lg font-semibold text-foreground mb-2">AI Sales Bot</h3>
+                <p className="text-sm text-muted-foreground">
+                  Ask me about our AI solutions, pricing, implementation, or anything else!
+                </p>
               </div>
 
-
-
-              {/* Chatbot Embed */}
-              <div className="flex-1 relative">
-                <iframe
-                  src="https://www.chatbase.co/chatbot-iframe/-hHBm8K_fvurRvli9lz9-"
-                  width="100%"
-                  style={{ height: '100%', minHeight: '500px' }}
+              {/* Chatbot Iframe */}
+              <div className="flex-1 bg-muted/20 rounded-xl border border-border overflow-hidden">
+                <iframe 
+                  src="https://www.chatbase.co/chatbot-iframe/-hHBm8K_fvurRvli9lz9-" 
+                  width="100%" 
+                  style={{ height: '100%', minHeight: '500px' }} 
                   frameBorder="0"
-                  title="NexusCore AI Chatbot"
-                  className="rounded-b-2xl"
+                  title="AI Sales Bot"
                 />
               </div>
 
-              {/* Chatbot Footer */}
-              <div className="p-4 border-t border-border bg-muted/20">
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <span>Powered by NexusCore AI</span>
-                  <span>24/7 Support Available</span>
-                </div>
+              {/* Need More Help Section */}
+              <div className="mt-6 p-4 bg-muted/30 rounded-xl border border-border">
+                <h4 className="text-sm font-semibold text-foreground mb-2">Need More Help?</h4>
+                <p className="text-xs text-muted-foreground mb-3">
+                  If you need to schedule a call or fill out a detailed contact form, click the "Contact Form" button above.
+                </p>
+                <Button
+                  onClick={() => window.location.href = '/contact'}
+                  className="relative group w-full px-4 py-3 bg-gradient-to-r from-accent-orange/20 to-accent-pink/20 backdrop-blur-sm border border-accent-orange/30 text-accent-orange font-semibold rounded-xl hover:from-accent-orange/30 hover:to-accent-pink/30 hover:border-accent-orange/50 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-accent-orange/10 to-accent-pink/10 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
+                  <div className="relative flex items-center justify-center gap-2">
+                    <MessageCircle className="h-4 w-4" />
+                    Go to Contact Form
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </Button>
               </div>
             </div>
           </div>
         </motion.div>
-      </motion.div>
-    </AnimatePresence>
+      </div>
+    </>
   );
 };
+
+const suggestedQuestions = [
+  {
+    title: "Lead Generation",
+    questions: [
+      "Can you help with lead generation?",
+      "What's your approach to B2B lead generation?",
+      "How do you qualify leads?"
+    ]
+  },
+  {
+    title: "AI Solutions",
+    questions: [
+      "What AI tools do you offer?",
+      "How does your AI automation work?",
+      "Can you customize AI solutions?"
+    ]
+  },
+  {
+    title: "Pricing & ROI",
+    questions: [
+      "What are your pricing packages?",
+      "What's the typical ROI timeline?",
+      "Do you offer performance-based pricing?"
+    ]
+  },
+  {
+    title: "Implementation",
+    questions: [
+      "How long does implementation take?",
+      "What's your onboarding process?",
+      "Do you provide training and support?"
+    ]
+  }
+];
 
 export default ChatbotDemo;
