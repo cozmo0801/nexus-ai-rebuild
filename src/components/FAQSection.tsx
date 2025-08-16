@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { MessageCircle, ChevronDown, CheckCircle, AlertCircle, Zap, Users, Clock, Star } from "lucide-react";
-import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack";
-import { Button } from "@/components/ui/button";
-import { LiquidButton } from "@/components/ui/liquid-glass-button";
 import { motion } from "framer-motion";
+import { ContainerScroll, CardSticky } from "@/components/ui/cards-stack";
+import { MessageCircle, Clock, Users, Star } from "lucide-react";
+import ChatbotDemo from "@/components/ui/chatbot-demo";
 
 const FAQSection = () => {
-  const [activeCategory, setActiveCategory] = useState("general");
   const [isVisible, setIsVisible] = useState(false);
+  const [isChatbotOpen, setIsChatbotOpen] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
@@ -261,9 +260,7 @@ const FAQSection = () => {
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <button 
                 className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1 cursor-pointer"
-                onClick={() => {
-                  alert("Chat support will open here. Please integrate with your preferred chat system.");
-                }}
+                onClick={() => setIsChatbotOpen(true)}
               >
                 Chat with Support
               </button>
@@ -298,6 +295,12 @@ const FAQSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Chatbot Demo Modal */}
+      <ChatbotDemo 
+        isOpen={isChatbotOpen} 
+        onClose={() => setIsChatbotOpen(false)} 
+      />
     </section>
   );
 };
