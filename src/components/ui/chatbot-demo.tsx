@@ -107,7 +107,7 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                   variant="ghost"
                   size="sm"
                   onClick={onClose}
-                  className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 hover:border-white/50 rounded-full w-12 h-12 p-0 transition-all duration-200 hover:scale-110"
+                  className="bg-foreground/10 hover:bg-foreground/20 text-foreground border-2 border-foreground/20 hover:border-foreground/40 rounded-full w-12 h-12 p-0 transition-all duration-200 hover:scale-110"
                 >
                   <X className="w-6 h-6" />
                 </Button>
