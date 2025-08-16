@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Bot, Lightbulb, Users, Zap, Target, Clock, Shield, TrendingUp } from "lucide-react";
 import { Link } from "react-router-dom";
 import Logo from "@/components/ui/logo";
+import Navigation from "@/components/Navigation";
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,6 +14,9 @@ const About = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Full Navigation Bar */}
+      <Navigation />
+
       {/* Logo Header */}
       <div className="fixed top-6 left-6 z-50">
         <Link to="/">
