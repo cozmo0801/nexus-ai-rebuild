@@ -11,10 +11,22 @@ export const ThemeToggle = () => {
 
   useEffect(() => {
     setMounted(true);
+    
+    // Immediately apply light theme to prevent flash
+    const root = window.document.documentElement;
+    root.classList.remove("light", "dark");
+    root.classList.add("light");
+    
     // Get theme from localStorage or default to light
     const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme) {
+    if (savedTheme && savedTheme !== "light") {
       setTheme(savedTheme);
+      // Apply the saved theme
+      root.classList.remove("light");
+      root.classList.add(savedTheme);
+    } else {
+      // Ensure light mode is set as default
+      localStorage.setItem("theme", "light");
     }
   }, []);
 
@@ -122,9 +134,19 @@ export const CompactThemeToggle = () => {
 
   useEffect(() => {
     setMounted(true);
+    
+    // Immediately apply light theme to prevent flash
+    const root = window.document.documentElement;
+    root.classList.remove("light", "dark");
+    root.classList.add("light");
+    
     const savedTheme = localStorage.getItem("theme") as Theme;
-    if (savedTheme) {
+    if (savedTheme && savedTheme !== "light") {
       setTheme(savedTheme);
+      root.classList.remove("light");
+      root.classList.add(savedTheme);
+    } else {
+      localStorage.setItem("theme", "light");
     }
   }, []);
 
