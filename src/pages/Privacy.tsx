@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Logo from "@/components/ui/logo";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const Privacy = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -19,25 +20,27 @@ const Privacy = () => {
         </Link>
       </div>
 
-      {/* Hero Section */}
-      <section className="pt-20 pb-12 px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ duration: 0.6 }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <div className="inline-flex items-center px-4 py-2 bg-accent-purple/10 text-accent-purple rounded-full text-sm font-medium mb-6">
-            Legal & Privacy
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Privacy Policy
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Your privacy is our priority. Learn how we protect your data and maintain transparency in everything we do.
-          </p>
-        </motion.div>
-      </section>
+      {/* Hero Section with Aurora Background */}
+      <AuroraBackground className="h-auto min-h-screen pt-20">
+        <section className="pt-20 pb-12 px-4 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <div className="inline-flex items-center px-4 py-2 bg-accent-purple/10 text-accent-purple rounded-full text-sm font-medium mb-6">
+              Legal & Privacy
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Privacy Policy
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              Your privacy is our priority. Learn how we protect your data and maintain transparency in everything we do.
+            </p>
+          </motion.div>
+        </section>
+      </AuroraBackground>
 
       {/* Content Section */}
       <section className="pb-20 px-4">
