@@ -130,27 +130,27 @@ const Footer = () => {
               <h3 className="font-semibold text-foreground mb-6 text-lg">Industries</h3>
               <ul className="space-y-3">
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                  <a href="/solutions" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
                     Real Estate
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                  <a href="/solutions" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
                     Tourism & Hospitality
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                  <a href="/solutions" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
                     Healthcare
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                  <a href="/solutions" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
                     Professional Services
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
+                  <a href="/solutions" className="text-muted-foreground hover:text-accent-purple transition-colors duration-300">
                     Retail
                   </a>
                 </li>
