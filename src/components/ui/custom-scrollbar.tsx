@@ -255,8 +255,8 @@ export const VirtualScrollContainer = ({
   const offsetY = startIndex * itemHeight;
 
   return (
-    <CustomScrollbar
-      className={cn("h-full", className)}
+    <div
+      className={cn("h-full overflow-auto", className)}
       onScroll={handleScroll}
     >
       <div style={{ height: totalHeight, position: 'relative' }}>
@@ -266,6 +266,6 @@ export const VirtualScrollContainer = ({
           )}
         </div>
       </div>
-    </CustomScrollbar>
+    </div>
   );
 };

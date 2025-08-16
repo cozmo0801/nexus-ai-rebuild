@@ -195,33 +195,7 @@
   ::selection { @apply bg-accent-purple/20 text-foreground; }
   ::-moz-selection { @apply bg-accent-purple/20 text-foreground; }
   
-  /* Ensure no custom scrollbars are shown */
-  ::-webkit-scrollbar {
-    width: auto !important;
-    height: auto !important;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: transparent !important;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: transparent !important;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: transparent !important;
-  }
-  
-  ::-webkit-scrollbar-corner {
-    background: transparent !important;
-  }
-  
-  /* Firefox scrollbar */
-  * {
-    scrollbar-width: auto !important;
-    scrollbar-color: transparent transparent !important;
-  }
+
   
 
   
