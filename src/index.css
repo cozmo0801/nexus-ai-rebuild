@@ -195,11 +195,35 @@
   ::selection { @apply bg-accent-purple/20 text-foreground; }
   ::-moz-selection { @apply bg-accent-purple/20 text-foreground; }
   
-  /* Scrollbar styling */
-  ::-webkit-scrollbar { width: 8px; }
-  ::-webkit-scrollbar-track { @apply bg-muted; }
-  ::-webkit-scrollbar-thumb { @apply bg-accent-purple/30 rounded-full; }
-  ::-webkit-scrollbar-thumb:hover { @apply bg-accent-purple/50; }
+  /* Ensure no custom scrollbars are shown */
+  ::-webkit-scrollbar {
+    width: auto !important;
+    height: auto !important;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent !important;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: transparent !important;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: transparent !important;
+  }
+  
+  ::-webkit-scrollbar-corner {
+    background: transparent !important;
+  }
+  
+  /* Firefox scrollbar */
+  * {
+    scrollbar-width: auto !important;
+    scrollbar-color: transparent transparent !important;
+  }
+  
+
   
   /* Loading states */
   .loading-shimmer { 
