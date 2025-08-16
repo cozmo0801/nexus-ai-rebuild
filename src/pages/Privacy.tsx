@@ -132,7 +132,7 @@ const Privacy = () => {
               <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
               <div className="bg-muted/50 p-4 rounded-lg my-6">
                 <p className="font-semibold text-foreground mb-2">NexusCore AI</p>
-                <p className="text-muted-foreground mb-1">Email: privacy@nexuscore.ai</p>
+                <p className="text-muted-foreground mb-1">Email: contact@nexuscore-ai.com</p>
                 <p className="text-muted-foreground mb-1">Phone: [Your Phone Number]</p>
                 <p className="text-muted-foreground">Address: [Your Business Address]</p>
               </div>
