@@ -1,5 +1,3 @@
-"use client";
-
 import {
   useMotionValueEvent,
   useScroll,
