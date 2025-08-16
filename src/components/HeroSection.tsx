@@ -1,16 +1,43 @@
 import React, { useState, useEffect } from "react";
-import { ArrowRight, CheckCircle, Bot, Play } from "lucide-react";
+import { ArrowRight, CheckCircle, Bot, Play, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { LiquidButton, MetalButton } from "@/components/ui/liquid-glass-button";
 import ChatbotDemo from "@/components/ui/chatbot-demo";
+import DemoScheduler from "@/components/ui/demo-scheduler";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+  const [isDemoSchedulerOpen, setIsDemoSchedulerOpen] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
   }, []);
+
+  const handleDemoSchedule = (demoData: any) => {
+    // This will send the demo data to the contact form
+    // You can implement this to pre-fill the contact form or send directly
+    console.log("Demo scheduled:", demoData);
+    
+    // For now, redirect to contact form with demo data
+    const queryParams = new URLSearchParams({
+      type: 'demo',
+      demoType: demoData.demoType || '',
+      selectedDate: demoData.selectedDate || '',
+      selectedTime: demoData.selectedTime || '',
+      firstName: demoData.firstName || '',
+      lastName: demoData.lastName || '',
+      email: demoData.email || '',
+      phone: demoData.phone || '',
+      company: demoData.company || '',
+      industry: demoData.industry || '',
+      challenge: demoData.challenge || '',
+      employees: demoData.employees || '',
+      timeline: demoData.timeline || ''
+    });
+    
+    window.location.href = `/contact?${queryParams.toString()}`;
+  };
 
   return (
     <>
@@ -91,8 +118,8 @@ const HeroSection = () => {
               </div>
             </div>
 
-            {/* Enhanced CTA Buttons with Liquid Glass */}
-            <div className={`flex flex-col sm:flex-row items-center justify-center gap-6 transition-all duration-1000 delay-700 ${
+            {/* Enhanced CTA Buttons with Three Options */}
+            <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 delay-700 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}>
               <Button 
@@ -109,9 +136,20 @@ const HeroSection = () => {
               >
                 <span className="flex items-center gap-2">
                   <Play className="h-5 w-5" />
-                  Watch Demo
+                  Try It Out
                 </span>
               </MetalButton>
+              <Button 
+                size="lg"
+                variant="outline"
+                onClick={() => setIsDemoSchedulerOpen(true)}
+                className="w-full sm:w-auto font-medium text-lg group border-2 border-accent-purple/30 hover:border-accent-purple/50 hover:bg-accent-purple/5 transition-all duration-300"
+              >
+                <span className="flex items-center gap-2">
+                  <Calendar className="h-5 w-5" />
+                  Try a Demo
+                </span>
+              </Button>
             </div>
 
             {/* Social Proof */}
@@ -144,6 +182,13 @@ const HeroSection = () => {
     <ChatbotDemo 
       isOpen={isChatbotOpen} 
       onClose={() => setIsChatbotOpen(false)} 
+    />
+    
+    {/* Demo Scheduler Modal */}
+    <DemoScheduler 
+      isOpen={isDemoSchedulerOpen} 
+      onClose={() => setIsDemoSchedulerOpen(false)}
+      onSchedule={handleDemoSchedule}
     />
     </>
   );
