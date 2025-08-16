@@ -276,7 +276,7 @@ const FAQSection = () => {
         </div>
 
         {/* Support Features */}
-        <div className={`mt-16 md:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`mt-20 md:mt-24 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center p-4 md:p-6 rounded-xl md:rounded-2xl bg-gradient-to-r from-accent-purple/5 to-accent-teal/5 border border-accent-purple/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
             <MessageCircle className="h-8 w-8 md:h-12 md:w-12 text-accent-teal mx-auto mb-3 md:mb-4" />
             <h4 className="text-base md:text-lg font-semibold text-foreground mb-2">Live Chat Support</h4>
