@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import Logo from "@/components/ui/logo";
 
 const Privacy = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -10,6 +12,13 @@ const Privacy = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Logo Header */}
+      <div className="fixed top-6 left-6 z-50">
+        <Link to="/">
+          <Logo size="lg" />
+        </Link>
+      </div>
+
       {/* Hero Section */}
       <section className="pt-20 pb-12 px-4">
         <motion.div
@@ -132,7 +141,7 @@ const Privacy = () => {
               <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:</p>
               <div className="bg-muted/50 p-4 rounded-lg my-6">
                 <p className="font-semibold text-foreground mb-2">NexusCore AI</p>
-                <p className="text-muted-foreground mb-1">Email: privacy@nexuscore.ai</p>
+                <p className="text-muted-foreground mb-1">Email: contact@nexuscore-ai.com</p>
                 <p className="text-muted-foreground mb-1">Phone: [Your Phone Number]</p>
                 <p className="text-muted-foreground">Address: [Your Business Address]</p>
               </div>

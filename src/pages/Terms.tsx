@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Shield, FileText, Scale, AlertTriangle, CheckCircle, Clock, Users, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
+import Logo from "@/components/ui/logo";
 
 const Terms = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -11,6 +13,13 @@ const Terms = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Logo Header */}
+      <div className="fixed top-6 left-6 z-50">
+        <Link to="/">
+          <Logo size="lg" />
+        </Link>
+      </div>
+
       {/* Hero Section */}
       <section className="pt-20 pb-12 px-4">
         <motion.div
