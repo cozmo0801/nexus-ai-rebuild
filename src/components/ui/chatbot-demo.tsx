@@ -63,6 +63,8 @@ const chatbotTips = [
 ];
 
 export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
+  const [copiedQuestion, setCopiedQuestion] = useState<string | null>(null);
+
   if (!isOpen) return null;
 
   return (
@@ -172,19 +174,18 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                                   const button = e.currentTarget as HTMLButtonElement;
                                   button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
                                   
-                                  // Show success message by updating the span text
-                                  const questionSpan = button.querySelector('span');
-                                  if (questionSpan) {
-                                    const originalText = questionSpan.textContent;
-                                    questionSpan.textContent = '✓ Copied! Paste in chatbot below';
-                                    questionSpan.className = 'text-sm text-green-600 font-medium transition-colors';
-                                    
-                                    // Reset after 3 seconds
-                                    setTimeout(() => {
-                                      questionSpan.textContent = originalText;
-                                      questionSpan.className = 'text-sm text-muted-foreground group-hover:text-foreground transition-colors';
-                                    }, 3000);
-                                  }
+                                  // Set the copied question state to show success message
+                                  setCopiedQuestion(question);
+                                  
+                                  // Reset button styling after 2 seconds
+                                  setTimeout(() => {
+                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
+                                  }, 2000);
+                                  
+                                  // Clear success message after 3 seconds
+                                  setTimeout(() => {
+                                    setCopiedQuestion(null);
+                                  }, 3000);
                                 } catch (err) {
                                   // Fallback for older browsers
                                   const button = e.currentTarget as HTMLButtonElement;
@@ -207,6 +208,20 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                       </div>
                     ))}
                   </div>
+                  
+                  {/* Success Message */}
+                  {copiedQuestion && (
+                    <div className="mt-4 p-3 bg-green-100 border border-green-300 rounded-lg">
+                      <div className="flex items-center gap-2 text-green-700">
+                        <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-sm font-bold">✓</span>
+                        </div>
+                        <span className="text-sm font-medium">
+                          Copied "{copiedQuestion}" to clipboard! Paste it in the chatbot below.
+                        </span>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {/* Pro Tips */}
