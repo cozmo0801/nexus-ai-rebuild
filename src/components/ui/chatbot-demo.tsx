@@ -94,14 +94,24 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                   <p className="text-white/80">Your 24/7 AI business assistant</p>
                 </div>
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={onClose}
-                className="text-white hover:bg-white/20"
-              >
-                <X className="h-5 w-5" />
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => window.location.href = '/contact'}
+                  className="text-white border-white/30 hover:bg-white/20 hover:border-white/50"
+                >
+                  Contact Form
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={onClose}
+                  className="text-white hover:bg-white/20"
+                >
+                  <X className="h-5 w-5" />
+                </Button>
+              </div>
             </div>
           </div>
 
@@ -210,6 +220,25 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                     <li>• Ask about integration requirements</li>
                     <li>• Inquire about ongoing support</li>
                   </ul>
+                </div>
+
+                {/* Need More Help? */}
+                <div className="bg-gradient-to-r from-accent-orange/10 to-accent-pink/10 border border-accent-orange/20 rounded-xl p-4">
+                  <h4 className="font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <MessageCircle className="h-4 w-4 text-accent-orange" />
+                    Need More Help?
+                  </h4>
+                  <p className="text-xs text-muted-foreground mb-3">
+                    If you need to schedule a call or fill out a detailed contact form, click the "Contact Form" button above.
+                  </p>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => window.location.href = '/contact'}
+                    className="w-full text-xs border-accent-orange/30 hover:bg-accent-orange/10 hover:border-accent-orange/50"
+                  >
+                    Go to Contact Form
+                  </Button>
                 </div>
               </div>
             </div>

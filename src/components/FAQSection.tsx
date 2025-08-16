@@ -159,9 +159,7 @@ const FAQSection = () => {
             Everything you need to know about NexusCore AI. Can't find what you're looking for? 
             <button 
               className="text-accent-purple hover:text-accent-teal transition-colors font-medium cursor-pointer ml-1"
-              onClick={() => {
-                alert("Chat support will open here. Please integrate with your preferred chat system.");
-              }}
+              onClick={() => setIsChatbotOpen(true)}
             >
               Chat with our team
             </button>
