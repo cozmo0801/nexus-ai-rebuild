@@ -24,16 +24,16 @@ export const AuroraBackground = ({
         <div
           className={cn(
             `
-          [--aurora:repeating-linear-gradient(100deg,#3b82f6_10%,#6366f1_15%,#93c5fd_20%,#c084fc_25%,#60a5fa_30%)]
+          [--aurora:repeating-linear-gradient(100deg,#f1f5f9_10%,#e2e8f0_15%,#cbd5e1_20%,#94a3b8_25%,#64748b_30%)]
           [background-image:var(--aurora)]
           [background-size:200%_200%]
           [background-position:50%_50%]
-          filter blur-[20px]
+          filter blur-[25px]
           after:content-[""] after:absolute after:inset-0 after:[background-image:var(--aurora)] 
           after:[background-size:200%,_100%] 
           after:animate-aurora after:[background-attachment:fixed] after:mix-blend-difference
           pointer-events-none
-          absolute -inset-[20px] opacity-70 will-change-transform`,
+          absolute -inset-[25px] opacity-40 will-change-transform`,
 
             showRadialGradient &&
               `[mask-image:radial-gradient(ellipse_at_100%_0%,black_20%,var(--transparent)_70%)]`
