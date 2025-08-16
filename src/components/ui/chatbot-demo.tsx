@@ -136,6 +136,9 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                     <MessageCircle className="h-4 w-4 text-accent-purple" />
                     Suggested Questions
                   </h3>
+                  <p className="text-xs text-muted-foreground mb-3">
+                    💡 Click any question to copy it to your clipboard, then paste it in the chatbot above
+                  </p>
                   <div className="space-y-4">
                     {suggestedQuestions.map((category, categoryIndex) => (
                       <div key={categoryIndex} className="space-y-2">
@@ -147,14 +150,37 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                             <button
                               key={questionIndex}
                               className="w-full text-left p-3 bg-muted/50 hover:bg-muted border border-border rounded-lg transition-all duration-200 hover:border-accent-purple/30 hover:shadow-sm group"
-                              onClick={(e) => {
-                                // This would ideally copy the question to the chatbot
-                                // For now, we'll just show a visual feedback
-                                const button = e.currentTarget as HTMLButtonElement;
-                                button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
-                                setTimeout(() => {
-                                  button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
-                                }, 1000);
+                              onClick={async (e) => {
+                                try {
+                                  // Copy the question to clipboard
+                                  await navigator.clipboard.writeText(question);
+                                  
+                                  // Show visual feedback
+                                  const button = e.currentTarget as HTMLButtonElement;
+                                  button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
+                                  
+                                  // Show success message
+                                  const originalText = button.querySelector('span')?.textContent;
+                                  const successText = '✓ Copied! Paste in chatbot above';
+                                  if (button.querySelector('span')) {
+                                    (button.querySelector('span') as HTMLElement).textContent = successText;
+                                  }
+                                  
+                                  // Reset after 3 seconds
+                                  setTimeout(() => {
+                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
+                                    if (button.querySelector('span') && originalText) {
+                                      (button.querySelector('span') as HTMLElement).textContent = originalText;
+                                    }
+                                  }, 3000);
+                                } catch (err) {
+                                  // Fallback for older browsers
+                                  const button = e.currentTarget as HTMLButtonElement;
+                                  button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
+                                  setTimeout(() => {
+                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
+                                  }, 1000);
+                                }
                               }}
                             >
                               <div className="flex items-center justify-between">
