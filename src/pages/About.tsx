@@ -35,7 +35,7 @@ const About = () => {
             Where Innovation Meets Personal Care
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            In 2025, Gabriel Britton founded NexusCore AI with a vision to bring transformative AI technology to small businesses in a way that truly serves their unique needs.
+            In 2025, we founded NexusCore AI with a vision to bring transformative AI technology to small businesses in a way that truly serves their unique needs.
           </p>
         </motion.div>
       </section>
@@ -54,10 +54,10 @@ const About = () => {
                 The Founding Vision
               </h2>
               <p className="text-lg text-muted-foreground mb-6">
-                Gabriel's journey began with a realization that while AI technology was rapidly advancing, small business owners were being left behind. The solutions available were either too complex, too expensive, or too generic to address their specific challenges.
+                Our journey began with a realization that while AI technology was rapidly advancing, small business owners were being left behind. The solutions available were either too complex, too expensive, or too generic to address their specific challenges.
               </p>
               <p className="text-lg text-muted-foreground mb-6">
-                He saw an opportunity to bridge this gap by creating AI solutions that weren't just powerful—they were personal.
+                We saw an opportunity to bridge this gap by creating AI solutions that weren't just powerful—they were personal.
               </p>
               <div className="bg-accent-purple/10 border-l-4 border-accent-purple p-4 rounded-r-lg">
                 <p className="text-accent-purple font-semibold text-lg">
@@ -71,7 +71,7 @@ const About = () => {
                   <Bot className="w-12 h-12 text-white" />
                 </div>
                 <h3 className="text-xl font-semibold text-foreground mb-2">Founded in 2025</h3>
-                <p className="text-muted-foreground">By Gabriel Britton</p>
+                <p className="text-muted-foreground">By Our Team</p>
               </div>
             </div>
           </div>
@@ -170,7 +170,7 @@ const About = () => {
             <div className="bg-card border border-border rounded-2xl p-8 shadow-lg">
               <h3 className="text-2xl font-bold text-foreground mb-4">Proven Experience, Real Results</h3>
               <p className="text-muted-foreground mb-6">
-                Gabriel Britton doesn't just talk about AI solutions; he's lived them. Having successfully implemented this technology in real business settings, he brings firsthand knowledge of what works.
+                Our team doesn't just talk about AI solutions; we've lived them. Having successfully implemented this technology in real business settings, we bring firsthand knowledge of what works.
               </p>
               <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 rounded-lg p-4">
                 <p className="text-foreground font-semibold">

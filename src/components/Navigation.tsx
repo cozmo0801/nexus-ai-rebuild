@@ -88,6 +88,12 @@ const Navigation = () => {
 
             {/* Right side actions */}
             <div className="flex items-center gap-3 flex-shrink-0">
+              {/* Gabriel Britton - Founder */}
+              <div className="hidden md:flex items-center gap-2 px-3 py-2 bg-accent-purple/10 border border-accent-purple/20 rounded-lg">
+                <span className="text-sm font-medium text-accent-purple">Gabriel Britton</span>
+                <span className="text-xs text-muted-foreground">Founder</span>
+              </div>
+              
               {/* Theme Toggle */}
               <CompactThemeToggle />
               
