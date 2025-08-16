@@ -25,6 +25,7 @@ const Navigation = () => {
 
   const navItems = [
     { name: "Home", link: "/", icon: "🏠" },
+    { name: "About", link: "/about", icon: "ℹ️" },
     { name: "Solutions", link: "/solutions", icon: "🔨" },
     { name: "Contact", link: "/contact", icon: "📞" },
     { name: "FAQ", link: "/faq", icon: "❓" },
@@ -68,6 +69,11 @@ const Navigation = () => {
                     Home
                   </span>
                 </Link>
+                <Link to="/about" className={navLinkClass("/about")}>
+                  <span className="relative">
+                    About
+                  </span>
+                </Link>
                 <Link to="/solutions" className={navLinkClass("/solutions")}>
                   <span className="relative">
                     Solutions
@@ -88,11 +94,6 @@ const Navigation = () => {
 
             {/* Right side actions */}
             <div className="flex items-center gap-3 flex-shrink-0">
-              {/* Gabriel Britton - Founder */}
-              <div className="hidden md:flex items-center gap-2 px-3 py-2 bg-accent-purple/10 border border-accent-purple/20 rounded-lg">
-                <span className="text-sm font-medium text-accent-purple">Gabriel Britton</span>
-                <span className="text-xs text-muted-foreground">Founder</span>
-              </div>
               
               {/* Theme Toggle */}
               <CompactThemeToggle />
