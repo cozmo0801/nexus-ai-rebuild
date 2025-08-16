@@ -7,6 +7,7 @@ import ChatbotDemo from "@/components/ui/chatbot-demo";
 const FAQSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isChatbotOpen, setIsChatbotOpen] = useState(false);
+  const [activeCategory, setActiveCategory] = useState("general");
 
   useEffect(() => {
     setIsVisible(true);
