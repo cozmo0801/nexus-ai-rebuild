@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -149,10 +147,10 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                             <button
                               key={questionIndex}
                               className="w-full text-left p-3 bg-muted/50 hover:bg-muted border border-border rounded-lg transition-all duration-200 hover:border-accent-purple/30 hover:shadow-sm group"
-                              onClick={() => {
+                              onClick={(e) => {
                                 // This would ideally copy the question to the chatbot
                                 // For now, we'll just show a visual feedback
-                                const button = event?.target as HTMLButtonElement;
+                                const button = e.currentTarget as HTMLButtonElement;
                                 button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
                                 setTimeout(() => {
                                   button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
