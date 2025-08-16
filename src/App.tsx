@@ -9,6 +9,9 @@ import Solutions from "./pages/Solutions";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Onboarding from "./pages/Onboarding";
+import About from "./pages/About";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 import React from "react";
 
@@ -37,6 +40,9 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/get-started" element={<Onboarding />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
