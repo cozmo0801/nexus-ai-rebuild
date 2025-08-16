@@ -63,6 +63,17 @@ const chatbotTips = [
 ];
 
 export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
+  const [inputMessage, setInputMessage] = useState("");
+
+  const handleSendMessage = () => {
+    if (inputMessage.trim()) {
+      // For now, we'll just clear the input since we can't directly control the iframe
+      // In a real implementation, you might want to send this to your own backend
+      setInputMessage("");
+      // You could also show a success message or redirect to the iframe
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -147,7 +158,7 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                     Suggested Questions
                   </h3>
                   <p className="text-xs text-muted-foreground mb-3">
-                    💡 Click any question to copy it to your clipboard, then paste it in the chatbot above
+                    💡 Click any question to automatically add it to the chat input above
                   </p>
                   <div className="space-y-4">
                     {suggestedQuestions.map((category, categoryIndex) => (
@@ -160,37 +171,37 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                             <button
                               key={questionIndex}
                               className="w-full text-left p-3 bg-muted/50 hover:bg-muted border border-border rounded-lg transition-all duration-200 hover:border-accent-purple/30 hover:shadow-sm group"
-                              onClick={async (e) => {
-                                try {
-                                  // Copy the question to clipboard
-                                  await navigator.clipboard.writeText(question);
-                                  
-                                  // Show visual feedback
-                                  const button = e.currentTarget as HTMLButtonElement;
-                                  button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
-                                  
-                                  // Show success message
-                                  const originalText = button.querySelector('span')?.textContent;
-                                  const successText = '✓ Copied! Paste in chatbot above';
-                                  if (button.querySelector('span')) {
-                                    (button.querySelector('span') as HTMLElement).textContent = successText;
-                                  }
-                                  
-                                  // Reset after 3 seconds
-                                  setTimeout(() => {
-                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
-                                    if (button.querySelector('span') && originalText) {
-                                      (button.querySelector('span') as HTMLElement).textContent = originalText;
-                                    }
-                                  }, 3000);
-                                } catch (err) {
-                                  // Fallback for older browsers
-                                  const button = e.currentTarget as HTMLButtonElement;
-                                  button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
-                                  setTimeout(() => {
-                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
-                                  }, 1000);
+                              onClick={(e) => {
+                                // Insert the question into the input field
+                                setInputMessage(question);
+                                
+                                // Show visual feedback
+                                const button = e.currentTarget as HTMLButtonElement;
+                                button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
+                                
+                                // Show success message
+                                const originalText = button.querySelector('span')?.textContent;
+                                const successText = '✓ Added to chat!';
+                                if (button.querySelector('span')) {
+                                  (button.querySelector('span') as HTMLElement).textContent = successText;
                                 }
+                                
+                                // Reset after 2 seconds
+                                setTimeout(() => {
+                                  button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
+                                  if (button.querySelector('span') && originalText) {
+                                    (button.querySelector('span') as HTMLElement).textContent = originalText;
+                                  }
+                                }, 2000);
+                                
+                                // Focus the input field
+                                setTimeout(() => {
+                                  const input = document.querySelector('input[placeholder*="Type your message"]') as HTMLInputElement;
+                                  if (input) {
+                                    input.focus();
+                                    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                  }
+                                }, 100);
                               }}
                             >
                               <div className="flex items-center justify-between">
@@ -261,12 +272,42 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                 </div>
               </div>
 
+              {/* Custom Input Field */}
+              <div className="p-4 border-b border-border bg-muted/10">
+                <div className="flex items-center gap-3">
+                  <input
+                    type="text"
+                    placeholder="Type your message here or click a suggested question above..."
+                    value={inputMessage}
+                    onChange={(e) => setInputMessage(e.target.value)}
+                    onKeyPress={(e) => {
+                      if (e.key === 'Enter' && inputMessage.trim()) {
+                        handleSendMessage();
+                      }
+                    }}
+                    className="flex-1 px-4 py-3 bg-background border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-accent-purple/50 focus:border-accent-purple transition-all duration-200"
+                  />
+                  <Button
+                    onClick={handleSendMessage}
+                    disabled={!inputMessage.trim()}
+                    className="px-6 py-3 bg-gradient-to-r from-accent-purple to-accent-teal text-white border-0 hover:from-accent-purple/90 hover:to-accent-teal/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                  >
+                    Send
+                  </Button>
+                </div>
+                {inputMessage && (
+                  <p className="text-xs text-muted-foreground mt-2">
+                    💡 This input field is for your convenience. The actual chatbot is below.
+                  </p>
+                )}
+              </div>
+
               {/* Chatbot Embed */}
               <div className="flex-1 relative">
                 <iframe
                   src="https://www.chatbase.co/chatbot-iframe/-hHBm8K_fvurRvli9lz9-"
                   width="100%"
-                  style={{ height: '100%', minHeight: '500px' }}
+                  style={{ height: '100%', minHeight: '400px' }}
                   frameBorder="0"
                   title="NexusCore AI Chatbot"
                   className="rounded-b-2xl"
