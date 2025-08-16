@@ -128,7 +128,6 @@ const Navigation = () => {
                               : "text-muted-foreground hover:text-foreground hover:bg-accent-purple/5"
                           }`}
                         >
-                          <span className="mr-4 text-2xl">{item.icon}</span>
                           <span className="flex-1">{item.name}</span>
                           {location.pathname === item.link && (
                             <div className="w-2 h-2 bg-accent-teal rounded-full"></div>
