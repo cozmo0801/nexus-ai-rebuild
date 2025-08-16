@@ -381,39 +381,6 @@ img[src*=".svg"] {
   transition-duration: 150ms;
 }
 
-/* Custom Scrollbar Styles */
-.scrollbar-custom {
-  scrollbar-width: thin;
-  scrollbar-color: hsl(var(--accent-teal)) transparent;
-}
-
-.scrollbar-custom::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.scrollbar-custom::-webkit-scrollbar-track {
-  background: transparent;
-  border-radius: 4px;
-}
-
-.scrollbar-custom::-webkit-scrollbar-thumb {
-  background: hsl(var(--accent-teal));
-  border-radius: 4px;
-  border: 2px solid transparent;
-  background-clip: content-box;
-  transition: all 0.2s ease;
-}
-
-.scrollbar-custom::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--accent-teal-foreground));
-  transform: scale(1.1);
-}
-
-.scrollbar-custom::-webkit-scrollbar-corner {
-  background: transparent;
-}
-
 /* Enhanced scroll effects */
 .smooth-scroll-container {
   scroll-behavior: smooth;

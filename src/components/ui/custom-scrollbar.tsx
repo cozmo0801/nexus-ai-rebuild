@@ -12,7 +12,7 @@ interface CustomScrollbarProps {
 export const CustomScrollbar = ({
   children,
   className = "",
-  showScrollbar = true,
+  showScrollbar = false,
   scrollbarColor = "accent-teal",
   scrollbarWidth = "thin"
 }: CustomScrollbarProps) => {
