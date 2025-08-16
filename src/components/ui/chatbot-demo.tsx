@@ -172,20 +172,19 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                                   const button = e.currentTarget as HTMLButtonElement;
                                   button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
                                   
-                                  // Show success message
-                                  const originalText = button.querySelector('span')?.textContent;
-                                  const successText = '✓ Copied! Paste in chatbot below';
-                                  if (button.querySelector('span')) {
-                                    (button.querySelector('span') as HTMLElement).textContent = successText;
+                                  // Show success message by updating the span text
+                                  const questionSpan = button.querySelector('span');
+                                  if (questionSpan) {
+                                    const originalText = questionSpan.textContent;
+                                    questionSpan.textContent = '✓ Copied! Paste in chatbot below';
+                                    questionSpan.className = 'text-sm text-green-600 font-medium transition-colors';
+                                    
+                                    // Reset after 3 seconds
+                                    setTimeout(() => {
+                                      questionSpan.textContent = originalText;
+                                      questionSpan.className = 'text-sm text-muted-foreground group-hover:text-foreground transition-colors';
+                                    }, 3000);
                                   }
-                                  
-                                  // Reset after 3 seconds
-                                  setTimeout(() => {
-                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
-                                    if (button.querySelector('span') && originalText) {
-                                      (button.querySelector('span') as HTMLElement).textContent = originalText;
-                                    }
-                                  }, 3000);
                                 } catch (err) {
                                   // Fallback for older browsers
                                   const button = e.currentTarget as HTMLButtonElement;
