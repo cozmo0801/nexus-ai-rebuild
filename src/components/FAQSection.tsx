@@ -249,23 +249,23 @@ const FAQSection = () => {
         </div>
 
         {/* Enhanced CTA Section */}
-        <div className={`text-center mt-20 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-3xl p-8 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-foreground mb-4">
+        <div className={`text-center mt-12 md:mt-20 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl md:rounded-3xl p-6 md:p-8 max-w-2xl mx-auto mx-4 md:mx-auto">
+            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 md:mb-4">
               Still Have Questions?
             </h3>
-            <p className="text-muted-foreground mb-6">
+            <p className="text-muted-foreground mb-4 md:mb-6 text-sm md:text-base">
               Our team of AI experts is here to help you get the most out of NexusCore AI.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
               <button 
-                className="px-8 py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+                className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-accent-purple to-accent-teal text-foreground font-semibold rounded-xl md:rounded-2xl hover:shadow-glow transition-all duration-300 hover:-translate-y-1 cursor-pointer text-sm md:text-base"
                 onClick={() => setIsChatbotOpen(true)}
               >
                 Chat with Support
               </button>
               <button 
-                className="px-8 py-4 border border-accent-purple/30 text-accent-purple dark:text-accent-purple font-semibold rounded-2xl hover:bg-accent-purple/5 dark:hover:bg-accent-purple/10 transition-all duration-300 cursor-pointer hover:border-accent-purple/50 dark:hover:border-accent-purple/40"
+                className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 border border-accent-purple/30 text-accent-purple dark:text-accent-purple font-semibold rounded-xl md:rounded-2xl hover:bg-accent-purple/5 dark:hover:bg-accent-purple/10 transition-all duration-300 cursor-pointer hover:border-accent-purple/50 dark:hover:border-accent-purple/40 text-sm md:text-base"
                 onClick={() => {
                   window.location.href = '/contact';
                 }}
@@ -277,21 +277,21 @@ const FAQSection = () => {
         </div>
 
         {/* Support Features */}
-        <div className={`mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-accent-purple/5 to-accent-teal/5 border border-accent-purple/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <MessageCircle className="h-12 w-12 text-accent-teal mx-auto mb-4" />
-            <h4 className="text-lg font-semibold text-foreground mb-2">Live Chat Support</h4>
-            <p className="text-muted-foreground">Get instant help from our AI experts 24/7</p>
+        <div className={`mt-12 md:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center p-4 md:p-6 rounded-xl md:rounded-2xl bg-gradient-to-r from-accent-purple/5 to-accent-teal/5 border border-accent-purple/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <MessageCircle className="h-8 w-8 md:h-12 md:w-12 text-accent-teal mx-auto mb-3 md:mb-4" />
+            <h4 className="text-base md:text-lg font-semibold text-foreground mb-2">Live Chat Support</h4>
+            <p className="text-muted-foreground text-sm md:text-base">Get instant help from our AI experts 24/7</p>
           </div>
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-accent-teal/5 to-accent-green/5 border border-accent-teal/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <Clock className="h-12 w-12 text-accent-green mx-auto mb-4" />
-            <h4 className="text-lg font-semibold text-foreground mb-2">2hr Response Time</h4>
-            <p className="text-muted-foreground">Quick responses to all your questions</p>
+          <div className="text-center p-4 md:p-6 rounded-xl md:rounded-2xl bg-gradient-to-r from-accent-teal/5 to-accent-green/5 border border-accent-teal/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <Clock className="h-8 w-8 md:h-12 md:w-12 text-accent-green mx-auto mb-3 md:mb-4" />
+            <h4 className="text-base md:text-lg font-semibold text-foreground mb-2">2hr Response Time</h4>
+            <p className="text-muted-foreground text-sm md:text-base">Quick responses to all your questions</p>
           </div>
-          <div className="text-center p-6 rounded-2xl bg-gradient-to-r from-accent-green/5 to-accent-orange/5 border border-accent-green/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-            <Users className="h-12 w-12 text-accent-orange mx-auto mb-4" />
-            <h4 className="text-lg font-semibold text-foreground mb-2">Expert Team</h4>
-            <p className="text-muted-foreground">Dedicated specialists ready to help</p>
+          <div className="text-center p-4 md:p-6 rounded-xl md:rounded-2xl bg-gradient-to-r from-accent-green/5 to-accent-orange/5 border border-accent-green/20 hover:shadow-lg transition-all duration-300 hover:-translate-y-1 sm:col-span-2 md:col-span-1">
+            <Users className="h-8 w-8 md:h-12 md:w-12 text-accent-orange mx-auto mb-3 md:mb-4" />
+            <h4 className="text-base md:text-lg font-semibold text-foreground mb-2">Expert Team</h4>
+            <p className="text-muted-foreground text-sm md:text-base">Dedicated specialists ready to help</p>
           </div>
         </div>
       </div>

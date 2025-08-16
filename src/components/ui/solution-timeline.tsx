@@ -267,30 +267,30 @@ export const SolutionTimeline = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.8 }}
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto text-center mt-20"
+        className="max-w-4xl mx-auto text-center mt-12 md:mt-20 px-4 md:px-0"
       >
-        <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-2xl p-8">
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+        <div className="bg-gradient-to-r from-accent-purple/10 to-accent-teal/10 border border-accent-purple/20 rounded-xl md:rounded-2xl p-6 md:p-8">
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-3 md:mb-4">
             Ready to Start Your Journey?
           </h3>
-          <p className="text-muted-foreground mb-6 leading-relaxed">
+          <p className="text-muted-foreground mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
             Let's begin with a discovery call to understand your business needs and 
             create a custom automation roadmap with accurate timelines for your project.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
             <Button
               size="lg"
               onClick={() => window.location.href = '/contact?type=discovery'}
-              className="bg-gradient-to-r from-accent-purple to-accent-teal hover:from-accent-purple/90 hover:to-accent-teal/90 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="w-full sm:w-auto bg-gradient-to-r from-accent-purple to-accent-teal hover:from-accent-purple/90 hover:to-accent-teal/90 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 text-sm md:text-base"
             >
-              <Calendar className="h-5 w-5 mr-2" />
+              <Calendar className="h-4 w-4 md:h-5 md:w-5 mr-2" />
               Schedule Discovery Call
             </Button>
             <Button
               variant="outline"
               size="lg"
               onClick={() => window.location.href = '/solutions'}
-              className="border-2 border-accent-purple/30 hover:border-accent-purple/50 hover:bg-accent-purple/5 transition-all duration-300"
+              className="w-full sm:w-auto border-2 border-accent-purple/30 hover:border-accent-purple/50 hover:bg-accent-purple/5 transition-all duration-300 text-sm md:text-base"
             >
               Learn More
             </Button>
