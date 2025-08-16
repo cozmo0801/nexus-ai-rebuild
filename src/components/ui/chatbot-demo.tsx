@@ -65,6 +65,9 @@ const chatbotTips = [
 export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
   const [copiedQuestion, setCopiedQuestion] = useState<string | null>(null);
 
+  // Debug logging for state changes
+  console.log('ChatbotDemo render - copiedQuestion:', copiedQuestion);
+
   if (!isOpen) return null;
 
   return (
@@ -167,6 +170,11 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                               className="w-full text-left p-3 bg-muted/50 hover:bg-muted border border-border rounded-lg transition-all duration-200 hover:border-accent-purple/30 hover:shadow-sm group"
                               onClick={async (e) => {
                                 console.log('Button clicked!', question);
+                                
+                                // Set the copied question state immediately
+                                console.log('Setting copiedQuestion to:', question);
+                                setCopiedQuestion(question);
+                                
                                 try {
                                   // Copy the question to clipboard
                                   await navigator.clipboard.writeText(question);
@@ -176,21 +184,16 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                                   const button = e.currentTarget as HTMLButtonElement;
                                   button.classList.add('bg-accent-purple/10', 'border-accent-purple/50');
                                   
-                                  // Set the copied question state to show success message
-                                  console.log('Setting copiedQuestion to:', question);
-                                  setCopiedQuestion(question);
-                                  console.log('copiedQuestion state is now:', copiedQuestion);
-                                  
-                                  // Reset button styling after 2 seconds
-                                  setTimeout(() => {
-                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
-                                  }, 2000);
-                                  
                                   // Clear success message after 3 seconds
                                   setTimeout(() => {
                                     console.log('Clearing copiedQuestion');
                                     setCopiedQuestion(null);
                                   }, 3000);
+                                  
+                                  // Reset button styling after 2 seconds
+                                  setTimeout(() => {
+                                    button.classList.remove('bg-accent-purple/10', 'border-accent-purple/50');
+                                  }, 2000);
                                 } catch (err) {
                                   console.error('Error copying to clipboard:', err);
                                   // Fallback for older browsers
