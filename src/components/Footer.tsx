@@ -249,17 +249,17 @@ const Footer = () => {
         </div>
 
         {/* Bottom Footer */}
-        <div className="border-t border-border/50 py-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-border/50 py-6 md:py-8">
+          <div className="flex flex-col items-center gap-6 md:flex-row md:justify-between">
             {/* Copyright */}
-            <div className="text-center md:text-left">
-              <p className="text-sm text-muted-foreground">
+            <div className="text-center md:text-left max-w-full">
+              <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
                 © {currentYear} NexusCore AI. All rights reserved. Serving Central Florida businesses with state-of-the-art automation solutions.
               </p>
             </div>
 
             {/* Social Media & Contact Info */}
-            <div className="flex flex-col items-center gap-4 md:flex-row md:gap-6">
+            <div className="flex flex-col items-center gap-4 md:flex-row md:gap-6 w-full md:w-auto">
               {/* Social Media Links */}
               <div className="flex items-center gap-3">
                 <span className="text-xs text-muted-foreground">Follow us:</span>
@@ -284,21 +284,21 @@ const Footer = () => {
               </div>
 
               {/* Contact Info */}
-              <div className="flex items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex flex-col items-center gap-3 md:flex-row md:gap-6 text-xs md:text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
-                  <Mail className="h-4 w-4" />
-                  <a href="mailto:contact@nexuscore-ai.com" className="hover:text-accent-purple transition-colors">
+                  <Mail className="h-3.5 w-3.5 md:h-4 md:w-4" />
+                  <a href="mailto:contact@nexuscore-ai.com" className="hover:text-accent-purple transition-colors break-all">
                     contact@nexuscore-ai.com
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Phone className="h-4 w-4" />
+                  <Phone className="h-3.5 w-3.5 md:h-4 md:w-4" />
                   <a href="tel:(407) 730-1373" className="hover:text-accent-purple transition-colors">
                     (407) 730-1373
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
+                  <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4" />
                   <span>Clermont, Florida</span>
                 </div>
               </div>
