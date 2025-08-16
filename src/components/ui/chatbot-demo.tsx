@@ -224,25 +224,6 @@ export const ChatbotDemo = ({ isOpen, onClose }: ChatbotDemoProps) => {
                   title="AI Sales Bot"
                 />
               </div>
-
-              {/* Need More Help Section */}
-              <div className="mt-6 p-4 bg-muted/30 rounded-xl border border-border">
-                <h4 className="text-sm font-semibold text-foreground mb-2">Need More Help?</h4>
-                <p className="text-xs text-muted-foreground mb-3">
-                  If you need to schedule a call or fill out a detailed contact form, click the "Contact Form" button above.
-                </p>
-                <Button
-                  onClick={() => window.location.href = '/contact'}
-                  className="relative group w-full px-4 py-3 bg-gradient-to-r from-accent-orange/20 to-accent-pink/20 backdrop-blur-sm border border-accent-orange/30 text-accent-orange font-semibold rounded-xl hover:from-accent-orange/30 hover:to-accent-pink/30 hover:border-accent-orange/50 hover:scale-105 transition-all duration-300 shadow-md hover:shadow-lg"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-accent-orange/10 to-accent-pink/10 rounded-xl blur-sm group-hover:blur-md transition-all duration-300"></div>
-                  <div className="relative flex items-center justify-center gap-2">
-                    <MessageCircle className="h-4 w-4" />
-                    Go to Contact Form
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </Button>
-              </div>
             </div>
           </div>
         </motion.div>
